@@ -1,0 +1,3 @@
+[submodule "Plugins/InfiniTwinECS/Flecs"]
+	path = Plugins/InfiniTwinECS/Flecs
+	url = https://github.com/InfiniTwin/Flecs.git
