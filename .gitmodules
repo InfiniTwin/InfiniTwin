@@ -1,6 +1,3 @@
 [submodule "Plugins/ECS"]
 	path = Plugins/ECS
 	url = https://github.com/InfiniTwin/ECS.git
-[submodule "Plugins/GridMaterial"]
-	path = Plugins/GridMaterial
-	url = https://github.com/InfiniTwin/GridMaterial.git
