@@ -14,4 +14,8 @@ class INFINITWIN_API AITHUD : public AHUD
 {
 	GENERATED_BODY()
 	
+public:
+	virtual void BeginPlay() override;
+
+	void SetupViewport();
 };
