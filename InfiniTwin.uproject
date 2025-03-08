@@ -126,10 +126,6 @@
 			"Enabled": false
 		},
 		{
-			"Name": "ControlRig",
-			"Enabled": false
-		},
-		{
 			"Name": "SkeletalMeshModelingTools",
 			"Enabled": false
 		},
