@@ -16,6 +16,4 @@ class INFINITWIN_API AITHUD : public AHUD
 	
 public:
 	virtual void BeginPlay() override;
-
-	void SetupViewport();
 };

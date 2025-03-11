@@ -11,11 +11,7 @@
 void AITHUD::BeginPlay() {
 	Super::BeginPlay();
 
-	SetupViewport();
-}
-
-void AITHUD::SetupViewport()
-{
+    // Setup main viewport window
     if (UGameUserSettings* Settings = GEngine->GameUserSettings)
     {
         // 1) Calculate window size minus title bar
