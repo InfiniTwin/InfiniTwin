@@ -4,6 +4,3 @@
 [submodule "Plugins/UI"]
 	path = Plugins/UI
 	url = https://github.com/InfiniTwin/UI.git
-[submodule "Plugins/Resources"]
-	path = Plugins/Resources
-	url = https://github.com/InfiniTwin/Resources.git
