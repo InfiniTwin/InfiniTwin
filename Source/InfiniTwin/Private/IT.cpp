@@ -8,9 +8,9 @@
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection)
 {
-	flecs::world* world = GetWorld()->GetGameInstance()->GetSubsystem<UECS>()->World();
+	UECS* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECS>();
 
-	world->import<UI::Module>();
+	ECS->World->import<UI::Module>();
 
 	Super::Initialize(Collection);
 }
