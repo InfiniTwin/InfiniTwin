@@ -2,15 +2,17 @@
 
 
 #include "IT.h"
-#include "flecs.h"
 #include "ECS.h"
-#include "UI.h"
+#include "flecs.h"
+#include "UICore/Public/UICoreModule.h"
+#include "UI/UIITModule.h"
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection)
 {
 	UECS* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECS>();
 
-	ECS->World->import<UI::Module>();
+	ECS->World->import<UI::UICoreModule>();
+	ECS->World->import<UI::UIITModule>();
 
 	Super::Initialize(Collection);
 }
