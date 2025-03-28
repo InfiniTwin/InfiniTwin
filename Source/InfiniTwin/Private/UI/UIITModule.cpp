@@ -8,7 +8,7 @@
 #include <Windows.h>
 #endif
 
-namespace UI {
+namespace UIElements {
 	UIITModule::UIITModule(flecs::world& world) {
 		world.module<UIITModule>();
 

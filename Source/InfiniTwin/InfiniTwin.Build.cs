@@ -15,7 +15,7 @@ public class InfiniTwin : ModuleRules
 			"InputCore",
 			"ECSCore",
 			"FlecsLibrary",
-			"UICore",
+			"UIElements",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { 

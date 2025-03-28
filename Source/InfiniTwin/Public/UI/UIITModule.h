@@ -4,7 +4,7 @@
 
 #include "flecs.h"
 
-namespace UI {
+namespace UIElements {
 	struct UIITModule {
 	public:
 		UIITModule(flecs::world& world);

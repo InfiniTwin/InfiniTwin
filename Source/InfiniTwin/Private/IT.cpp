@@ -6,8 +6,8 @@ void UIT::Initialize(FSubsystemCollectionBase& Collection)
 {
 	UECS* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECS>();
 
-	ECS->World->import<UI::UICoreModule>();
-	ECS->World->import<UI::UIITModule>();
+	ECS->World->import<UIElements::Module>();
+	ECS->World->import<UIElements::UIITModule>();
 
 	Super::Initialize(Collection);
 }
