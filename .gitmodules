@@ -1,9 +1,9 @@
 [submodule "Plugins/ECS"]
 	path = Plugins/ECS
 	url = https://github.com/InfiniTwin/ECS.git
-[submodule "Plugins/UI"]
-	path = Plugins/UI
-	url = https://github.com/InfiniTwin/UI.git
 [submodule "Plugins/UIMCU"]
 	path = Plugins/UIMCU
 	url = https://github.com/InfiniTwin/UIMCU.git
+[submodule "Plugins/UIElements"]
+	path = Plugins/UIElements
+	url = https://github.com/InfiniTwin/UIElements.git
