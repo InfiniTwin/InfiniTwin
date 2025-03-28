@@ -4,3 +4,6 @@
 [submodule "Plugins/UI"]
 	path = Plugins/UI
 	url = https://github.com/InfiniTwin/UI.git
+[submodule "Plugins/UIMCU"]
+	path = Plugins/UIMCU
+	url = https://github.com/InfiniTwin/UIMCU.git
