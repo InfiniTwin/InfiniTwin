@@ -1,7 +1,10 @@
 {
     "components": {
         "UIScale": {
-            "Value": 2
+            "Value": 1
+        },
+        "TextFont": {
+            "Value": "MeowScript"
         },
         "UIScheme": {
             "DarkMode": true,

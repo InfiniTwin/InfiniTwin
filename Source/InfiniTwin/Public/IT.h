@@ -4,10 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "ECS.h"
-#include "flecs.h"
-#include "UIElements/Public/Module.h"
-#include "UI/UIITModule.h"
 #include "IT.generated.h"
 
 UCLASS()

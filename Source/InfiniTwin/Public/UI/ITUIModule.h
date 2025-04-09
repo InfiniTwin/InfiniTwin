@@ -5,11 +5,8 @@
 #include "flecs.h"
 
 namespace UIElements {
-	struct UIITModule {
+	struct ITUIModule {
 	public:
-		UIITModule(flecs::world& world);
-
-	private:
-		static void Initialize(flecs::world& world);
+		ITUIModule(flecs::world& world);
 	};
 }

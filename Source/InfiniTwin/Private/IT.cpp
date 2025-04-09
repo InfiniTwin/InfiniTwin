@@ -1,18 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "IT.h"
+#include "ECS.h"
+#include "flecs.h"
+#include "UI/ITUIModule.h"
 
-void UIT::Initialize(FSubsystemCollectionBase& Collection)
-{
+void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 	UECS* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECS>();
-
-	ECS->World->import<UIElements::Module>();
-	ECS->World->import<UIElements::UIITModule>();
+	ECS->World->import<UIElements::ITUIModule>();
 
 	Super::Initialize(Collection);
 }
 
-void UIT::Deinitialize()
-{
+void UIT::Deinitialize() {
 	Super::Deinitialize();
 }

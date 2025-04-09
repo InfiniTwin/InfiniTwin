@@ -1,25 +1,33 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UI/UIITModule.h"
-#include "GameFramework/GameUserSettings.h"
+#include "UI/ITUIFeature.h"
+#include "Entity.h"
 
 #if PLATFORM_WINDOWS
 #include <Windows.h>
 #endif
 
 namespace UIElements {
-	UIITModule::UIITModule(flecs::world& world) {
-		world.module<UIITModule>();
-
-		Initialize(world);
+	void ITUIFeature::RegisterComponents(flecs::world& world) {
+		world.component<Viewport>();
+		world.component<Toolbar>();
 	}
 
-	void UIITModule::Initialize(flecs::world& worl) {
+	void ITUIFeature::RegisterSystems(flecs::world& world) {
+		world.component<Toolbar>();
+	}
+
+	void ITUIFeature::Initialize(flecs::world& world) {
+		SetupViewport();
+
+		Entity::FromAsset(world, ITUIConfig);
+	}
+
+	void ITUIFeature::SetupViewport() {
 #if !WITH_EDITOR
 		// Setup main viewport window
-		if (UGameUserSettings* Settings = GEngine->GameUserSettings)
-		{
+		if (UGameUserSettings* Settings = GEngine->GameUserSettings) {
 			// 1) Calculate window size minus title bar
 #if PLATFORM_WINDOWS
 			const int32 CaptionHeight = ::GetSystemMetrics(SM_CYCAPTION);
