@@ -3,6 +3,7 @@
 
 #include "UI/ITUIFeature.h"
 #include "Entity.h"
+#include "GameFramework/GameUserSettings.h"
 
 #if PLATFORM_WINDOWS
 #include <Windows.h>
