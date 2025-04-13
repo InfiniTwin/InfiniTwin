@@ -2,7 +2,7 @@
 
 
 #include "UI/ITUIFeature.h"
-#include "Entity.h"
+#include "ECS.h"
 #include "GameFramework/GameUserSettings.h"
 
 #if PLATFORM_WINDOWS
@@ -22,7 +22,8 @@ namespace UIElements {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		Entity::FromAsset(world, ITUIConfig);
+		ECS::SingletonsFromAsset(world, ITUIConfig);
+		ECS::EntitiesFromAsset(world, ITUI);
 	}
 
 	void ITUIFeature::SetupViewport() {

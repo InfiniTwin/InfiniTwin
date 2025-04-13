@@ -5,6 +5,7 @@
 #include <flecs.h>
 
 inline constexpr TCHAR ITUIConfig[] = TEXT("ITUIConfig");
+inline constexpr TCHAR ITUI[] = TEXT("ITUI");
 
 namespace UIElements {
 	struct ITUIFeature {

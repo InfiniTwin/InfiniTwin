@@ -1,11 +1,7 @@
-[
     {
-        "tags": [
-            "Viewport",
-            "Toolbar"
-        ],
         "components": {
-            "Widget": null
+            "Locale": {
+                "Value": "en"
+            }
         }
     }
-]
