@@ -1,7 +1,7 @@
 {
     "components": {
         "UIScale": {
-            "Value": 1
+            "Value": 2
         },
         "TextFont": {
             "Value": "MeowScript"
