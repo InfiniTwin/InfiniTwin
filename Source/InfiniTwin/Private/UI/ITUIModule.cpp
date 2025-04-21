@@ -13,8 +13,6 @@ namespace UIElements {
 
 		ITUIFeature::RegisterComponents(world);
 
-		ITUIFeature::RegisterSystems(world);
-
 		ITUIFeature::Initialize(world);
 	}
 }

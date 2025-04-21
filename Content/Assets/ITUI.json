@@ -3,30 +3,38 @@
         {
             "name": "ViewportToolbar",
             "tags": [
-                "Viewport",
                 "Toolbar"
             ],
             "components": {
-                "Widget": null
+                "CompoundWidget": null
             }
         },
         {
             "name": "WindowToggle",
             "tags": [
-                "Toggle"
+                "Toggle",
+                "TextBlock"
             ],
             "components": {
-                "TextBlock": null,
+                "Widget": null,
                 "LocalizedText": {
                     "Value": "IT::Window"
                 }
             }
         }
     ],
-    "ChildOf":[
+    "ChildOf": [
         {
             "parent": "ViewportToolbar",
-            "children": ["WindowToggle"]
+            "children": [
+                "WindowToggle"
+            ]
+        },
+        {
+            "parent": "GameViewport",
+            "children": [
+                "ViewportToolbar"
+            ]
         }
     ]
 }

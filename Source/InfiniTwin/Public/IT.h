@@ -14,4 +14,7 @@ class INFINITWIN_API UIT : public UGameInstanceSubsystem
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
+
+private:
+	static void WaitForGameViewport(TFunction<void()> Callback);
 };

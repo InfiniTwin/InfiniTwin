@@ -4,14 +4,30 @@
 #include "ECSSubsystem.h"
 #include "flecs.h"
 #include "UI/ITUIModule.h"
+#include "Tickable.h"
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
-	UECSSubsystem* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
-	ECS->World->import<UIElements::ITUIModule>();
+	WaitForGameViewport([this] {
+		UECSSubsystem* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+		ECS->World->import<UIElements::ITUIModule>();
+		});
 
 	Super::Initialize(Collection);
 }
 
 void UIT::Deinitialize() {
 	Super::Deinitialize();
+}
+
+void UIT::WaitForGameViewport(TFunction<void()> Callback)
+{
+	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Callback](float) -> bool
+		{
+			if (GEngine && GEngine->GameViewport)
+			{
+				Callback();
+				return false;
+			}
+			return true;
+		}));
 }

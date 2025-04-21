@@ -10,13 +10,11 @@ inline constexpr TCHAR ITUI[] = TEXT("ITUI");
 namespace UIElements {
 	struct ITUIFeature {
 		static void RegisterComponents(flecs::world& world);
-		static void RegisterSystems(flecs::world& world);
 		static void Initialize(flecs::world& world);
 
 	private:
 		static void SetupViewport();
 	};
 
-	struct Viewport {};
 	struct Toolbar {};
 }
