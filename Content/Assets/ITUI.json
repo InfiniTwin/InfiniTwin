@@ -1,19 +1,32 @@
-[
-    {
-        "tags": [
-            "Viewport",
-            "Toolbar"
-        ],
-        "components": {
-            "Widget": null
-        }
-    },
-    {
-        "components": {
-            "TextBlock": null,
-            "LocalizedText": {
-                "Value": "IT::Window"
+{
+    "entities": [
+        {
+            "name": "ViewportToolbar",
+            "tags": [
+                "Viewport",
+                "Toolbar"
+            ],
+            "components": {
+                "Widget": null
+            }
+        },
+        {
+            "name": "WindowToggle",
+            "tags": [
+                "Toggle"
+            ],
+            "components": {
+                "TextBlock": null,
+                "LocalizedText": {
+                    "Value": "IT::Window"
+                }
             }
         }
-    }
-]
+    ],
+    "ChildOf":[
+        {
+            "parent": "ViewportToolbar",
+            "children": ["WindowToggle"]
+        }
+    ]
+}
