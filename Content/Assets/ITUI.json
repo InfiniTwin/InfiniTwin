@@ -1,4 +1,11 @@
 {
+    "singletons": {
+        "components": {
+            "Locale": {
+                "Value": "en"
+            }
+        }
+    },
     "entities": [
         {
             "name": "ViewportToolbar",

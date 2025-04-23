@@ -1,21 +1,23 @@
 {
-    "components": {
-        "UIScale": {
-            "Value": 2
-        },
-        "TextFont": {
-            "Value": "MeowScript"
-        },
-        "UIScheme": {
-            "DarkMode": true,
-            "Contrast": 0.5,
-            "Variant": 3,
-            "Primary": "0xFF1B6EF3",
-            "Secondary": "0xFF8E909B",
-            "Tertiary": "0xFF4A90E2",
-            "Neutral": "0xFF919094",
-            "NeutralVariant": "0xFF8F9099",
-            "Error": "0xFFAB342C"
+    "singletons": {
+        "components": {
+            "UIScale": {
+                "Value": 2
+            },
+            "TextFont": {
+                "Value": "MeowScript"
+            },
+            "UIScheme": {
+                "DarkMode": true,
+                "Contrast": 0.5,
+                "Variant": 3,
+                "Primary": "0xFF1B6EF3",
+                "Secondary": "0xFF8E909B",
+                "Tertiary": "0xFF4A90E2",
+                "Neutral": "0xFF919094",
+                "NeutralVariant": "0xFF8F9099",
+                "Error": "0xFFAB342C"
+            }
         }
     }
 }
