@@ -8,6 +8,18 @@
     },
     "entities": [
         {
+            "parent": "UIElements.ITUIModule",
+            "name": "LabelSmallPrefab",
+            "tags": [
+                "TextBlock",
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "LabelSmall": null
+            }
+        },
+        {
+            "parent": "UIElements.ITUIModule.GameViewport",
             "name": "ViewportToolbar",
             "tags": [
                 "Toolbar"
@@ -17,6 +29,7 @@
             }
         },
         {
+            "parent": "UIElements.ITUIModule.GameViewport.ViewportToolbar",
             "name": "WindowToggle",
             "tags": [
                 "Toggle",
@@ -28,20 +41,6 @@
                     "Value": "IT::Window"
                 }
             }
-        }
-    ],
-    "ChildOf": [
-        {
-            "parent": "ViewportToolbar",
-            "children": [
-                "WindowToggle"
-            ]
-        },
-        {
-            "parent": "GameViewport",
-            "children": [
-                "ViewportToolbar"
-            ]
         }
     ]
 }
