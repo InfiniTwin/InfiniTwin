@@ -36,7 +36,6 @@
                 "TextBlock"
             ],
             "components": {
-                "Widget": null,
                 "LocalizedText": {
                     "Value": "IT::Window"
                 }
