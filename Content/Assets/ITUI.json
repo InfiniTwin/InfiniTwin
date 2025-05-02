@@ -8,7 +8,7 @@
     },
     "entities": [
         {
-            "parent": "UIElements.ITUIModule",
+            "parent": "",
             "name": "LabelSmallPrefab",
             "tags": [
                 "TextBlock",
@@ -19,9 +19,9 @@
             }
         },
         {
-            "parent": "UIElements.ITUIModule.GameViewport",
+            "parent": "GameViewport",
             "name": "ViewportToolbar",
-            "tags": [
+            "tags": [   
                 "Toolbar"
             ],
             "components": {
@@ -29,7 +29,7 @@
             }
         },
         {
-            "parent": "UIElements.ITUIModule.GameViewport.ViewportToolbar",
+            "parent": "GameViewport.ViewportToolbar",
             "name": "WindowToggle",
             "tags": [
                 "Toggle",

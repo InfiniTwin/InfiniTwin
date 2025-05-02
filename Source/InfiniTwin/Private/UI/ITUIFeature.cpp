@@ -17,7 +17,7 @@ namespace UIElements {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		ECS::FromJsonAsset(world, ITUI);
+		ECS::FromJsonAsset(world, ITUI, "UIElements.ITUIModule");
 	}
 
 	void ITUIFeature::SetupViewport() {
