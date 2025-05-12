@@ -4,6 +4,7 @@
 #include "UI/ITUIFeature.h"
 #include "ECS.h"
 #include "GameFramework/GameUserSettings.h"
+#include "UIElements.h"
 
 #if PLATFORM_WINDOWS
 #include <Windows.h>
@@ -17,7 +18,7 @@ namespace UIElements {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		ECS::FromJsonAsset(world, ITUI, "UIElements.ITUIModule");
+		ECS::FromJsonAsset(world, ITUI, UIElements::Scope());
 	}
 
 	void ITUIFeature::SetupViewport() {

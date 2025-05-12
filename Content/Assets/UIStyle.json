@@ -19,5 +19,18 @@
                 "Error": "0xFFAB342C"
             }
         }
-    }
+    },
+    "entities": [
+        {
+            "parent": "",
+            "name": "LabelSmallPrefab",
+            "tags": [
+                "TextBlock",
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "LabelSmall": null
+            }
+        }
+    ]
 }

@@ -8,17 +8,6 @@
     },
     "entities": [
         {
-            "parent": "",
-            "name": "LabelSmallPrefab",
-            "tags": [
-                "TextBlock",
-                "flecs.core.Prefab"
-            ],
-            "components": {
-                "LabelSmall": null
-            }
-        },
-        {
             "parent": "GameViewport",
             "name": "ViewportToolbar",
             "tags": [   
