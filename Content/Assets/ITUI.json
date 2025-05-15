@@ -10,12 +10,11 @@
         {
             "parent": "GameViewport",
             "name": "ViewportToolbar",
-            "tags": [   
-                "Toolbar"
+            "tags": [
+                "Toolbar",
+                "CompoundWidget"
             ],
-            "components": {
-                "CompoundWidget": null
-            }
+            "components": {}
         },
         {
             "parent": "GameViewport.ViewportToolbar",

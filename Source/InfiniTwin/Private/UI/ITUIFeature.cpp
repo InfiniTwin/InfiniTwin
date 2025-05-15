@@ -11,10 +11,6 @@
 #endif
 
 namespace UIElements {
-	void ITUIFeature::RegisterComponents(flecs::world& world) {
-		world.component<Toolbar>();
-	}
-
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 

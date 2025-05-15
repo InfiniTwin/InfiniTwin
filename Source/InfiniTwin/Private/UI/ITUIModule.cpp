@@ -2,8 +2,9 @@
 
 
 #include "UI/ITUIModule.h"
-#include "UI/ITUIFeature.h"
 #include "UIElements.h"
+#include "UI/ITUIFeature.h"
+#include "UI/ITUIWidgetFeature.h"
 
 namespace UIElements {
 	ITUIModule::ITUIModule(flecs::world& world) {
@@ -11,7 +12,9 @@ namespace UIElements {
 
 		UIElements::Register(world, "UIElements.ITUIModule");
 
-		ITUIFeature::RegisterComponents(world);
+		ITUIWidgetFeature::RegisterComponents(world);
+
+		ITUIWidgetFeature::CreateObservers(world);
 
 		ITUIFeature::Initialize(world);
 	}
