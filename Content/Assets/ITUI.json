@@ -13,8 +13,7 @@
             "tags": [
                 "Toolbar",
                 "CompoundWidget"
-            ],
-            "components": {}
+            ]
         },
         {
             "parent": "GameViewport.ViewportToolbar",
