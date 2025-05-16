@@ -4,9 +4,6 @@
             "UIScale": {
                 "Value": 2
             },
-            "TextFont": {
-                "Value": "MeowScript"
-            },
             "UIScheme": {
                 "DarkMode": true,
                 "Contrast": 0.5,
@@ -23,13 +20,59 @@
     "entities": [
         {
             "parent": "",
-            "name": "LabelSmallPrefab",
+            "name": "TextFont",
             "tags": [
-                "TextBlock",
                 "flecs.core.Prefab"
             ],
             "components": {
-                "LabelSmall": null
+                "Font": {
+                    "Value": "Tangerine"
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "FontWeight400",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "TextFont"
+            },
+            "components": {
+                "FontFace": {
+                    "Value": "Regular"
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "FontSize24",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "FontSize": {
+                    "Value": 24
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "FontDisplayLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "FontWeight400",
+                    "FontSize24"
+                ]
+            },
+            "components": {
+                "FontInfo": {
+                    "Value": null
+                }
             }
         }
     ]

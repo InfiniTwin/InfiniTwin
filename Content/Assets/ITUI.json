@@ -19,9 +19,11 @@
             "parent": "GameViewport.ViewportToolbar",
             "name": "WindowToggle",
             "tags": [
-                "Toggle",
                 "TextBlock"
             ],
+            "pairs": {
+                "flecs.core.IsA": "FontDisplayLarge"
+            },
             "components": {
                 "LocalizedText": {
                     "Value": "IT::Window"
