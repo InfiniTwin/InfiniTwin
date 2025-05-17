@@ -47,13 +47,16 @@
         },
         {
             "parent": "",
-            "name": "FontSize24",
+            "name": "FontWeight500",
             "tags": [
                 "flecs.core.Prefab"
             ],
+            "pairs": {
+                "flecs.core.IsA": "TextFont"
+            },
             "components": {
-                "FontSize": {
-                    "Value": 24
+                "FontFace": {
+                    "Value": "Bold"
                 }
             }
         },
@@ -64,14 +67,11 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": [
-                    "FontWeight400",
-                    "FontSize24"
-                ]
+                "flecs.core.IsA": "FontWeight400"
             },
             "components": {
-                "FontInfo": {
-                    "Value": null
+                "FontSize": {
+                    "Value": 24
                 }
             }
         }
