@@ -1,28 +1,46 @@
 {
-    "singletons": {
+     "singletons": {
         "components": {
             "Locale": {
                 "Value": "en"
             }
         }
     },
-    "entities": [
+   "entities": [
         {
-            "parent": "GameViewport",
-            "name": "ViewportToolbar",
+            "parent": "",
+            "name": "ViewportGame",
+            "tags": [
+                "Viewport"
+            ]
+        },
+        {
+            "parent": "ViewportGame",
+            "name": "ToolbarViewportGame",
             "tags": [
                 "Toolbar",
                 "CompoundWidget"
             ]
         },
         {
-            "parent": "GameViewport.ViewportToolbar",
-            "name": "WindowToggle",
+            "parent": "ViewportGame.ToolbarViewportGame",
+            "name": "ToggleWindow",
+            "tags": [
+                "Button",
+                "Toggle"
+            ]
+        },
+        {
+            "parent": "ViewportGame.ToolbarViewportGame.ToggleWindow",
+            "name": "TextToggleWindow",
             "tags": [
                 "TextBlock"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontDisplayLarge"
+                "flecs.core.IsA": [
+                    "TextLabelLarge",
+                    "ColorOnSurface"
+                ]
             },
             "components": {
                 "LocalizedText": {

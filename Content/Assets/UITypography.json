@@ -1,0 +1,271 @@
+{
+    "entities": [
+        {
+            "parent": "",
+            "name": "TextFont",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "Font": {
+                    "Value": "Tangerine"
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "FontWeight400",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "TextFont"
+            },
+            "components": {
+                "FontFace": {
+                    "Value": "Regular"
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "FontWeight500",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "TextFont"
+            },
+            "components": {
+                "FontFace": {
+                    "Value": "Bold"
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextDisplayLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 28
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextDisplayMedium",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 26
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextDisplaySmall",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 24
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextHeadlineLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 22
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextHeadlineMedium",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 20
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextHeadlineSmall",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 18
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextTitleLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 16
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextTitleMedium",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight500"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 14
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextTitleSmall",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight500"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 12
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextBodyLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 12
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextBodyMedium",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 11
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextBodySmall",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight400"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 10
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextLabelLarge",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight500"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 14
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextLabelMedium",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight500"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 12
+                }
+            }
+        },
+        {
+            "parent": "",
+            "name": "TextLabelSmall",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "FontWeight500"
+            },
+            "components": {
+                "FontSize": {
+                    "Value": 10
+                }
+            }
+        }
+    ]
+}

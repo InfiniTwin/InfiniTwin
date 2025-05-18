@@ -15,6 +15,22 @@ namespace UIElements {
 		SetupViewport();
 
 		ECS::FromJsonAsset(world, ITUI, UIElements::Scope());
+		ECS::FromJsonAsset(world, "UISettings", UIElements::Scope());
+
+		//world.system<Delay>()
+		//	.each([](flecs::entity e, Delay& delay) {
+		//	delay.RemainingTime -= e.world().delta_time();
+		//	if (delay.RemainingTime <= 0.f) {
+		//		if (delay.Callback)
+		//			delay.Callback();
+		//		e.remove<Delay>();
+		//	}
+		//		});
+
+		//flecs::entity applySettings = world.entity();
+		//ITUIFeature::AwaitDelay(applySettings, 3, [&world]() {
+		//	ECS::FromJsonAsset(world, "UISettings", UIElements::Scope());
+		//	});
 	}
 
 	void ITUIFeature::SetupViewport() {
@@ -45,4 +61,8 @@ namespace UIElements {
 		}
 #endif
 	}
+
+	//void ITUIFeature::AwaitDelay(flecs::entity entity, float seconds, std::function<void()> onCompleted) {
+	//	entity.set<Delay>({ seconds, std::move(onCompleted) });
+	//}
 }
