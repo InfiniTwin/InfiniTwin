@@ -1,11 +1,4 @@
 {
-     "singletons": {
-        "components": {
-            "Locale": {
-                "Value": "en"
-            }
-        }
-    },
    "entities": [
         {
             "parent": "",
@@ -38,7 +31,7 @@
             ],
             "pairs": {
                 "flecs.core.IsA": [
-                    "TextLabelLarge",
+                    "TextLabelLarge", 
                     "ColorOnSurface"
                 ]
             },

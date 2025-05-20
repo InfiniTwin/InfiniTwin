@@ -12,6 +12,9 @@
                 "NeutralVariant": "0xFF8F9099",
                 "Error": "0xFFAB342C"
             },
+            "Locale": {
+                "Value": "en"
+            },
             "UIScale": {
                 "Value": 3
             }
