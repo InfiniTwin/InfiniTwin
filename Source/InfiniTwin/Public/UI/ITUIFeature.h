@@ -4,9 +4,10 @@
 
 #include <flecs.h>
 
-inline constexpr TCHAR ITUIScope[] = TEXT("UIElements.ITUIModule");
 
 namespace UIElements {
+	inline constexpr TCHAR Scope[] = TEXT("UIElements.ITUIModule");
+
 	struct ITUIFeature {
 		static void Initialize(flecs::world& world);
 
