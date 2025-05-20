@@ -4,7 +4,7 @@
 
 #include <flecs.h>
 
-inline constexpr TCHAR ITUI[] = TEXT("ITUI");
+inline constexpr TCHAR ITUIScope[] = TEXT("UIElements.ITUIModule");
 
 namespace UIElements {
 	struct ITUIFeature {

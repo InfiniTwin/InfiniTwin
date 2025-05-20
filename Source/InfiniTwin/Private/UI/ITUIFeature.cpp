@@ -14,8 +14,10 @@ namespace UIElements {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		ECS::FromJsonAsset(world, ITUI, UIElements::Scope());
-		ECS::FromJsonAsset(world, "UISettings", UIElements::Scope());
+		ECS::FromJsonAsset(world, "UIColor", ITUIScope);
+		ECS::FromJsonAsset(world, "UITypography", ITUIScope);
+		ECS::FromJsonAsset(world, "UISettings", ITUIScope);
+		ECS::FromJsonAsset(world, "ITUI", ITUIScope);
 	}
 
 	void ITUIFeature::SetupViewport() {

@@ -10,7 +10,7 @@ namespace UIElements {
 	ITUIModule::ITUIModule(flecs::world& world) {
 		world.module<ITUIModule>();
 
-		UIElements::Register(world, "UIElements.ITUIModule");
+		UIElements::Register(world);
 
 		ITUIWidgetFeature::RegisterComponents(world);
 
