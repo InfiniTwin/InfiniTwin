@@ -2,25 +2,10 @@
     "entities": [
         {
             "parent": "",
-            "name": "TextFont",
-            "tags": [
-                "flecs.core.Prefab"
-            ],
-            "components": {
-                "Font": {
-                    "Value": "Tangerine"
-                }
-            }
-        },
-        {
-            "parent": "",
             "name": "FontWeight400",
             "tags": [
                 "flecs.core.Prefab"
             ],
-            "pairs": {
-                "flecs.core.IsA": "TextFont"
-            },
             "components": {
                 "FontFace": {
                     "Value": "Regular"
@@ -33,9 +18,6 @@
             "tags": [
                 "flecs.core.Prefab"
             ],
-            "pairs": {
-                "flecs.core.IsA": "TextFont"
-            },
             "components": {
                 "FontFace": {
                     "Value": "Bold"
