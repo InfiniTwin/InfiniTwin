@@ -1,5 +1,5 @@
 {
-   "entities": [
+    "entities": [
         {
             "parent": "",
             "name": "ViewportGame",
@@ -17,21 +17,35 @@
         },
         {
             "parent": "ViewportGame.ToolbarViewportGame",
-            "name": "ToggleWindow",
+            "name": "Box",
+            "tags": [
+                "Box"
+            ]
+        },
+        {
+            "parent": "ViewportGame.ToolbarViewportGame.Box",
+            "name": "Button",
             "tags": [
                 "Button",
                 "Toggle"
             ]
         },
         {
-            "parent": "ViewportGame.ToolbarViewportGame.ToggleWindow",
-            "name": "TextToggleWindow",
+            "parent": "ViewportGame.ToolbarViewportGame.Box.Button",
+            "name": "HBox",
+            "tags": [
+                "HBox"
+            ]
+        },
+        {
+            "parent": "ViewportGame.ToolbarViewportGame.Box.Button.HBox",
+            "name": "TextButtonToggleWindow",
             "tags": [
                 "TextBlock"
             ],
             "pairs": {
                 "flecs.core.IsA": [
-                    "TextLabelLarge", 
+                    "TextBodyLarge",
                     "ColorOnSurface"
                 ]
             },

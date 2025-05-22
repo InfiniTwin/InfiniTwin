@@ -2,7 +2,7 @@
     "singletons": {
         "components": {
             "UIScheme": {
-                "DarkMode": false,
+                "DarkMode": true,
                 "Contrast": 0.5,
                 "Variant": 3,
                 "Primary": "0xFF1B6EF3",
@@ -13,13 +13,13 @@
                 "Error": "0xFFAB342C"
             },
             "TextFont": {
-                "Value": "Tangerine"
+                "Value": "Roboto"
             },
             "Locale": {
                 "Value": "en"
             },
             "UIScale": {
-                "Value": 3
+                "Value": 1
             }
         }
     }
