@@ -1,5 +1,27 @@
 {
+    "singletons": {
+        "components": {
+            "Locale": {
+                "Value": "it"
+            },
+            "UIScale": {
+                "Value": 1
+            }
+        }
+    },
     "entities": [
+        {
+            "parent": "",
+            "name": "TextFontInfo",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "FontInfo": {
+                    "Value": null
+                }
+            }
+        },
         {
             "parent": "",
             "name": "FontWeight400",

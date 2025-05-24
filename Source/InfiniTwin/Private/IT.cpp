@@ -3,13 +3,43 @@
 #include "IT.h"
 #include "ECSSubsystem.h"
 #include "flecs.h"
+#include "ECS.h"
 #include "UI/ITUIModule.h"
+#include "UI/ITUIFeature.h"
 #include "Tickable.h"
+
+#define NEXTFRAME(block) \
+{ \
+    FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([&](float) { block; return false; })); \
+}
+
+#define NEXTFRAMES(frames, block) \
+{ \
+    int32 RemainingFrames = frames; \
+    FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([&](float) mutable -> bool { \
+        if (--RemainingFrames <= 0) { \
+            block; \
+            return false; /* Remove ticker */ \
+        } \
+        return true; /* Keep ticking */ \
+    })); \
+}
+
+#define DELAY(time, block) \
+{ \
+    FTimerHandle TimerHandle; \
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle, [&]()block, time, false); \
+}
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 	WaitForGameViewport([this] {
-		UECSSubsystem* ECS = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
-		ECS->World->import<UIElements::ITUIModule>();
+		UECSSubsystem* ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+		ecs->World->import<UIElements::ITUIModule>();
+
+		NEXTFRAMES(100, {
+			UECSSubsystem * ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+			ECS::FromJsonAsset(*ecs->World, "UISettings", UIElements::Scope);
+			});
 		});
 
 	Super::Initialize(Collection);

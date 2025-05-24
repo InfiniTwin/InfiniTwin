@@ -1,0 +1,39 @@
+{
+    "entities": [
+        {
+            "parent": "",
+            "name": "AssistChip",
+            "tags": [
+                "Box",
+                "flecs.core.Prefab"
+            ]
+        },
+        {
+            "parent": "AssistChip",
+            "name": "ButtonAssistChip",
+            "tags": [
+                "Button",
+                "Toggle",
+                "flecs.core.Prefab"
+            ]
+        },
+        {
+            "parent": "AssistChip.ButtonAssistChip",
+            "name": "ContainerIconTextAssistChip",
+            "tags": [
+                "HBox",
+                "flecs.core.Prefab"
+            ]
+        },
+        {
+            "parent": "AssistChip.ButtonAssistChip.ContainerIconTextAssistChip",
+            "name": "TextAssistChip",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": "TextButton"
+            }
+        }
+    ]
+}
