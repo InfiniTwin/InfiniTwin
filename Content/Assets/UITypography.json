@@ -1,14 +1,4 @@
 {
-    "singletons": {
-        "components": {
-            "Locale": {
-                "Value": "it"
-            },
-            "UIScale": {
-                "Value": 1
-            }
-        }
-    },
     "entities": [
         {
             "parent": "",
@@ -28,6 +18,9 @@
             "tags": [
                 "flecs.core.Prefab"
             ],
+            "pairs": {
+                "flecs.core.IsA": "TextFontInfo"
+            },
             "components": {
                 "FontFace": {
                     "Value": "Regular"
@@ -40,6 +33,9 @@
             "tags": [
                 "flecs.core.Prefab"
             ],
+            "pairs": {
+                "flecs.core.IsA": "TextFontInfo"
+            },
             "components": {
                 "FontFace": {
                     "Value": "Bold"

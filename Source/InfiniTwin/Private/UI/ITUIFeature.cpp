@@ -19,6 +19,7 @@ namespace UIElements {
 		FromJsonAsset(world, "UITypography", Scope);
 		FromJsonAsset(world, "UIStyle", Scope);
 		FromJsonAsset(world, "UIElements", Scope);
+		FromJsonAsset(world, "UISettings", UIElements::Scope);
 		FromJsonAsset(world, "ITUI", Scope);
 	}
 

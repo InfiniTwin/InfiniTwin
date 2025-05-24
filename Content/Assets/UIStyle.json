@@ -1,0 +1,23 @@
+{
+    "entities": [
+        {
+            "parent": "",
+            "name": "TextButton",
+            "tags": [
+                "TextBlock",
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "ColorOnSurface",
+                    "TextBodyLarge"
+                ]
+            },
+            "components": {
+                "LocalizedText": {
+                    "Value": "IT::Window"
+                }
+            }
+        }
+    ]
+}
