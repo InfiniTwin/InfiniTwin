@@ -266,6 +266,18 @@
                     "Value": 10
                 }
             }
+        },
+        {
+            "parent": "",
+            "name": "LocalizedTextOverride",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "LocalizedText": {
+                    "Value": "IT::Window"
+                }
+            }
         }
     ]
 }

@@ -10,7 +10,7 @@
         },
         {
             "parent": "AssistChip",
-            "name": "ButtonAssistChip",
+            "name": "Button",
             "tags": [
                 "Button",
                 "Toggle",
@@ -18,16 +18,16 @@
             ]
         },
         {
-            "parent": "AssistChip.ButtonAssistChip",
-            "name": "ContainerIconTextAssistChip",
+            "parent": "AssistChip.Button",
+            "name": "Container",
             "tags": [
                 "HBox",
                 "flecs.core.Prefab"
             ]
         },
         {
-            "parent": "AssistChip.ButtonAssistChip.ContainerIconTextAssistChip",
-            "name": "TextAssistChip",
+            "parent": "AssistChip.Button.Container",
+            "name": "Text",
             "tags": [
                 "flecs.core.Prefab"
             ],

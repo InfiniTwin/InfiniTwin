@@ -20,7 +20,17 @@
             "name": "ToogleWindow",
             "pairs": {
                 "flecs.core.IsA": "AssistChip"
-            }
+            },
+            "overrides": [
+                {
+                    "path": "Button.Container.Text",
+                    "components": {
+                        "LocalizedText": {
+                            "Value": "IT::Hierarchy"
+                        }
+                    }
+                }
+            ]
         }
     ]
 }

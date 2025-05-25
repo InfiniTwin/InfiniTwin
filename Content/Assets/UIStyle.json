@@ -10,13 +10,9 @@
             "pairs": {
                 "flecs.core.IsA": [
                     "ColorOnSurface",
-                    "TextBodyLarge"
+                    "TextBodyLarge",
+                    "LocalizedTextOverride"
                 ]
-            },
-            "components": {
-                "LocalizedText": {
-                    "Value": "IT::Window"
-                }
             }
         }
     ]
