@@ -23,15 +23,6 @@
                             ],
                             "children": [
                                 {
-                                    "name": "Icon",
-                                    "tags": [
-                                        "flecs.core.Prefab"
-                                    ],
-                                    "pairs": {
-                                        "flecs.core.IsA": "TextButton"
-                                    }
-                                },
-                                {
                                     "name": "Text",
                                     "tags": [
                                         "flecs.core.Prefab"

@@ -1,20 +1,20 @@
 {
     "entities": [
         {
-            "name": "ViewportGame",
+            "name": "MainViewport",
             "tags": [
                 "Viewport"
             ],
             "children": [
                 {
-                    "name": "ToolbarViewportGame",
+                    "name": "MinToolbar",
                     "tags": [
                         "Toolbar",
                         "CompoundWidget"
                     ],
                     "children": [
                         {
-                            "name": "ToogleWindow",
+                            "name": "WindowToggle",
                             "pairs": {
                                 "flecs.core.IsA": "AssistChip"
                             },
