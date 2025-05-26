@@ -1,0 +1,92 @@
+{
+    "entities": [
+        {
+            "name": "VAlignFill",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "VAlign": {
+                    "Value": 0
+                }
+            }
+        },
+        {
+            "name": "VAlignTop",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "VAlign": {
+                    "Value": 1
+                }
+            }
+        },
+        {
+            "name": "VAlignCenter",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "VAlign": {
+                    "Value": 2
+                }
+            }
+        },
+        {
+            "name": "VAlignBottom",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "VAlign": {
+                    "Value": 3
+                }
+            }
+        },
+        {
+            "name": "HAlignFill",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "HAlign": {
+                    "Value": 0
+                }
+            }
+        },
+        {
+            "name": "HAlignLeft",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "HAlign": {
+                    "Value": 1
+                }
+            }
+        },
+        {
+            "name": "HAlignCenter",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "HAlign": {
+                    "Value": 2
+                }
+            }
+        },
+        {
+            "name": "HAlignRight",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "HAlign": {
+                    "Value": 3
+                }
+            }
+        }
+    ]
+}

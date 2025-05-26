@@ -3,11 +3,13 @@
         {
             "name": "TextButton",
             "tags": [
-                "TextBlock",
-                "flecs.core.Prefab"
+                "flecs.core.Prefab",
+                "TextBlock"
             ],
             "pairs": {
                 "flecs.core.IsA": [
+                    "VAlignCenter",
+                    "HAlignCenter",
                     "ColorOnSurface",
                     "TextBodyLarge",
                     "LocalizedTextOverride"

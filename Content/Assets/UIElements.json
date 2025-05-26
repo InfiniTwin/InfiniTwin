@@ -10,16 +10,16 @@
                 {
                     "name": "Button",
                     "tags": [
+                        "flecs.core.Prefab",
                         "Button",
-                        "Toggle",
-                        "flecs.core.Prefab"
+                        "Toggle"
                     ],
                     "children": [
                         {
                             "name": "Container",
                             "tags": [
-                                "HBox",
-                                "flecs.core.Prefab"
+                                "flecs.core.Prefab",
+                                "HBox"
                             ],
                             "children": [
                                 {

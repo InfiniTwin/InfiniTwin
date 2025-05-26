@@ -7,25 +7,37 @@
             ],
             "children": [
                 {
-                    "name": "MinToolbar",
+                    "name": "Toolbar",
                     "tags": [
                         "Toolbar",
                         "CompoundWidget"
                     ],
                     "children": [
                         {
-                            "name": "WindowToggle",
-                            "pairs": {
-                                "flecs.core.IsA": "AssistChip"
-                            },
-                            "overrides": [
+                            "name": "Container",
+                            "tags": [
+                                "HBox"
+                            ],
+                            "children": [
                                 {
-                                    "path": "Button.Container.Text",
-                                    "components": {
-                                        "LocalizedText": {
-                                            "Value": "IT::Hierarchy"
+                                    "name": "WindowToggle",
+                                    "pairs": {
+                                        "flecs.core.IsA": [
+                                            "AssistChip",
+                                            "VAlignTop",
+                                            "HAlignLeft"
+                                        ]
+                                    },
+                                    "overrides": [
+                                        {
+                                            "path": "Button.Container.Text",
+                                            "components": {
+                                                "LocalizedText": {
+                                                    "Value": "IT::Hierarchy"
+                                                }
+                                            }
                                         }
-                                    }
+                                    ]
                                 }
                             ]
                         }
