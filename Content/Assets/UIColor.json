@@ -1,7 +1,6 @@
 {
     "entities": [
         {
-            "parent": "",
             "name": "ColorBackground",
             "tags": [
                 "flecs.core.Prefab"
@@ -13,7 +12,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnBackground",
             "tags": [
                 "flecs.core.Prefab"
@@ -25,7 +23,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurface",
             "tags": [
                 "flecs.core.Prefab"
@@ -37,7 +34,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceDim",
             "tags": [
                 "flecs.core.Prefab"
@@ -49,7 +45,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceBright",
             "tags": [
                 "flecs.core.Prefab"
@@ -61,7 +56,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceContainerLowest",
             "tags": [
                 "flecs.core.Prefab"
@@ -73,7 +67,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceContainerLow",
             "tags": [
                 "flecs.core.Prefab"
@@ -85,7 +78,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -97,7 +89,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceContainerHigh",
             "tags": [
                 "flecs.core.Prefab"
@@ -109,7 +100,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceContainerHighest",
             "tags": [
                 "flecs.core.Prefab"
@@ -121,7 +111,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSurface",
             "tags": [
                 "flecs.core.Prefab"
@@ -133,7 +122,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceVariant",
             "tags": [
                 "flecs.core.Prefab"
@@ -145,7 +133,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSurfaceVariant",
             "tags": [
                 "flecs.core.Prefab"
@@ -157,7 +144,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorInverseSurface",
             "tags": [
                 "flecs.core.Prefab"
@@ -169,7 +155,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorInverseOnSurface",
             "tags": [
                 "flecs.core.Prefab"
@@ -181,7 +166,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOutline",
             "tags": [
                 "flecs.core.Prefab"
@@ -193,7 +177,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOutlineVariant",
             "tags": [
                 "flecs.core.Prefab"
@@ -205,7 +188,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorShadow",
             "tags": [
                 "flecs.core.Prefab"
@@ -217,7 +199,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorScrim",
             "tags": [
                 "flecs.core.Prefab"
@@ -229,7 +210,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSurfaceTint",
             "tags": [
                 "flecs.core.Prefab"
@@ -241,7 +221,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorPrimary",
             "tags": [
                 "flecs.core.Prefab"
@@ -253,7 +232,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnPrimary",
             "tags": [
                 "flecs.core.Prefab"
@@ -265,7 +243,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorPrimaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -277,7 +254,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnPrimaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -289,7 +265,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorInversePrimary",
             "tags": [
                 "flecs.core.Prefab"
@@ -301,7 +276,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSecondary",
             "tags": [
                 "flecs.core.Prefab"
@@ -313,7 +287,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSecondary",
             "tags": [
                 "flecs.core.Prefab"
@@ -325,7 +298,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSecondaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -337,7 +309,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSecondaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -349,7 +320,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorTertiary",
             "tags": [
                 "flecs.core.Prefab"
@@ -361,7 +331,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnTertiary",
             "tags": [
                 "flecs.core.Prefab"
@@ -373,7 +342,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorTertiaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -385,7 +353,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnTertiaryContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -397,7 +364,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorError",
             "tags": [
                 "flecs.core.Prefab"
@@ -409,7 +375,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnError",
             "tags": [
                 "flecs.core.Prefab"
@@ -421,7 +386,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorErrorContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -433,7 +397,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnErrorContainer",
             "tags": [
                 "flecs.core.Prefab"
@@ -445,7 +408,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorPrimaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -457,7 +419,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorPrimaryFixedDim",
             "tags": [
                 "flecs.core.Prefab"
@@ -469,7 +430,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnPrimaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -481,7 +441,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnPrimaryFixedVariant",
             "tags": [
                 "flecs.core.Prefab"
@@ -493,7 +452,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSecondaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -505,7 +463,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorSecondaryFixedDim",
             "tags": [
                 "flecs.core.Prefab"
@@ -517,7 +474,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSecondaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -529,7 +485,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnSecondaryFixedVariant",
             "tags": [
                 "flecs.core.Prefab"
@@ -541,7 +496,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorTertiaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -553,7 +507,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorTertiaryFixedDim",
             "tags": [
                 "flecs.core.Prefab"
@@ -565,7 +518,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnTertiaryFixed",
             "tags": [
                 "flecs.core.Prefab"
@@ -577,7 +529,6 @@
             }
         },
         {
-            "parent": "",
             "name": "ColorOnTertiaryFixedVariant",
             "tags": [
                 "flecs.core.Prefab"

@@ -1,7 +1,6 @@
 {
     "entities": [
         {
-            "parent": "",
             "name": "TextFontInfo",
             "tags": [
                 "flecs.core.Prefab"
@@ -13,7 +12,6 @@
             }
         },
         {
-            "parent": "",
             "name": "FontWeight400",
             "tags": [
                 "flecs.core.Prefab"
@@ -28,7 +26,6 @@
             }
         },
         {
-            "parent": "",
             "name": "FontWeight500",
             "tags": [
                 "flecs.core.Prefab"
@@ -43,7 +40,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextDisplayLarge",
             "tags": [
                 "flecs.core.Prefab"
@@ -58,7 +54,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextDisplayMedium",
             "tags": [
                 "flecs.core.Prefab"
@@ -73,7 +68,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextDisplaySmall",
             "tags": [
                 "flecs.core.Prefab"
@@ -88,7 +82,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextHeadlineLarge",
             "tags": [
                 "flecs.core.Prefab"
@@ -103,7 +96,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextHeadlineMedium",
             "tags": [
                 "flecs.core.Prefab"
@@ -118,7 +110,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextHeadlineSmall",
             "tags": [
                 "flecs.core.Prefab"
@@ -133,7 +124,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextTitleLarge",
             "tags": [
                 "flecs.core.Prefab"
@@ -148,7 +138,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextTitleMedium",
             "tags": [
                 "flecs.core.Prefab"
@@ -163,7 +152,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextTitleSmall",
             "tags": [
                 "flecs.core.Prefab"
@@ -178,7 +166,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextBodyLarge",
             "tags": [
                 "flecs.core.Prefab"
@@ -193,7 +180,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextBodyMedium",
             "tags": [
                 "flecs.core.Prefab"
@@ -208,7 +194,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextBodySmall",
             "tags": [
                 "flecs.core.Prefab"
@@ -223,7 +208,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextLabelLarge",
             "tags": [
                 "flecs.core.Prefab"
@@ -238,7 +222,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextLabelMedium",
             "tags": [
                 "flecs.core.Prefab"
@@ -253,7 +236,6 @@
             }
         },
         {
-            "parent": "",
             "name": "TextLabelSmall",
             "tags": [
                 "flecs.core.Prefab"
@@ -268,14 +250,13 @@
             }
         },
         {
-            "parent": "",
             "name": "LocalizedTextOverride",
             "tags": [
                 "flecs.core.Prefab"
             ],
             "components": {
                 "LocalizedText": {
-                    "Value": "IT::Window"
+                    "Value": ""
                 }
             }
         }

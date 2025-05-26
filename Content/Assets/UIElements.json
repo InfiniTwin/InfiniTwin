@@ -1,39 +1,50 @@
 {
     "entities": [
         {
-            "parent": "",
             "name": "AssistChip",
             "tags": [
                 "Box",
                 "flecs.core.Prefab"
-            ]
-        },
-        {
-            "parent": "AssistChip",
-            "name": "Button",
-            "tags": [
-                "Button",
-                "Toggle",
-                "flecs.core.Prefab"
-            ]
-        },
-        {
-            "parent": "AssistChip.Button",
-            "name": "Container",
-            "tags": [
-                "HBox",
-                "flecs.core.Prefab"
-            ]
-        },
-        {
-            "parent": "AssistChip.Button.Container",
-            "name": "Text",
-            "tags": [
-                "flecs.core.Prefab"
             ],
-            "pairs": {
-                "flecs.core.IsA": "TextButton"
-            }
+            "children": [
+                {
+                    "name": "Button",
+                    "tags": [
+                        "Button",
+                        "Toggle",
+                        "flecs.core.Prefab"
+                    ],
+                    "children": [
+                        {
+                            "name": "Container",
+                            "tags": [
+                                "HBox",
+                                "flecs.core.Prefab"
+                            ],
+                            "children": [
+                                {
+                                    "name": "Icon",
+                                    "tags": [
+                                        "flecs.core.Prefab"
+                                    ],
+                                    "pairs": {
+                                        "flecs.core.IsA": "TextButton"
+                                    }
+                                },
+                                {
+                                    "name": "Text",
+                                    "tags": [
+                                        "flecs.core.Prefab"
+                                    ],
+                                    "pairs": {
+                                        "flecs.core.IsA": "TextButton"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -1,7 +1,6 @@
 {
     "entities": [
         {
-            "parent": "",
             "name": "TextButton",
             "tags": [
                 "TextBlock",

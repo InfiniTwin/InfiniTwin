@@ -1,34 +1,35 @@
 {
     "entities": [
         {
-            "parent": "",
             "name": "ViewportGame",
             "tags": [
                 "Viewport"
-            ]
-        },
-        {
-            "parent": "ViewportGame",
-            "name": "ToolbarViewportGame",
-            "tags": [
-                "Toolbar",
-                "CompoundWidget"
-            ]
-        },
-        {
-            "parent": "ViewportGame.ToolbarViewportGame",
-            "name": "ToogleWindow",
-            "pairs": {
-                "flecs.core.IsA": "AssistChip"
-            },
-            "overrides": [
+            ],
+            "children": [
                 {
-                    "path": "Button.Container.Text",
-                    "components": {
-                        "LocalizedText": {
-                            "Value": "IT::Hierarchy"
+                    "name": "ToolbarViewportGame",
+                    "tags": [
+                        "Toolbar",
+                        "CompoundWidget"
+                    ],
+                    "children": [
+                        {
+                            "name": "ToogleWindow",
+                            "pairs": {
+                                "flecs.core.IsA": "AssistChip"
+                            },
+                            "overrides": [
+                                {
+                                    "path": "Button.Container.Text",
+                                    "components": {
+                                        "LocalizedText": {
+                                            "Value": "IT::Hierarchy"
+                                        }
+                                    }
+                                }
+                            ]
                         }
-                    }
+                    ]
                 }
             ]
         }
