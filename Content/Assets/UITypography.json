@@ -1,7 +1,7 @@
 {
     "entities": [
         {
-            "name": "TextFontInfo",
+            "name": "FontInfoEntry",
             "tags": [
                 "flecs.core.Prefab"
             ],
@@ -12,12 +12,12 @@
             }
         },
         {
-            "name": "FontWeight400",
+            "name": "TextFontWeight400",
             "tags": [
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "TextFontInfo"
+                "flecs.core.IsA": "FontInfoEntry"
             },
             "components": {
                 "FontFace": {
@@ -26,12 +26,12 @@
             }
         },
         {
-            "name": "FontWeight500",
+            "name": "TextFontWeight500",
             "tags": [
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "TextFontInfo"
+                "flecs.core.IsA": "FontInfoEntry"
             },
             "components": {
                 "FontFace": {
@@ -45,7 +45,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -59,7 +59,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -73,7 +73,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -87,7 +87,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -101,7 +101,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -115,7 +115,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -129,7 +129,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -143,7 +143,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight500"
+                "flecs.core.IsA": "TextFontWeight500"
             },
             "components": {
                 "FontSize": {
@@ -157,7 +157,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight500"
+                "flecs.core.IsA": "TextFontWeight500"
             },
             "components": {
                 "FontSize": {
@@ -171,7 +171,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -185,7 +185,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -199,7 +199,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight400"
+                "flecs.core.IsA": "TextFontWeight400"
             },
             "components": {
                 "FontSize": {
@@ -213,7 +213,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight500"
+                "flecs.core.IsA": "TextFontWeight500"
             },
             "components": {
                 "FontSize": {
@@ -227,7 +227,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight500"
+                "flecs.core.IsA": "TextFontWeight500"
             },
             "components": {
                 "FontSize": {
@@ -241,7 +241,7 @@
                 "flecs.core.Prefab"
             ],
             "pairs": {
-                "flecs.core.IsA": "FontWeight500"
+                "flecs.core.IsA": "TextFontWeight500"
             },
             "components": {
                 "FontSize": {

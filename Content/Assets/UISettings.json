@@ -15,6 +15,9 @@
             "TextFont": {
                 "Value": "Roboto"
             },
+            "IconFont": {
+                "Value": "GoogleSymbols"
+            },
             "Locale": {
                 "Value": "en"
             },

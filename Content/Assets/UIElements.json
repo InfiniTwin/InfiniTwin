@@ -23,12 +23,31 @@
                             ],
                             "children": [
                                 {
+                                    "name": "Icon",
+                                    "tags": [
+                                        "flecs.core.Prefab"
+                                    ],
+                                    "pairs": {
+                                        "flecs.core.IsA": "ButtonIcon"
+                                    }
+                                },
+                                {
                                     "name": "Text",
                                     "tags": [
                                         "flecs.core.Prefab"
                                     ],
                                     "pairs": {
                                         "flecs.core.IsA": "ButtonText"
+                                    },
+                                    "components": {
+                                        "Padding": {
+                                            "Value": [
+                                                0,
+                                                0,
+                                                0,
+                                                0
+                                            ]
+                                        }
                                     }
                                 }
                             ]

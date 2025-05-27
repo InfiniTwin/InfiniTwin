@@ -1,6 +1,23 @@
 {
     "entities": [
         {
+            "name": "ButtonIcon",
+            "tags": [
+                "flecs.core.Prefab",
+                "TextBlock"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "VAlignCenter",
+                    "HAlignCenter",
+                    "IconPadding",
+                    "ColorPrimary",
+                    "IconText",
+                    "IconOverride"
+                ]
+            }
+        },
+        {
             "name": "ButtonText",
             "tags": [
                 "flecs.core.Prefab",

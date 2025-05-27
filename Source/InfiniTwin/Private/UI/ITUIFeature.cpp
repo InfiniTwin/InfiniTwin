@@ -17,6 +17,7 @@ namespace UIElements {
 		using namespace ECS;
 		FromJsonAsset(world, "UIColor", Scope);
 		FromJsonAsset(world, "UITypography", Scope);
+		FromJsonAsset(world, "UIIcon", Scope);
 		FromJsonAsset(world, "UILayout", Scope);
 		FromJsonAsset(world, "UIStyle", Scope);
 		FromJsonAsset(world, "UIElements", Scope);

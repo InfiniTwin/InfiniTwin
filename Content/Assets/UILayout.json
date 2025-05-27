@@ -95,7 +95,12 @@
             ],
             "components": {
                 "Padding": {
-                    "Value": [0, 0, 0, 0]
+                    "Value": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
                 }
             }
         },
@@ -106,7 +111,28 @@
             ],
             "components": {
                 "Padding": {
-                    "Value": [5, 5, 5, 5]
+                    "Value": [
+                        5,
+                        5,
+                        5,
+                        5
+                    ]
+                }
+            }
+        },
+        {
+            "name": "IconPadding",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "Padding": {
+                    "Value": [
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
                 }
             }
         }
