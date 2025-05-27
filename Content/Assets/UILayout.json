@@ -87,6 +87,28 @@
                     "Value": 3
                 }
             }
+        },
+        {
+            "name": "NoPadding",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "Padding": {
+                    "Value": [0, 0, 0, 0]
+                }
+            }
+        },
+        {
+            "name": "ButtonPadding",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "Padding": {
+                    "Value": [5, 5, 5, 5]
+                }
+            }
         }
     ]
 }

@@ -25,7 +25,8 @@
                                         "flecs.core.IsA": [
                                             "AssistChip",
                                             "VAlignTop",
-                                            "HAlignLeft"
+                                            "HAlignLeft",
+                                            "ButtonPadding"
                                         ]
                                     },
                                     "overrides": [
@@ -33,7 +34,7 @@
                                             "path": "Button.Container.Text",
                                             "components": {
                                                 "LocalizedText": {
-                                                    "Value": "IT::Hierarchy"
+                                                    "Value": "IT::Window"
                                                 }
                                             }
                                         }

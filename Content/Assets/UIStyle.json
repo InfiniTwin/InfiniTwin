@@ -1,7 +1,7 @@
 {
     "entities": [
         {
-            "name": "TextButton",
+            "name": "ButtonText",
             "tags": [
                 "flecs.core.Prefab",
                 "TextBlock"
@@ -10,6 +10,7 @@
                 "flecs.core.IsA": [
                     "VAlignCenter",
                     "HAlignCenter",
+                    "NoPadding",
                     "ColorOnSurface",
                     "TextBodyLarge",
                     "LocalizedTextOverride"

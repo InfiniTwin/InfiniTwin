@@ -28,7 +28,7 @@
                                         "flecs.core.Prefab"
                                     ],
                                     "pairs": {
-                                        "flecs.core.IsA": "TextButton"
+                                        "flecs.core.IsA": "ButtonText"
                                     }
                                 }
                             ]
