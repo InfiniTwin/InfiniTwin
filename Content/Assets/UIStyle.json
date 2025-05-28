@@ -27,7 +27,7 @@
                 "flecs.core.IsA": [
                     "VAlignCenter",
                     "HAlignCenter",
-                    "NoPadding",
+                    "ButtonTextPadding",
                     "ColorOnSurface",
                     "TextBodyLarge",
                     "LocalizedTextOverride"

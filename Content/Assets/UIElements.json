@@ -38,16 +38,6 @@
                                     ],
                                     "pairs": {
                                         "flecs.core.IsA": "ButtonText"
-                                    },
-                                    "components": {
-                                        "Padding": {
-                                            "Value": [
-                                                0,
-                                                0,
-                                                0,
-                                                0
-                                            ]
-                                        }
                                     }
                                 }
                             ]
