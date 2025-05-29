@@ -3,10 +3,13 @@
         {
             "name": "AssistChip",
             "tags": [
-                "Box",
-                "flecs.core.Prefab"
+                "flecs.core.Prefab",
+                "Box"
             ],
-            "children": [
+            "pairs": {
+                "flecs.core.IsA": "IsWidget"
+            },
+            "entities": [
                 {
                     "name": "Button",
                     "tags": [
@@ -14,21 +17,31 @@
                         "Button",
                         "Toggle"
                     ],
-                    "children": [
+                    "pairs": {
+                        "flecs.core.IsA": "IsWidget"
+                    },
+                    "entities": [
                         {
                             "name": "Container",
                             "tags": [
                                 "flecs.core.Prefab",
+                                "flecs.core.OrderedChildren",
                                 "HBox"
                             ],
-                            "children": [
+                            "pairs": {
+                                "flecs.core.IsA": "IsWidget"
+                            },
+                            "entities": [
                                 {
                                     "name": "Icon",
                                     "tags": [
                                         "flecs.core.Prefab"
                                     ],
                                     "pairs": {
-                                        "flecs.core.IsA": "ButtonIcon"
+                                        "flecs.core.IsA": [
+                                            "IsWidget",
+                                            "ButtonIcon"
+                                        ]
                                     }
                                 },
                                 {
@@ -37,7 +50,10 @@
                                         "flecs.core.Prefab"
                                     ],
                                     "pairs": {
-                                        "flecs.core.IsA": "ButtonText"
+                                        "flecs.core.IsA": [
+                                            "IsWidget",
+                                            "ButtonText"
+                                        ]
                                     }
                                 }
                             ]

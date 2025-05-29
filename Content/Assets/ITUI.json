@@ -5,20 +5,26 @@
             "tags": [
                 "Viewport"
             ],
-            "children": [
+            "entities": [
                 {
                     "name": "Toolbar",
                     "tags": [
                         "Toolbar",
                         "CompoundWidget"
                     ],
-                    "children": [
+                    "pairs": {
+                        "flecs.core.IsA": "IsWidget"
+                    },
+                    "entities": [
                         {
                             "name": "Container",
                             "tags": [
                                 "HBox"
                             ],
-                            "children": [
+                            "pairs": {
+                                "flecs.core.IsA": "IsWidget"
+                            },
+                            "entities": [
                                 {
                                     "name": "WindowToggle",
                                     "pairs": {

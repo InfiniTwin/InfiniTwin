@@ -1,6 +1,13 @@
 {
     "entities": [
         {
+            "name": "IsWidget",
+            "tags": [
+                "flecs.core.Prefab",
+                "UIWidget"
+            ]
+        },
+        {
             "name": "VAlignFill",
             "tags": [
                 "flecs.core.Prefab"
