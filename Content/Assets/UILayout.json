@@ -1,24 +1,15 @@
 {
     "entities": [
         {
-            "name": "WidgetOrder",
-            "tags": [
-                "flecs.core.Prefab"
-            ],
-            "components": {
-                "Order": {
-                    "Value": 0
-                }
-            }
-        },
-        {
             "name": "IsWidget",
             "tags": [
                 "flecs.core.Prefab",
                 "UIWidget"
             ],
-            "pairs": {
-                "flecs.core.IsA": "WidgetOrder"
+            "components": {
+                "Order": {
+                    "Value": 0
+                }
             }
         },
         {
@@ -110,6 +101,30 @@
             }
         },
         {
+            "name": "CenterAligned",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "VAlignCenter",
+                    "HAlignCenter"
+                ]
+            }
+        },
+        {
+            "name": "TopLeftAligned",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "VAlignTop",
+                    "HAlignLeft"
+                ]
+            }
+        },
+        {
             "name": "NoPadding",
             "tags": [
                 "flecs.core.Prefab"
@@ -142,7 +157,7 @@
             }
         },
         {
-            "name": "IconPadding",
+            "name": "ButtonContentCenterPadding",
             "tags": [
                 "flecs.core.Prefab"
             ],
@@ -150,25 +165,25 @@
                 "Padding": {
                     "Value": [
                         4,
-                        0,
-                        0,
-                        0
+                        4,
+                        4,
+                        4
                     ]
                 }
             }
         },
         {
-            "name": "ButtonTextPadding",
+            "name": "ButtonContentNoLeftPadding",
             "tags": [
                 "flecs.core.Prefab"
             ],
             "components": {
                 "Padding": {
                     "Value": [
-                        4,
                         0,
-                        8,
-                        0
+                        4,
+                        4,
+                        4
                     ]
                 }
             }

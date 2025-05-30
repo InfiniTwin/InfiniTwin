@@ -8,12 +8,11 @@
             ],
             "pairs": {
                 "flecs.core.IsA": [
-                    "VAlignCenter",
-                    "HAlignCenter",
-                    "IconPadding",
                     "ColorPrimary",
                     "IconText",
-                    "IconOverride"
+                    "IconOverride",
+                    "CenterAligned",
+                    "ButtonContentCenterPadding"
                 ]
             }
         },
@@ -25,12 +24,27 @@
             ],
             "pairs": {
                 "flecs.core.IsA": [
-                    "VAlignCenter",
-                    "HAlignCenter",
-                    "ButtonTextPadding",
                     "ColorOnSurface",
                     "TextBodyLarge",
-                    "LocalizedTextOverride"
+                    "LocalizedTextOverride",
+                    "CenterAligned",
+                    "ButtonContentCenterPadding"
+                ]
+            }
+        },
+        {
+            "name": "ButtonTextNoLeftPadding",
+            "tags": [
+                "flecs.core.Prefab",
+                "TextBlock"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "ColorOnSurface",
+                    "TextBodyLarge",
+                    "LocalizedTextOverride",
+                    "CenterAligned",
+                    "ButtonContentNoLeftPadding"
                 ]
             }
         }

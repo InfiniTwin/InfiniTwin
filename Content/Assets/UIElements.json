@@ -18,7 +18,11 @@
                         "Toggle"
                     ],
                     "pairs": {
-                        "flecs.core.IsA": "IsWidget"
+                        "flecs.core.IsA": [
+                            "IsWidget",
+                            "CenterAligned",
+                            "NoPadding"
+                        ]
                     },
                     "entities": [
                         {
@@ -52,7 +56,7 @@
                                     "pairs": {
                                         "flecs.core.IsA": [
                                             "IsWidget",
-                                            "ButtonText"
+                                            "ButtonTextNoLeftPadding"
                                         ]
                                     }
                                 }
