@@ -41,9 +41,6 @@
                                             "components": {
                                                 "Icon": {
                                                     "Value": "\ue6fa"
-                                                },
-                                                "Order": {
-                                                    "Value": 0
                                                 }
                                             }
                                         },
