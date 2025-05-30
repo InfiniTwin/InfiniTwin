@@ -1,11 +1,25 @@
 {
     "entities": [
         {
+            "name": "WidgetOrder",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "components": {
+                "Order": {
+                    "Value": 0
+                }
+            }
+        },
+        {
             "name": "IsWidget",
             "tags": [
                 "flecs.core.Prefab",
                 "UIWidget"
-            ]
+            ],
+            "pairs": {
+                "flecs.core.IsA": "WidgetOrder"
+            }
         },
         {
             "name": "VAlignFill",

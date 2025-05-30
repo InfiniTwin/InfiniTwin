@@ -41,6 +41,9 @@
                                             "components": {
                                                 "Icon": {
                                                     "Value": "\ue6fa"
+                                                },
+                                                "Order": {
+                                                    "Value": 0
                                                 }
                                             }
                                         },
@@ -49,6 +52,9 @@
                                             "components": {
                                                 "LocalizedText": {
                                                     "Value": "IT::Window"
+                                                },
+                                                "Order": {
+                                                    "Value": 1
                                                 }
                                             }
                                         }
