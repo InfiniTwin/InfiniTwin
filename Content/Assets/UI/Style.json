@@ -11,7 +11,7 @@
                     "ColorPrimary",
                     "IconText",
                     "IconOverride",
-                    "CenterAligned",
+                    "CenterAlign",
                     "ButtonContentCenterPadding"
                 ]
             }
@@ -27,7 +27,7 @@
                     "ColorOnSurface",
                     "TextBodyLarge",
                     "LocalizedTextOverride",
-                    "CenterAligned",
+                    "CenterAlign",
                     "ButtonContentCenterPadding"
                 ]
             }
@@ -43,7 +43,7 @@
                     "ColorOnSurface",
                     "TextBodyLarge",
                     "LocalizedTextOverride",
-                    "CenterAligned",
+                    "CenterAlign",
                     "ButtonContentNoLeftPadding"
                 ]
             }

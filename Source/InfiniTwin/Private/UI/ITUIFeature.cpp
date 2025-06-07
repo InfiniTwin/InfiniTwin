@@ -15,14 +15,15 @@ namespace UIElements {
 		SetupViewport();
 
 		using namespace ECS;
-		FromJsonAsset(world, "UIColor", Scope);
-		FromJsonAsset(world, "UITypography", Scope);
-		FromJsonAsset(world, "UIIcon", Scope);
-		FromJsonAsset(world, "UILayout", Scope);
-		FromJsonAsset(world, "UIStyle", Scope);
-		FromJsonAsset(world, "UIElements", Scope);
-		FromJsonAsset(world, "UISettings", UIElements::Scope);
-		FromJsonAsset(world, "ITUI", Scope);
+		FromJsonAsset(world, "UI/Color", UIElements::Scope());
+		FromJsonAsset(world, "UI/Typography", UIElements::Scope());
+		FromJsonAsset(world, "UI/Icon", UIElements::Scope());
+		FromJsonAsset(world, "UI/Layout", UIElements::Scope());
+		FromJsonAsset(world, "UI/Style", UIElements::Scope());
+		FromJsonAsset(world, "UI/Actions", UIElements::Scope());
+		FromJsonAsset(world, "UI/Elements", UIElements::Scope());
+		FromJsonAsset(world, "UI/Settings", UIElements::Scope());
+		FromJsonAsset(world, "UI/InfiniTwin", UIElements::Scope());
 	}
 
 	void ITUIFeature::SetupViewport() {

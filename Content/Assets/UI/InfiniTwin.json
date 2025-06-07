@@ -9,8 +9,8 @@
                 {
                     "name": "Toolbar",
                     "tags": [
-                        "Toolbar",
-                        "CompoundWidget"
+                        "CompoundWidget",
+                        "Toolbar"
                     ],
                     "pairs": {
                         "flecs.core.IsA": "IsWidget"
@@ -29,7 +29,7 @@
                                     "name": "WindowToggle",
                                     "pairs": {
                                         "flecs.core.IsA": [
-                                            "AssistChip",
+                                            "ChipButton",
                                             "VAlignTop",
                                             "HAlignLeft",
                                             "ButtonPadding"
@@ -37,7 +37,7 @@
                                     },
                                     "overrides": [
                                         {
-                                            "path": "Button.Container.Icon",
+                                            "path": "Container.Icon",
                                             "components": {
                                                 "Icon": {
                                                     "Value": "\ue6fa"
@@ -45,7 +45,7 @@
                                             }
                                         },
                                         {
-                                            "path": "Button.Container.Text",
+                                            "path": "Container.Text",
                                             "components": {
                                                 "LocalizedText": {
                                                     "Value": "IT::Window"

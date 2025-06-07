@@ -1,0 +1,65 @@
+{
+    "entities": [
+        {
+            "name": "ChipButton",
+            "tags": [
+                "flecs.core.Prefab",
+                "Button"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "IsWidget",
+                    "CenterAlign",
+                    "NoPadding"
+                ]
+            },
+            "entities": [
+                {
+                    "name": "Container",
+                    "tags": [
+                        "flecs.core.Prefab",
+                        "HBox"
+                    ],
+                    "pairs": {
+                        "flecs.core.IsA": "IsWidget"
+                    },
+                    "entities": [
+                        {
+                            "name": "Icon",
+                            "tags": [
+                                "flecs.core.Prefab"
+                            ],
+                            "pairs": {
+                                "flecs.core.IsA": [
+                                    "IsWidget",
+                                    "ButtonIcon"
+                                ]
+                            }
+                        },
+                        {
+                            "name": "Text",
+                            "tags": [
+                                "flecs.core.Prefab"
+                            ],
+                            "pairs": {
+                                "flecs.core.IsA": [
+                                    "IsWidget",
+                                    "ButtonTextNoLeftPadding"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ActionPressedChipButton",
+                    "tags": [
+                        "Self"
+                    ],
+                    "pairs": {
+                        "flecs.core.IsA": "ActionPressedBoxRoundedOutlined"
+                    }
+                }
+            ]
+        }
+    ]
+}

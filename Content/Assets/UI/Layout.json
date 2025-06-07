@@ -101,7 +101,19 @@
             }
         },
         {
-            "name": "CenterAligned",
+            "name": "FilledAlign",
+            "tags": [
+                "flecs.core.Prefab"
+            ],
+            "pairs": {
+                "flecs.core.IsA": [
+                    "VAlignFill",
+                    "HAlignFill"
+                ]
+            }
+        },
+        {
+            "name": "CenterAlign",
             "tags": [
                 "flecs.core.Prefab"
             ],
@@ -113,7 +125,7 @@
             }
         },
         {
-            "name": "TopLeftAligned",
+            "name": "TopLeftAlign",
             "tags": [
                 "flecs.core.Prefab"
             ],

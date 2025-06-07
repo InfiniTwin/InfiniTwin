@@ -1,0 +1,17 @@
+{
+    "entities": [
+        {
+            "name": "",
+            "overrides": [
+                {
+                    "path": "Container.Text",
+                    "components": {
+                        "LocalizedText": {
+                            "Value": "IT::Hierarchy"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
