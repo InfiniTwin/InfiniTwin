@@ -1,0 +1,31 @@
+using [SCOPE].Colors
+using [SCOPE].Texts
+using [SCOPE].Layout
+using [SCOPE].Actions
+
+prefab [SCOPE].Element.IsWidget { 
+    Widget
+    Order
+}
+
+prefab [SCOPE].Element.IsCompoundWidget : IsWidget { CompoundWidget }
+prefab [SCOPE].Element.IsHBox : IsWidget { HBox }
+
+prefab [SCOPE].Element.IsIcon : IsTextBlock, IsFontInfo {
+    FontFace: { "100" }
+    FontSize: { 18 }
+    Code: { "f89a" }
+}
+
+prefab [SCOPE].Element.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}
+prefab [SCOPE].Element.ButtonText : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentCenter {}
+prefab [SCOPE].Element.ButtonTextNoLeftPadding : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentNoLeft {}
+
+prefab [SCOPE].Element.ChipButton : IsWidget, AlignCenter, PaddingNone { 
+    Button
+    prefab Container : IsWidget { 
+        HBox
+        prefab Icon : IsWidget, ButtonIcon {}
+        prefab Text: IsWidget, ButtonTextNoLeftPadding {}}
+    prefab ActionPressedChipButton : ActionPressedBoxRoundedOutlined {}
+}

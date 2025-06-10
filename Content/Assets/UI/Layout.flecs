@@ -1,0 +1,15 @@
+prefab [SCOPE].Layout.VAlignFill { VAlign: { 0 }}
+prefab [SCOPE].Layout.VAlignTop { VAlign: { 1 }}
+prefab [SCOPE].Layout.VAlignCenter { VAlign: { 2 }}
+prefab [SCOPE].Layout.VAlignBottom { VAlign: { 3 }}
+prefab [SCOPE].Layout.HAlignFill { HAlign: { 0 }}
+prefab [SCOPE].Layout.HAlignLeft { HAlign: { 1 }}
+prefab [SCOPE].Layout.HAlignCenter { HAlign: { 2 }}
+prefab [SCOPE].Layout.HAlignRight { HAlign: { 3 }}
+prefab [SCOPE].Layout.AlignFill : VAlignFill, HAlignFill {}
+prefab [SCOPE].Layout.AlignCenter : VAlignCenter, HAlignCenter {}
+prefab [SCOPE].Layout.AlignTopLeft : VAlignTop, HAlignLeft {}
+prefab [SCOPE].Layout.PaddingNone { Padding: { 0, 0, 0, 0 }}
+prefab [SCOPE].Layout.PaddingButton { Padding: { 5, 5, 5, 5 }}
+prefab [SCOPE].Layout.PaddingButtonContentCenter { Padding:  { 4, 4, 4, 4 }}
+prefab [SCOPE].Layout.PaddingButtonContentNoLeft { Padding:  { 0, 4, 4, 4 }}

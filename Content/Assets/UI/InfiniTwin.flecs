@@ -1,0 +1,19 @@
+using [SCOPE].Layout
+using [SCOPE].Element
+
+prefab [SCOPE].InfiniTwin.IsToolbar : IsCompoundWidget { Toolbar }
+
+[SCOPE].InfiniTwin.MainViewport { 
+    Viewport
+    ToolbarTopLeft : IsToolbar {
+        Container : IsHBox {
+            WindowToggle : ChipButton, AlignTopLeft, PaddingButton {
+                Container.Icon { Code: { "e6fa" }}
+                Container.Text {
+                    LocalizedText: { "IT::Window" }
+                    Order: { 1 }
+                }
+            }
+        }
+    }
+}
