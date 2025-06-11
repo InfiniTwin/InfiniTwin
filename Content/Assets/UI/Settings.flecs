@@ -1,7 +1,7 @@
 using [SCOPE]
 
 $ {
-    UIScheme: { 
+    UIScheme: {
         DarkMode: true,
         Contrast: 0.5,
         Variant: 3,
@@ -10,9 +10,9 @@ $ {
         Tertiary: "0xFF4A90E2",
         Neutral: "0xFF919094",
         NeutralVariant: "0xFF8F9099",
-        Error: "0xFFAB342C" }
-    TextFont: { "Roboto" }
-    IconFont: { "GoogleSymbols" }
-    Locale: { "en" }
-    UIScale: { 1 }
+        Error: "0xFFAB342C"}
+    TextFont: {"Roboto"}
+    IconFont: {"GoogleSymbols"}
+    Locale: {"en"}
+    UIScale: {1}
 }
