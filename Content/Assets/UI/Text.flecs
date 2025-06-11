@@ -1,20 +1,20 @@
-prefab [SCOPE].Texts.IsLocalized {LocalizedText}
-prefab [SCOPE].Texts.IsTextBlock {TextBlock}
-prefab [SCOPE].Texts.IsFontInfo {FontInfo}
-prefab [SCOPE].Texts.TextFontWeight400 : IsFontInfo {FontFace: {"Regular"}}
-prefab [SCOPE].Texts.TextFontWeight500 : IsFontInfo {FontFace: {"Bold"}}
-prefab [SCOPE].Texts.TextDisplayLarge : TextFontWeight400 {FontSize: {28}}
-prefab [SCOPE].Texts.TextDisplayMedium : TextFontWeight400 {FontSize: {26}}
-prefab [SCOPE].Texts.TextDisplaySmall : TextFontWeight400 {FontSize: {24}}
-prefab [SCOPE].Texts.TextHeadlineLarge : TextFontWeight400 {FontSize: {22}}
-prefab [SCOPE].Texts.TextHeadlineMedium : TextFontWeight400 {FontSize: {20}}
-prefab [SCOPE].Texts.TextHeadlineSmall : TextFontWeight400 {FontSize: {18}}
-prefab [SCOPE].Texts.TextTitleLarge : TextFontWeight400 {FontSize: {16}}
-prefab [SCOPE].Texts.TextTitleMedium : TextFontWeight500 {FontSize: {14}}
-prefab [SCOPE].Texts.TextTitleSmall : TextFontWeight500 {FontSize: {12}}
-prefab [SCOPE].Texts.TextBodyLarge : TextFontWeight400 {FontSize: {12}}
-prefab [SCOPE].Texts.TextBodyMedium : TextFontWeight400 {FontSize: {11}}
-prefab [SCOPE].Texts.TextBodySmall : TextFontWeight400 {FontSize: {10}}
-prefab [SCOPE].Texts.TextLabelLarge : TextFontWeight500 {FontSize: {14}}
-prefab [SCOPE].Texts.TextLabelMedium : TextFontWeight500 {FontSize: {12}}
-prefab [SCOPE].Texts.TextLabelSmall : TextFontWeight500 {FontSize: {10}}
+prefab [UI].Texts.IsLocalized {LocalizedText}
+prefab [UI].Texts.IsTextBlock {TextBlock}
+prefab [UI].Texts.IsFontInfo {FontInfo}
+prefab [UI].Texts.TextFontWeight400 : IsFontInfo {FontFace: {"Regular"}}
+prefab [UI].Texts.TextFontWeight500 : IsFontInfo {FontFace: {"Bold"}}
+prefab [UI].Texts.TextDisplayLarge : TextFontWeight400 {FontSize: {28}}
+prefab [UI].Texts.TextDisplayMedium : TextFontWeight400 {FontSize: {26}}
+prefab [UI].Texts.TextDisplaySmall : TextFontWeight400 {FontSize: {24}}
+prefab [UI].Texts.TextHeadlineLarge : TextFontWeight400 {FontSize: {22}}
+prefab [UI].Texts.TextHeadlineMedium : TextFontWeight400 {FontSize: {20}}
+prefab [UI].Texts.TextHeadlineSmall : TextFontWeight400 {FontSize: {18}}
+prefab [UI].Texts.TextTitleLarge : TextFontWeight400 {FontSize: {16}}
+prefab [UI].Texts.TextTitleMedium : TextFontWeight500 {FontSize: {14}}
+prefab [UI].Texts.TextTitleSmall : TextFontWeight500 {FontSize: {12}}
+prefab [UI].Texts.TextBodyLarge : TextFontWeight400 {FontSize: {12}}
+prefab [UI].Texts.TextBodyMedium : TextFontWeight400 {FontSize: {11}}
+prefab [UI].Texts.TextBodySmall : TextFontWeight400 {FontSize: {10}}
+prefab [UI].Texts.TextLabelLarge : TextFontWeight500 {FontSize: {14}}
+prefab [UI].Texts.TextLabelMedium : TextFontWeight500 {FontSize: {12}}
+prefab [UI].Texts.TextLabelSmall : TextFontWeight500 {FontSize: {10}}

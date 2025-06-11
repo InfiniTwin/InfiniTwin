@@ -1,15 +1,15 @@
-prefab [SCOPE].Layout.VAlignFill {VAlign: {0}}
-prefab [SCOPE].Layout.VAlignTop {VAlign: {1}}
-prefab [SCOPE].Layout.VAlignCenter {VAlign: {2}}
-prefab [SCOPE].Layout.VAlignBottom {VAlign: {3}}
-prefab [SCOPE].Layout.HAlignFill {HAlign: {0}}
-prefab [SCOPE].Layout.HAlignLeft {HAlign: {1}}
-prefab [SCOPE].Layout.HAlignCenter {HAlign: {2}}
-prefab [SCOPE].Layout.HAlignRight {HAlign: {3}}
-prefab [SCOPE].Layout.AlignFill : VAlignFill, HAlignFill {}
-prefab [SCOPE].Layout.AlignCenter : VAlignCenter, HAlignCenter {}
-prefab [SCOPE].Layout.AlignTopLeft : VAlignTop, HAlignLeft {}
-prefab [SCOPE].Layout.PaddingNone {Padding: {0, 0, 0, 0}}
-prefab [SCOPE].Layout.PaddingButton {Padding: {5, 5, 5, 5}}
-prefab [SCOPE].Layout.PaddingButtonContentCenter {Padding:  {4, 4, 4, 4}}
-prefab [SCOPE].Layout.PaddingButtonContentNoLeft {Padding:  {0, 4, 4, 4}}
+prefab [UI].Layout.VAlignFill {VAlign: {0}}
+prefab [UI].Layout.VAlignTop {VAlign: {1}}
+prefab [UI].Layout.VAlignCenter {VAlign: {2}}
+prefab [UI].Layout.VAlignBottom {VAlign: {3}}
+prefab [UI].Layout.HAlignFill {HAlign: {0}}
+prefab [UI].Layout.HAlignLeft {HAlign: {1}}
+prefab [UI].Layout.HAlignCenter {HAlign: {2}}
+prefab [UI].Layout.HAlignRight {HAlign: {3}}
+prefab [UI].Layout.AlignFill : VAlignFill, HAlignFill {}
+prefab [UI].Layout.AlignCenter : VAlignCenter, HAlignCenter {}
+prefab [UI].Layout.AlignTopLeft : VAlignTop, HAlignLeft {}
+prefab [UI].Layout.PaddingNone {Padding: {0, 0, 0, 0}}
+prefab [UI].Layout.PaddingButton {Padding: {5, 5, 5, 5}}
+prefab [UI].Layout.PaddingButtonContentCenter {Padding:  {4, 4, 4, 4}}
+prefab [UI].Layout.PaddingButtonContentNoLeft {Padding:  {0, 4, 4, 4}}

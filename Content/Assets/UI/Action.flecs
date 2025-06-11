@@ -1,19 +1,16 @@
-prefab [SCOPE].Actions.Local {Parent}
+using [UI]
 
-prefab [SCOPE].Actions.IsAction {Action}
+prefab [CORE].Actions.Local {Parent}
+prefab [CORE].Actions.IsAction {Action}
 
-prefab [SCOPE].Actions.ActionCreate : IsAction {LoadMode: {Create}}
-prefab [SCOPE].Actions.ActionEdit : IsAction {LoadMode: {Edit}}
-prefab [SCOPE].Actions.ActionDestroy : IsAction {LoadMode: {Destroy}}
-
-prefab [SCOPE].Actions.ActionNormalBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.ActionNormalBoxRoundedOutlined : IsAction, Local {
         (Event, Normal)
         Path: {"UI/Actions/NormalBoxRoundedOutlined"}}
       
-prefab [SCOPE].Actions.ActionHoveredBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined : IsAction, Local {
         (Event, Hovered)
         Path: {"UI/Actions/HoveredBoxRoundedOutlined"}}
         
-prefab [SCOPE].Actions.ActionPressedBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.ActionPressedBoxRoundedOutlined : IsAction, Local {
         (Event, Pressed)
         Path: {"UI/Actions/PressedBoxRoundedOutlined"}}

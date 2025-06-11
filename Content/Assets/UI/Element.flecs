@@ -1,27 +1,27 @@
-using [SCOPE].Colors
-using [SCOPE].Texts
-using [SCOPE].Layout
-using [SCOPE].Actions
+using [UI].Colors
+using [UI].Texts
+using [UI].Layout
+using [CORE].Actions
 
-prefab [SCOPE].Element.IsWidget {
+prefab [UI].Element.IsWidget {
     Widget
     Order
 }
 
-prefab [SCOPE].Element.IsCompoundWidget : IsWidget {CompoundWidget}
-prefab [SCOPE].Element.IsHBox : IsWidget {HBox}
+prefab [UI].Element.IsCompoundWidget : IsWidget {CompoundWidget}
+prefab [UI].Element.IsHBox : IsWidget {HBox}
 
-prefab [SCOPE].Element.IsIcon : IsTextBlock, IsFontInfo {
+prefab [UI].Element.IsIcon : IsTextBlock, IsFontInfo {
     FontFace: {"100"}
     FontSize: {18}
     Code: {"f89a"}
 }
 
-prefab [SCOPE].Element.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}
-prefab [SCOPE].Element.ButtonText : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentCenter {}
-prefab [SCOPE].Element.ButtonTextNoLeftPadding : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentNoLeft {}
+prefab [UI].Element.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}
+prefab [UI].Element.ButtonText : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentCenter {}
+prefab [UI].Element.ButtonTextNoLeftPadding : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentNoLeft {}
 
-prefab [SCOPE].Element.ChipButton : IsWidget, AlignCenter, PaddingNone {
+prefab [UI].Element.ChipButton : IsWidget, AlignCenter, PaddingNone {
     Button
     prefab Container : IsWidget {
         HBox

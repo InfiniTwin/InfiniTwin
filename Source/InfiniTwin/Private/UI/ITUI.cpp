@@ -10,7 +10,7 @@ namespace UI{
 	ITUI::ITUI(flecs::world& world) {
 		world.module<ITUI>();
 
-		UI::Register(world, "UI.ITUI");
+		UI::Register(world);
 
 		ITUIWidgetFeature::RegisterComponents(world);
 

@@ -1,9 +1,9 @@
-using [SCOPE].Layout
-using [SCOPE].Element
+using [UI].Layout
+using [UI].Element
 
-prefab [SCOPE].IsToolbar : IsCompoundWidget {Toolbar}
+prefab [UI].IsToolbar : IsCompoundWidget {Toolbar}
 
-[SCOPE].ViewportMain {
+[UI].ViewportMain {
     Viewport
     ToolbarTopLeft : IsToolbar {
         Container : IsHBox {

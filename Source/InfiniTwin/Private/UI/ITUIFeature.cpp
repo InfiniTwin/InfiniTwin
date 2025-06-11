@@ -3,6 +3,7 @@
 
 #include "UI/ITUIFeature.h"
 #include "ECS.h"
+#include "ECSCore.h"
 #include "GameFramework/GameUserSettings.h"
 #include "UIElements.h"
 
@@ -14,14 +15,16 @@ namespace UI {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
+		ECS::Scopes.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
+
 		using namespace ECS;
-		RunScript(world, "UI/Color", UI::Scope());
-		RunScript(world, "UI/Text", UI::Scope());
-		RunScript(world, "UI/Layout", UI::Scope());
-		RunScript(world, "UI/Action", UI::Scope());
-		RunScript(world, "UI/Element", UI::Scope());
-		RunScript(world, "UI/Settings", UI::Scope());
-		RunScript(world, "UI/ViewportMain", UI::Scope());
+		RunScript(world, "UI/Color");
+		RunScript(world, "UI/Text");
+		RunScript(world, "UI/Layout");
+		RunScript(world, "UI/Action");
+		RunScript(world, "UI/Element");
+		RunScript(world, "UI/Settings");
+		RunScript(world, "UI/ViewportMain");
 	}
 
 	void ITUIFeature::SetupViewport() {

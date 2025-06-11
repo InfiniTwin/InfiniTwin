@@ -2,6 +2,7 @@
 
 #include "IT.h"
 #include "ECSSubsystem.h"
+#include "ECSCore.h"
 #include "flecs.h"
 #include "UI/ITUI.h"
 #include "Tickable.h"
@@ -9,6 +10,7 @@
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 	WaitForGameViewport([this] {
 		UECSSubsystem* ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+		ecs->World->import<ECS::Core>();
 		ecs->World->import<UI::ITUI>();
 		});
 
