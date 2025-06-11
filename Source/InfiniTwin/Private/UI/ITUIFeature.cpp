@@ -10,18 +10,18 @@
 #include <Windows.h>
 #endif
 
-namespace UIElements {
+namespace UI {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
 		using namespace ECS;
-		RunScript(world, "UI/Color", UIElements::Scope());
-		RunScript(world, "UI/Text", UIElements::Scope());
-		RunScript(world, "UI/Layout", UIElements::Scope());
-		RunScript(world, "UI/Action", UIElements::Scope());
-		RunScript(world, "UI/Element", UIElements::Scope());
-		RunScript(world, "UI/Settings", UIElements::Scope());
-		RunScript(world, "UI/InfiniTwin", UIElements::Scope());
+		RunScript(world, "UI/Color", UI::Scope());
+		RunScript(world, "UI/Text", UI::Scope());
+		RunScript(world, "UI/Layout", UI::Scope());
+		RunScript(world, "UI/Action", UI::Scope());
+		RunScript(world, "UI/Element", UI::Scope());
+		RunScript(world, "UI/Settings", UI::Scope());
+		RunScript(world, "UI/ViewportMain", UI::Scope());
 	}
 
 	void ITUIFeature::SetupViewport() {

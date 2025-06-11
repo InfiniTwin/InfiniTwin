@@ -5,7 +5,7 @@
 #include <flecs.h>
 
 
-namespace UIElements {
+namespace UI {
 	struct ITUIFeature {
 		static void Initialize(flecs::world& world);
 

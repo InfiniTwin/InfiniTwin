@@ -4,9 +4,9 @@
 
 #include "flecs.h"
 
-namespace UIElements {
-	struct ITUIModule {
+namespace UI{
+	struct ITUI {
 	public:
-		ITUIModule(flecs::world& world);
+		ITUI(flecs::world& world);
 	};
 }

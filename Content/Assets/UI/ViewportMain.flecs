@@ -1,9 +1,9 @@
 using [SCOPE].Layout
 using [SCOPE].Element
 
-prefab [SCOPE].InfiniTwin.IsToolbar : IsCompoundWidget {Toolbar}
+prefab [SCOPE].IsToolbar : IsCompoundWidget {Toolbar}
 
-[SCOPE].InfiniTwin.MainViewport {
+[SCOPE].ViewportMain {
     Viewport
     ToolbarTopLeft : IsToolbar {
         Container : IsHBox {

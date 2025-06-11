@@ -1,16 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UI/ITUIModule.h"
+#include "UI/ITUI.h"
 #include "UIElements.h"
 #include "UI/ITUIFeature.h"
 #include "UI/ITUIWidgetFeature.h"
 
-namespace UIElements {
-	ITUIModule::ITUIModule(flecs::world& world) {
-		world.module<ITUIModule>();
+namespace UI{
+	ITUI::ITUI(flecs::world& world) {
+		world.module<ITUI>();
 
-		UIElements::Register(world, "UIElements.ITUIModule");
+		UI::Register(world, "UI.ITUI");
 
 		ITUIWidgetFeature::RegisterComponents(world);
 

@@ -3,13 +3,13 @@
 #include "IT.h"
 #include "ECSSubsystem.h"
 #include "flecs.h"
-#include "UI/ITUIModule.h"
+#include "UI/ITUI.h"
 #include "Tickable.h"
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 	WaitForGameViewport([this] {
 		UECSSubsystem* ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
-		ecs->World->import<UIElements::ITUIModule>();
+		ecs->World->import<UI::ITUI>();
 		});
 
 	Super::Initialize(Collection);
