@@ -5,12 +5,19 @@ prefab [CORE].Actions.IsAction {Action}
 
 prefab [CORE].Actions.ActionNormalBoxRoundedOutlined : IsAction, Local {
         (Event, Normal)
-        Path: {"UI/Actions/NormalBoxRoundedOutlined"}}
-      
+        SetSingletons
+        Data: {"using [UI]\\n\\n\$Locale,\"en\";UIScale,1"}
+}
+
 prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined : IsAction, Local {
         (Event, Hovered)
-        Path: {"UI/Actions/HoveredBoxRoundedOutlined"}}
-        
+        SetSingletons
+        Data: {"using [UI]\\n\\n\$Locale,\"it\";UIScale,1.5"}
+}
+
 prefab [CORE].Actions.ActionPressedBoxRoundedOutlined : IsAction, Local {
         (Event, Pressed)
-        Path: {"UI/Actions/PressedBoxRoundedOutlined"}}
+        Path: {"UI/Actions/PressedBoxRoundedOutlined"}
+        SetSingletons
+        Data: {"using [UI]\\n\\n\$Locale,\"de\";UIScale,2"}
+}
