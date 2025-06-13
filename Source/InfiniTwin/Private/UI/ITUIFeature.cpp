@@ -18,11 +18,11 @@ namespace UI {
 		ECS::Tokens.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
 
 		using namespace ECS;
-		RunScript(world, "UI/Color");
-		RunScript(world, "UI/Text");
+		RunScript(world, "UI/Colors");
+		RunScript(world, "UI/Texts");
 		RunScript(world, "UI/Layout");
-		RunScript(world, "UI/Action");
-		RunScript(world, "UI/Element");
+		RunScript(world, "UI/Actions");
+		RunScript(world, "UI/Elements");
 		RunScript(world, "UI/Settings");
 		RunScript(world, "UI/ViewportMain");
 	}

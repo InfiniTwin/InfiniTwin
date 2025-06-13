@@ -1,0 +1,32 @@
+using [UI].Colors
+using [UI].Texts
+using [UI].Layout
+using [CORE].Actions
+
+prefab [UI].Elements.IsWidget {
+    Widget
+    Order
+}
+
+prefab [UI].Elements.IsCompooundWidget : IsWidget {CompoundWidget}
+prefab [UI].Elements.IsHBox : IsWidget {HBox}
+
+prefab [UI].Elements.IsIcon : IsTextBlock, IsFontInfo {
+    FontFace: {"100"}
+    FontSize: {18}
+    Icon: {"f89a"}
+}
+
+prefab [UI].Elements.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}
+prefab [UI].Elements.ButtonText : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentCenter {}
+prefab [UI].Elements.ButtonTextNoLeftPadding : ButtonText, PaddingButtonContentNoLeft {}
+
+prefab [UI].Elements.ChipButton : IsWidget, AlignCenter, PaddingNone {
+    Button
+    prefab Container : IsHBox {
+        prefab Icon : IsWidget, ButtonIcon {}
+        prefab Text: IsWidget, ButtonTextNoLeftPadding {}}
+    prefab ActionNormalChipButton : ActionNormalBoxRoundedOutlined {}
+    prefab ActionHoveredChipButton : ActionHoveredBoxRoundedOutlined {}
+    prefab ActionPressedChipButton : ActionPressedBoxRoundedOutlined {}
+}

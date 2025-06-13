@@ -1,16 +1,10 @@
 using [UI].Layout
-using [UI].Element
-
-prefab [UI].IsToolbar {
-    CompoundWidget
-    Toolbar
-}
+using [UI].Elements
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTopLeft : IsToolbar {
-        Container {
-            HBox
+    ToolbarTopLeft : IsCompooundWidget {
+        Container : IsHBox {
             WindowToggle : ChipButton, AlignTopLeft, PaddingButton {
                 Container.Icon {[UI].Icon: {"e6fa"}}
                 Container.Text {
