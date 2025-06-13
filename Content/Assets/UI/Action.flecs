@@ -1,23 +1,31 @@
 using [UI]
 
-prefab [CORE].Actions.Local {Parent}
 prefab [CORE].Actions.IsAction {Action}
 
-prefab [CORE].Actions.ActionNormalBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.SwitchPairs : IsAction {
+        Invert
+        (Operation, Add)
+        Pairs
+        Target
+}
+
+prefab [CORE].Actions.ActionNormalBoxRoundedOutlined : SwitchPairs {
         (Event, Normal)
-        SetSingletons
-        Data: {"using [UI]\\n\\n\$Locale,\"en\";UIScale,1"}
+        Code: {"[IsA],[UI].Colors.ColorSurfaceContainerHigh"}
+        //Singletons
+        //Code: {"using [UI]\\n\\n\$Locale,\"en\";UIScale,1"}
 }
 
-prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined : SwitchPairs {
         (Event, Hovered)
-        SetSingletons
-        Data: {"using [UI]\\n\\n\$Locale,\"it\";UIScale,1.5"}
+        Code: {"[IsA],[UI].Colors.ColorSurfaceContainerHighest"}
+        //Singletons
+        //Code: {"using [UI]\\n\\n\$Locale,\"it\";UIScale,1.5"}
 }
 
-prefab [CORE].Actions.ActionPressedBoxRoundedOutlined : IsAction, Local {
+prefab [CORE].Actions.ActionPressedBoxRoundedOutlined : SwitchPairs {
         (Event, Pressed)
-        Path: {"UI/Actions/PressedBoxRoundedOutlined"}
-        SetSingletons
-        Data: {"using [UI]\\n\\n\$Locale,\"de\";UIScale,2"}
+        Code: {"[IsA],[UI].Colors.ColorSurfaceContainer"}
+        //Singletons
+        //Code: {"using [UI]\\n\\n\$Locale,\"de\";UIScale,2"}
 }

@@ -8,13 +8,10 @@ prefab [UI].Element.IsWidget {
     Order
 }
 
-prefab [UI].Element.IsCompoundWidget : IsWidget {CompoundWidget}
-prefab [UI].Element.IsHBox : IsWidget {HBox}
-
 prefab [UI].Element.IsIcon : IsTextBlock, IsFontInfo {
     FontFace: {"100"}
     FontSize: {18}
-    Code: {"f89a"}
+    Icon: {"f89a"}
 }
 
 prefab [UI].Element.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}

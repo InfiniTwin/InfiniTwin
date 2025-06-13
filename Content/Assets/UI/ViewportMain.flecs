@@ -1,16 +1,19 @@
 using [UI].Layout
 using [UI].Element
 
-prefab [UI].IsToolbar : IsCompoundWidget {Toolbar}
+prefab [UI].IsToolbar {
+    CompoundWidget
+    Toolbar
+}
 
 [UI].ViewportMain {
     Viewport
     ToolbarTopLeft : IsToolbar {
-        Container : IsHBox {
+        Container {
+            HBox
             WindowToggle : ChipButton, AlignTopLeft, PaddingButton {
-                Container.Icon {Code: {"e6fa"}}
+                Container.Icon {[UI].Icon: {"e6fa"}}
                 Container.Text {
-                    Toggle
                     LocalizedText: {"IT::Window"}
                     Order: {1}
                }

@@ -15,7 +15,7 @@ namespace UI {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		ECS::Scopes.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
+		ECS::Tokens.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
 
 		using namespace ECS;
 		RunScript(world, "UI/Color");
