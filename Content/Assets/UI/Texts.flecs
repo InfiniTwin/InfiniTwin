@@ -1,5 +1,4 @@
 prefab [UI].Texts.IsLocalized {LocalizedText}
-prefab [UI].Texts.IsTextBlock {TextBlock}
 prefab [UI].Texts.IsFontInfo {FontInfo}
 prefab [UI].Texts.TextFontWeight400 : IsFontInfo {FontFace: {"Regular"}}
 prefab [UI].Texts.TextFontWeight500 : IsFontInfo {FontFace: {"Bold"}}
