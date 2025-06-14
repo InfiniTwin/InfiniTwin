@@ -1,31 +1,36 @@
+using [CORE].Actions
 using [UI].Colors
 using [UI].Texts
 using [UI].Layout
-using [CORE].Actions
 
 prefab [UI].Elements.IsWidget {
     Widget
     Order
 }
-prefab [UI].Elements.IsCompooundWidget : IsWidget {CompoundWidget}
-prefab [UI].Elements.IsHBox : IsWidget {HBox}
-prefab [UI].Elements.IsTextBlock : IsWidget {TextBlock}
-prefab [UI].Elements.IsIcon : IsTextBlock, IsFontInfo {
+prefab [UI].Elements.IsCompooundWidget: IsWidget {CompoundWidget}
+prefab [UI].Elements.IsBox: IsWidget {Box}
+prefab [UI].Elements.IsHBox: IsWidget {HBox}
+prefab [UI].Elements.IsTextBlock: IsWidget {TextBlock}
+prefab [UI].Elements.IsIcon: IsTextBlock, IsFontInfo {
     FontFace: {"100"}
     FontSize: {18}
     Icon: {"f89a"}
 }
-prefab [UI].Elements.IsButton : IsWidget {Button}
+prefab [UI].Elements.IsBorder: IsWidget {Border}
+prefab [UI].Elements.IsButton: IsWidget {Button}
 
-prefab [UI].Elements.ButtonIcon : IsIcon, ColorPrimary, AlignCenter, PaddingButtonContentCenter {}
-prefab [UI].Elements.ButtonText : IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingButtonContentCenter {}
-prefab [UI].Elements.ButtonTextNoLeftPadding : ButtonText, PaddingButtonContentNoLeft {}
+prefab [UI].Elements.ButtonIcon: IsIcon, ColorPrimary, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Elements.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Elements.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}
 
-prefab [UI].Elements.ChipButton : IsButton, AlignCenter, PaddingNone {
-    prefab Container : IsHBox {
-        prefab Icon : ButtonIcon {}
-        prefab Text: ButtonTextNoLeftPadding {}}
-    prefab ActionNormalChipButton : ActionNormalBoxRoundedOutlined {}
-    prefab ActionHoveredChipButton : ActionHoveredBoxRoundedOutlined {}
-    prefab ActionPressedChipButton : ActionPressedBoxRoundedOutlined {}
+prefab [UI].Elements.ChipButton: IsButton, AlignCenter, PaddingNone {
+    prefab Toggle: IsBorder {
+        prefab Container: IsHBox {
+            prefab Icon: ButtonIcon {}
+            prefab Text: ButtonText, PaddingRightOnlyButtonContent {}
+        }
+    }
+    prefab ActionNormalChipButton: ActionNormalBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
+    prefab ActionHoveredChipButton: ActionHoveredBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
+    prefab ActionPressedChipButton: ActionPressedBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
 }

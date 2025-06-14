@@ -3,11 +3,11 @@ using [UI].Elements
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTopLeft : IsCompooundWidget {
-        Container : IsHBox {
-            WindowToggle : ChipButton, AlignTopLeft, PaddingButton {
-                Container.Icon {[UI].Icon: {"e6fa"}}
-                Container.Text {
+    ToolbarTopLeft: IsCompooundWidget {
+        Container: IsHBox {
+            WindowToggle: ChipButton, AlignTopLeft, PaddingButton {
+                Toggle.Container.Icon {[UI].Icon: {"e6fa"}}
+                Toggle.Container.Text {
                     LocalizedText: {"IT::Window"}
                     Order: {1}
                }

@@ -2,30 +2,30 @@ using [UI]
 
 prefab [CORE].Actions.IsAction {Action}
 
-prefab [CORE].Actions.SwitchPairs : IsAction {
+prefab [CORE].Actions.SwitchPairs: IsAction {
         Invert
         (Operation, Add)
         Pairs
         Target
 }
 
-prefab [CORE].Actions.ActionNormalBoxRoundedOutlined : SwitchPairs {
+prefab [CORE].Actions.ActionNormalBoxRoundedOutlined: SwitchPairs {
         (Event, Normal)
-        Code: {"[IsA],[UI].Colors.ColorSurfaceContainerHigh"}
+        Code: {"[IsA],[UI].Colors.ColorPrimary"}
         //Singletons
         //Code: {"using [UI]\\n\\n\$Locale,\"en\";UIScale,1"}
 }
 
-prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined : SwitchPairs {
+prefab [CORE].Actions.ActionHoveredBoxRoundedOutlined: SwitchPairs {
         (Event, Hovered)
-        Code: {"[IsA],[UI].Colors.ColorSurfaceContainerHighest"}
+        Code: {"[IsA],[UI].Colors.ColorError"}
         //Singletons
         //Code: {"using [UI]\\n\\n\$Locale,\"it\";UIScale,1.5"}
 }
 
-prefab [CORE].Actions.ActionPressedBoxRoundedOutlined : SwitchPairs {
+prefab [CORE].Actions.ActionPressedBoxRoundedOutlined: SwitchPairs {
         (Event, Pressed)
-        Code: {"[IsA],[UI].Colors.ColorSurfaceContainer"}
+        Code: {"[IsA],[UI].Colors.ColorSecondary"}
         //Singletons
         //Code: {"using [UI]\\n\\n\$Locale,\"de\";UIScale,2"}
 }
