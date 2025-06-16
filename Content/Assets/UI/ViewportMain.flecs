@@ -1,13 +1,14 @@
 using [UI].Layout
+using [UI].Widgets
 using [UI].Elements
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTopLeft: IsCompooundWidget {
+    ToolbarTopLeft: IsCompoundWidget {
         Container: IsHBox {
             WindowToggle: ChipButton, AlignTopLeft, PaddingButton {
-                Toggle.Container.Icon {[UI].Icon: {"e6fa"}}
-                Toggle.Container.Text {
+                Container.Icon {[UI].Icon: {"e6fa"}}
+                Container.Text {
                     LocalizedText: {"IT::Window"}
                     Order: {1}
                }

@@ -21,6 +21,8 @@ namespace UI {
 		RunScript(world, "UI/Colors");
 		RunScript(world, "UI/Texts");
 		RunScript(world, "UI/Layout");
+		RunScript(world, "UI/Widgets");
+		RunScript(world, "UI/Styles");
 		RunScript(world, "UI/Actions");
 		RunScript(world, "UI/Elements");
 		RunScript(world, "UI/Settings");

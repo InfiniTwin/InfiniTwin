@@ -1,0 +1,28 @@
+using [UI].Colors
+using [UI].Layout
+using [UI].Widgets
+
+prefab [UI].Styles.IsWidgetStyles {WidgetStyle}
+prefab [UI].Styles.IsBrush {Brush}
+prefab [UI].Styles.BrushBox: IsBrush {BrushType: {1}}
+prefab [UI].Styles.BrushBorder: IsBrush {BrushType: {2}}
+prefab [UI].Styles.BrushImage: IsBrush {BrushType: {3}}
+prefab [UI].Styles.BrushRound: IsBrush {BrushType: {4}}
+
+prefab [UI].Styles.OutlineButton: ColorOutline {
+    Width: {2}
+    FixedRadius
+    Radii: {5, 5, 5, 5}
+}
+
+prefab [UI].Styles.BrushRoundOutlined: BrushRound {Outline: OutlineButton {}}
+
+prefab [UI].Styles.ButtonNormal: ColorSurfaceContainerHigh, PaddingNone {}
+prefab [UI].Styles.ButtonHovered: ColorSurfaceContainerHighest {}
+prefab [UI].Styles.ButtonPressed: ColorSurfaceContainer, PaddingNone {}
+
+prefab [UI].Styles.ButtonRoundOutlined : IsButton, IsWidgetStyles {
+    BrushNormal: ButtonNormal, BrushRoundOutlined {}
+    BrushHovered: ButtonHovered, BrushRoundOutlined {}
+    BrushPressed: ButtonPressed, BrushRoundOutlined {}
+}

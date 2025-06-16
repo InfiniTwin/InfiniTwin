@@ -2,35 +2,17 @@ using [CORE].Actions
 using [UI].Colors
 using [UI].Texts
 using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
 
-prefab [UI].Elements.IsWidget {
-    Widget
-    Order
-}
-prefab [UI].Elements.IsCompooundWidget: IsWidget {CompoundWidget}
-prefab [UI].Elements.IsBox: IsWidget {Box}
-prefab [UI].Elements.IsHBox: IsWidget {HBox}
-prefab [UI].Elements.IsTextBlock: IsWidget {TextBlock}
-prefab [UI].Elements.IsIcon: IsTextBlock, IsFontInfo {
-    FontFace: {"100"}
-    FontSize: {18}
-    Icon: {"f89a"}
-}
-prefab [UI].Elements.IsBorder: IsWidget {Border}
-prefab [UI].Elements.IsButton: IsWidget {Button}
-
-prefab [UI].Elements.ButtonIcon: IsIcon, ColorPrimary, AlignCenter, PaddingCenterButtonContent {}
-prefab [UI].Elements.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingCenterButtonContent {}
-prefab [UI].Elements.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}
-
-prefab [UI].Elements.ChipButton: IsButton, AlignCenter, PaddingNone {
-    prefab Toggle: IsBorder {
-        prefab Container: IsHBox {
-            prefab Icon: ButtonIcon {}
-            prefab Text: ButtonText, PaddingRightOnlyButtonContent {}
+prefab [UI].Elements.ChipButton: IsWidget, ButtonRoundOutlined, AlignCenter {
+    //Toggle: IsBorder {
+        Container: IsHBox {
+            Icon: ButtonIcon {}
+            Text: ButtonText, PaddingRightOnlyButtonContent {}
         }
-    }
-    prefab ActionNormalChipButton: ActionNormalBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
-    prefab ActionHoveredChipButton: ActionHoveredBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
-    prefab ActionPressedChipButton: ActionPressedBoxRoundedOutlined {[CORE].Target: {"Toggle"}}
+    //}
+    //ActionNormalChipButton: ActionNormalBoxRoundOutlined {[CORE].Target: {"Toggle"}}
+    //ActionHoveredChipButton: ActionHoveredBoxRoundOutlined {[CORE].Target: {"Toggle"}}
+    //ActionPressedChipButton: ActionPressedBoxRoundOutlined {[CORE].Target: {"Toggle"}}
 }

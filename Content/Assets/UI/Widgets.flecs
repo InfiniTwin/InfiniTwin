@@ -1,0 +1,23 @@
+using [UI].Colors
+using [UI].Texts
+using [UI].Layout
+
+prefab [UI].Widgets.IsWidget {
+    Widget
+    Order
+}
+prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
+prefab [UI].Widgets.IsBox: IsWidget {Box}
+prefab [UI].Widgets.IsHBox: IsWidget {HBox}
+prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
+prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
+    FontFace: {"100"}
+    FontSize: {18}
+    Icon: {"f89a"}
+}
+prefab [UI].Widgets.IsBorder: IsWidget {Border}
+prefab [UI].Widgets.IsButton {Button}
+
+prefab [UI].Widgets.ButtonIcon: IsIcon, ColorPrimary, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}
