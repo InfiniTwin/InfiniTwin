@@ -2,7 +2,7 @@ using [UI].Colors
 using [UI].Layout
 using [UI].Widgets
 
-prefab [UI].Styles.IsWidgetStyles {WidgetStyle}
+prefab [UI].Styles.IsWidgetStyles {ButtonStyle}
 prefab [UI].Styles.IsBrush {Brush}
 prefab [UI].Styles.BrushBox: IsBrush {BrushType: {1}}
 prefab [UI].Styles.BrushBorder: IsBrush {BrushType: {2}}
@@ -10,8 +10,7 @@ prefab [UI].Styles.BrushImage: IsBrush {BrushType: {3}}
 prefab [UI].Styles.BrushRound: IsBrush {BrushType: {4}}
 
 prefab [UI].Styles.OutlineButton: ColorOutline {
-    Width: {2}
-    FixedRadius
+    Width: {1}
     Radii: {5, 5, 5, 5}
 }
 
