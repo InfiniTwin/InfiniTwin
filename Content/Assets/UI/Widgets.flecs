@@ -15,9 +15,12 @@ prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
     FontSize: {18}
     Icon: {"f89a"}
 }
-prefab [UI].Widgets.IsBorder: IsWidget {Border}
 prefab [UI].Widgets.IsButton {Button}
+prefab [UI].Widgets.IsToggle {
+    CheckBox
+    Toggle
+}
 
-prefab [UI].Widgets.ButtonIcon: IsIcon, ColorPrimary, AlignCenter, PaddingCenterButtonContent {}
-prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, ColorOnSurface, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonIcon: IsIcon, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, AlignCenter, PaddingCenterButtonContent {}
 prefab [UI].Widgets.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}

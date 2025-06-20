@@ -2,26 +2,45 @@ using [UI].Colors
 using [UI].Layout
 using [UI].Widgets
 
-prefab [UI].Styles.IsWidgetStyles {ButtonStyle}
 prefab [UI].Styles.IsBrush {Brush}
 prefab [UI].Styles.BrushBox: IsBrush {BrushType: {1}}
 prefab [UI].Styles.BrushBorder: IsBrush {BrushType: {2}}
 prefab [UI].Styles.BrushImage: IsBrush {BrushType: {3}}
 prefab [UI].Styles.BrushRound: IsBrush {BrushType: {4}}
 
-prefab [UI].Styles.OutlineButton: ColorOutline {
-    Width: {1}
-    Radii: {5, 5, 5, 5}
+prefab [UI].Styles.BrushRoundOutlined: BrushRound {
+    Outline: ColorOutlineVariant {
+        Width: {1}
+    }
 }
 
-prefab [UI].Styles.BrushRoundOutlined: BrushRound {Outline: OutlineButton {}}
+prefab [UI].Styles.ColorBrushNormal: ColorOnPrimaryFixed {}
+prefab [UI].Styles.ColorBrushNormalON: ColorOnPrimaryFixedVariant {}
 
-prefab [UI].Styles.ButtonNormal: ColorSurfaceContainerHigh, PaddingNone {}
-prefab [UI].Styles.ButtonHovered: ColorSurfaceContainerHighest {}
-prefab [UI].Styles.ButtonPressed: ColorSurfaceContainer, PaddingNone {}
+prefab [UI].Styles.ColorBrushHovered: ColorOnPrimaryFixed {}
+prefab [UI].Styles.ColorBrushHoveredON: ColorOnPrimaryFixedVariant {}
 
-prefab [UI].Styles.ButtonRoundOutlined : IsButton, IsWidgetStyles {
-    BrushNormal: ButtonNormal, BrushRoundOutlined {}
-    BrushHovered: ButtonHovered, BrushRoundOutlined {}
-    BrushPressed: ButtonPressed, BrushRoundOutlined {}
+prefab [UI].Styles.ColorBrushPressed: ColorOnPrimaryFixedVariant {}
+prefab [UI].Styles.ColorBrushPressedON: ColorOnPrimaryFixed {}
+
+prefab [UI].Styles.ColorForegroundNormal: ColorPrimaryFixed {}
+prefab [UI].Styles.ColorForegroundHovered: ColorPrimaryFixedDim {}
+
+prefab [UI].Styles.ButtonRoundOutlined : IsButton {
+    ButtonStyle
+    BrushNormal: ColorBrushNormal, BrushRoundOutlined, PaddingNone {}
+    BrushHovered: ColorBrushHovered, BrushRoundOutlined {}
+    BrushPressed: ColorBrushPressed, BrushRoundOutlined, PaddingNone {}
+}
+
+prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
+    CheckBoxStyle
+    BrushNormalOFF: ColorBrushNormal, BrushRoundOutlined {}
+    BrushNormalON: ColorBrushNormalON, BrushRoundOutlined {}
+    BrushHoveredOFF: ColorBrushHovered, BrushRoundOutlined {}
+    BrushHoveredON: ColorBrushHoveredON, BrushRoundOutlined {}    
+    BrushPressedOFF: ColorBrushPressed, BrushRoundOutlined {}
+    BrushPressedON: ColorBrushPressedON, BrushRoundOutlined {}
+    ForegroundNormal: ColorForegroundNormal {}
+    ForegroundHovered: ColorForegroundHovered {}
 }

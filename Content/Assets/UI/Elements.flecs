@@ -5,14 +5,9 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.ChipButton: IsWidget, ButtonRoundOutlined, AlignCenter {
-    //Toggle: IsBorder {
-        Container: IsHBox {
-            Icon: ButtonIcon {}
-            Text: ButtonText, PaddingRightOnlyButtonContent {}
-        }
-    //}
-    //ActionNormalChipButton: ActionNormalBoxRoundOutlined {[CORE].Target: {"Toggle"}}
-    //ActionHoveredChipButton: ActionHoveredBoxRoundOutlined {[CORE].Target: {"Toggle"}}
-    //ActionPressedChipButton: ActionPressedBoxRoundOutlined {[CORE].Target: {"Toggle"}}
+prefab [UI].Elements.ChipButton: IsWidget, ToggleRoundOutlined, AlignCenter {
+    Container: IsHBox {
+        Icon: ButtonIcon {}
+        Text: ButtonText, PaddingRightOnlyButtonContent {}
+    }
 }
