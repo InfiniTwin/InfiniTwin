@@ -4,15 +4,19 @@ using [UI].Elements
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTopLeft: IsCompoundWidget {
-        Container: IsHBox {
-            WindowToggle: ChipButton, AlignTopLeft, PaddingButton {
+    ToolbarTopLeft: IsConstraintCanvas {
+        Container: IsHBox, PaddingNone, AlignTopLeft {
+            ToggleWindow: ToggleIconText {
                 Container.Icon {[UI].Icon: {"e6fa"}}
-                Container.Text {
-                    LocalizedText: {"IT::Window"}
-                    Order: {1}
-               }
-           }
-       }
-   }
+                Container.Text {LocalizedText: {"IT::Window"}}
+            }
+        }
+    }
+    ToolbarTopRight: IsConstraintCanvas {
+        Container: IsHBox, PaddingNone, AlignTopRight {
+            SelectLanguage: ToggleIcon {
+                Container.Icon {[UI].Icon: {"e894"}}
+            }
+        }
+    }
 }

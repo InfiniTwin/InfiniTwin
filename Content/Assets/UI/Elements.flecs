@@ -5,9 +5,13 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.ChipButton: IsWidget, ToggleRoundOutlined, AlignCenter {
+prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingButton, AlignCenter {
     Container: IsHBox {
         Icon: ButtonIcon {}
-        Text: ButtonText, PaddingRightOnlyButtonContent {}
     }
+}
+
+prefab [UI].Elements.ToggleIconText: ToggleIcon {
+    Container.Icon: PaddingCenterButtonContent {}
+    Container.Text: ButtonText, PaddingRightOnlyButtonContent {Order: {1}}
 }
