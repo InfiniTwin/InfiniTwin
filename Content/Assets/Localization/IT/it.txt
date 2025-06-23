@@ -1,2 +1,5 @@
+English=Inglese
+German=Tedesco
+Italian=Italiano
 Window=Finestra
 Hierarchy=Gerarchia

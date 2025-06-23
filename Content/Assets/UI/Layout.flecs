@@ -8,6 +8,8 @@ prefab [UI].Layout.HAlignCenter {HAlign: {2}}
 prefab [UI].Layout.HAlignRight {HAlign: {3}}
 prefab [UI].Layout.AlignFill: VAlignFill, HAlignFill {}
 prefab [UI].Layout.AlignCenter: VAlignCenter, HAlignCenter {}
+prefab [UI].Layout.AlignCenterLeft: VAlignCenter, HAlignLeft {}
+prefab [UI].Layout.AlignCenterRight: VAlignCenter, HAlignRight {}
 prefab [UI].Layout.AlignTopLeft: VAlignTop, HAlignLeft {}
 prefab [UI].Layout.AlignTopRight: VAlignTop, HAlignRight {}
 prefab [UI].Layout.PaddingNone {Padding: {0, 0, 0, 0}}

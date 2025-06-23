@@ -10,7 +10,13 @@ prefab [UI].Widgets.IsConstraintCanvas: IsWidget {ConstraintCanvas}
 prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
 prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
+prefab [UI].Widgets.IsVBox: IsWidget {VBox}
 prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
+prefab [UI].Widgets.IsMenu: IsWidget {
+    Menu
+    MenuPlacement: {2}
+}
+
 prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
     FontFace: {"100"}
     FontSize: {18}

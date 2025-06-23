@@ -1,2 +1,5 @@
+English=Englisch
+German=Deutsch
+Italian=Italienisch
 Window=Fenster
 Hierarchy=Hierarchie

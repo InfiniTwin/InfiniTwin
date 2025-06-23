@@ -1,2 +1,5 @@
+English=English
+German=German
+Italian=Italian
 Window=Window
 Hierarchy=Hierarchy
