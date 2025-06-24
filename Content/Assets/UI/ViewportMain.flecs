@@ -17,27 +17,27 @@ using [CORE].Actions
     }
     ToolbarTopRight: IsConstraintCanvas {
         Container: IsHBox, PaddingNone, AlignTopRight {
-            SelectLanguage: ToggleIcon {
-                Container.Icon {[UI].Icon: {"e894"}}
-                MenuOptions: IsMenu {
-                    Container: IsVBox, AlignTopRight, PaddingNone {
-                        English: ButtonText, PaddingNone, AlignCenterLeft {
-                            LocalizedText: {"IT::English"}
-                        }
-                        German: ButtonText, PaddingNone, AlignCenterLeft {
-                            Order: {1}
-                            LocalizedText: {"IT::German"}
-                        }
-                        Italian: ButtonText, PaddingNone, AlignCenterLeft {
-                            Order: {2}
-                            LocalizedText: {"IT::Italian"}
-                        }
+            MenuOptions: IsMenu, PaddingButton, AlignCenter {
+                SelectLanguage: ToggleIcon {
+                    Container.Icon {[UI].Icon: {"e894"}}
+                    ActionSwitchMenu: ActionSwitchComponents {
+                        (CheckBoxState, Checked)
+                        Code: {"[UI].Open"}
+                        Target: {"MenuOptions"}
                     }
                 }
-                ActionSwitchMenu: ActionSwitchComponents {
-                    (CheckBoxState, Checked)
-                    Code: {"[UI].Open"}
-                    Target: {"MenuOptions"}
+                Container: IsVBox, AlignTopRight, PaddingNone {
+                    English: ButtonText, PaddingNone, AlignCenterLeft {
+                        LocalizedText: {"IT::English"}
+                    }
+                    German: ButtonText, PaddingNone, AlignCenterLeft {
+                        Order: {1}
+                        LocalizedText: {"IT::German"}
+                    }
+                    Italian: ButtonText, PaddingNone, AlignCenterLeft {
+                        Order: {2}
+                        LocalizedText: {"IT::Italian"}
+                    }
                 }
             }
         }
