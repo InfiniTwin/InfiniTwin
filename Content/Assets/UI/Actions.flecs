@@ -9,6 +9,7 @@ prefab [CORE].Actions.ActionAdd: IsAction {(Operation, Add)}
 prefab [CORE].Actions.ActionRemove: IsAction {(Operation, Remove)}
 prefab [CORE].Actions.ActionSwitch: ActionAdd {Invert}
 
+prefab [CORE].Actions.ActionSetSingletons: ActionAdd {Singletons}
 prefab [CORE].Actions.ActionSwitchComponents: ActionSwitch {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
 
@@ -16,7 +17,7 @@ prefab [CORE].Actions.ActionNormalBoxRoundOutlined: ActionSwitchPairs {
     (ButtonState, Normal)
     Code: {"[IsA],[UI].Colors.ColorPrimary"}
     //Singletons
-    //Code: {"using [UI]\\n\\n\$Locale,\"en\";UIScale,1"}
+    //Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\"> | UIScale: <2>"}
 }
 
 prefab [CORE].Actions.ActionHoveredBoxRoundOutlined: ActionSwitchPairs {

@@ -22,11 +22,12 @@ using [CORE].Actions
                     Container.Icon {[UI].Icon: {"e894"}}
                     ActionSwitchMenu: ActionSwitchComponents {
                         (CheckBoxState, Checked)
-                        Code: {"[UI].Open"}
-                        Target: {"MenuOptions"}
+                        Code: {" | [UI].Open"}
+                        Target: {"<"}
                     }
                 }
                 Container: IsVBox, AlignTopRight, PaddingNone {
+                    MenuContent
                     English: ButtonText, PaddingNone, AlignCenterLeft {
                         LocalizedText: {"IT::English"}
                     }
