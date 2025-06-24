@@ -19,7 +19,7 @@ prefab [UI].Widgets.IsMenu: IsWidget {
 
 prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
     FontFace: {"100"}
-    FontSize: {18}
+    FontSize: {14}
     Icon: {"f89a"}
 }
 prefab [UI].Widgets.IsButton {Button}
@@ -29,5 +29,5 @@ prefab [UI].Widgets.IsToggle {
 }
 
 prefab [UI].Widgets.ButtonIcon: IsIcon, AlignCenter, PaddingIcon {}
-prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodyLarge, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
 prefab [UI].Widgets.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}
