@@ -10,7 +10,7 @@ using [CORE].Actions
     ToolbarTopLeft: IsConstraintCanvas {
         Container: IsHBox, PaddingNone, AlignTopLeft {
             ToggleWindow: ToggleIconText {
-                Container.Icon {[UI].Icon: {"e6fa"}}
+                Container.Icon {Icon: {"e6fa"}}
                 Container.Text {LocalizedText: {"IT::Window"}}
             }
         }
@@ -19,10 +19,17 @@ using [CORE].Actions
         Container: IsHBox, PaddingNone, AlignTopRight {
             MenuOptions: IsMenu, PaddingButton, AlignCenter {
                 SelectLanguage: ToggleIcon {
-                    Container.Icon {[UI].Icon: {"e894"}}
-                    ActionSwitchMenu: ActionSwitchComponents {
+                    Container.Icon {Icon: {"e894"}}
+                    ActionMenuOpen: ActionAdd {
+                        Components
                         (CheckBoxState, Checked)
-                        Code: {" | [UI].Open"}
+                        Code: {" | (WidgetState, Opened)"}
+                        Target: {"<"}
+                    }
+                    ActionMenuClose: ActionAdd {
+                        Components
+                        (CheckBoxState, Unchecked)
+                        Code: {" | (WidgetState, Closed)"}
                         Target: {"<"}
                     }
                 }
