@@ -21,6 +21,7 @@ prefab [UI].Elements.ToggleIconText: ToggleIcon {
 }
 
 prefab [UI].Elements.Radio: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
+    Radio
     Container: IsHBox {
         Icon: IsIcon {}
         Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
