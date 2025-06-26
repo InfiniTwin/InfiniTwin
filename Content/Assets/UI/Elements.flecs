@@ -25,9 +25,14 @@ prefab [UI].Elements.Radio: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignF
         Icon: IsIcon {}
         Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
     }
-    ActionIconChecked: ActionSwitchPairs {
+    ActionCheckedIcon: ActionAddComponents {
         (CheckBoxState, Checked)
-        Code: {"[IsA], [UI].Widgets.IconRadioChecked"}
+        Code: {" | [UI].Icon: <\"e837\">"}
+        Target: {"Container.Icon"}
+    }
+    ActionUncheckedIcon: ActionAddComponents {
+        (CheckBoxState, Unchecked)
+        Code: {" | [UI].Icon: <\"e836\">"}
         Target: {"Container.Icon"}
     }
 }
