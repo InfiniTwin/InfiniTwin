@@ -29,19 +29,16 @@ using [CORE].Actions
                         ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
                     }
                     German: Radio {
-                        Container.Label {
-                            Text: {"Deutsch"}
-                            Order: {1}
-                        }
+                        Container.Label {Text: {"Deutsch"}}
                         ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
                     }
                     Italian: Radio {
-                        Container.Label {
-                            Text: {"Italiano"}
-                            Order: {2}
-                        }
+                        Container.Label {Text: {"Italiano"}}
                         ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
                     }
+                    English {(CheckBoxState, Checked)}
+                    German {(CheckBoxState, Unchecked)}
+                    Italian {(CheckBoxState, Unchecked)}
                 }
             }
         }
