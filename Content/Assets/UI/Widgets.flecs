@@ -16,34 +16,28 @@ prefab [UI].Widgets.IsTextBlock: IsWidget {
     TextBlock
     Text
 }
-prefab [UI].Widgets.IsMenu: IsWidget {
-    Menu
-    MenuPlacement: {2}
-}
 
-prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
+prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
+
+prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo, AlignCenter, PaddingIcon {
     FontFace: {"100"}
     FontSize: {14}
     Icon: {"f89a"}
 }
 
-prefab [UI].Widgets.IconRadioUnchecked: IsIcon {
-    FontFace: {"100"}
-    FontSize: {30}
-    Icon: {"e836"}
-}
+prefab [UI].Widgets.IconButton: IsIcon {}
 
-prefab [UI].Widgets.IconRadioChecked: IsIcon {
-    FontFace: {"100"}
-    FontSize: {30}
-    Icon: {"e837"}
-}
+prefab [UI].Widgets.IconRadioChecked: IsIcon {Icon: {"e837"}}
+prefab [UI].Widgets.IconRadioUnchecked: IsIcon {Icon: {"e836"}}
 
 prefab [UI].Widgets.IsButton {Button}
+
 prefab [UI].Widgets.IsToggle {
     CheckBox
     Toggle
 }
 
-prefab [UI].Widgets.IconButton: IsIcon, AlignCenter, PaddingIcon {}
-prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.IsMenu: IsWidget {
+    Menu
+    MenuPlacement: {2}
+}

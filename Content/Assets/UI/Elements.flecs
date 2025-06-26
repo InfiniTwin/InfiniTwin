@@ -19,4 +19,11 @@ prefab [UI].Elements.ToggleIconText: ToggleIcon {
     }
 }
 
+prefab [UI].Elements.Radio: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
+    Container: IsHBox {
+        Icon: IconRadioUnchecked {}
+        Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
+    }
+}
+
 prefab [UI].Elements.MenuContainer: IsVBox, AlignCenter, PaddingNormal {MenuContent}

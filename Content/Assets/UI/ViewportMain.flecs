@@ -24,16 +24,20 @@ using [CORE].Actions
                     MenuClose: ActionMenuClose {(CheckBoxState, Unchecked)}
                 }
                 Container: MenuContainer, AlignCenterRight {
-                    English: ButtonText, PaddingNormal, AlignCenterLeft {
-                        Text: {"English"}
+                    English: Radio {
+                        Container.Label {Text: {"English"}}
                     }
-                    German: ButtonText, PaddingNormal, AlignCenterLeft {
-                        Order: {1}
-                        Text: {"Deutsch"}
+                    German: Radio {
+                        Container.Label {
+                            Text: {"Deutsch"}
+                            Order: {1}
+                        }
                     }
-                    Italian: ButtonText, PaddingNormal, AlignCenterLeft {
-                        Order: {2}
-                        Text: {"Italiano"}
+                    Italian: Radio {
+                        Container.Label {
+                            Text: {"Italiano"}
+                            Order: {2}
+                        }
                     }
                 }
             }
