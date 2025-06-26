@@ -25,6 +25,11 @@ prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
     Target: {"<"}
 }
 
+prefab [CORE].Actions.ActionSetLanguage: ActionSetSingletons {
+    (CheckBoxState, Checked)
+    Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}
+}
+
 prefab [CORE].Actions.ActionNormalBoxRoundOutlined: ActionSwitchPairs {
     (ButtonState, Normal)
     Code: {"[IsA],[UI].Colors.ColorPrimary"}

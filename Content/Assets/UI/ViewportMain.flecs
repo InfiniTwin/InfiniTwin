@@ -26,30 +26,21 @@ using [CORE].Actions
                 Container: MenuContainer, AlignCenterRight {
                     English: Radio {
                         Container.Label {Text: {"English"}}
-                        ActionCheckedLanguage: ActionSetSingletons {
-                            (CheckBoxState, Checked)
-                            Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}
-                        }
+                        ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
                     }
                     German: Radio {
                         Container.Label {
                             Text: {"Deutsch"}
                             Order: {1}
                         }
-                        ActionCheckedLanguage: ActionSetSingletons {
-                            (CheckBoxState, Checked)
-                            Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}
-                        }
+                        ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
                     }
                     Italian: Radio {
                         Container.Label {
                             Text: {"Italiano"}
                             Order: {2}
                         }
-                        ActionCheckedLanguage: ActionSetSingletons {
-                            (CheckBoxState, Checked)
-                            Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}
-                        }
+                        ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
                     }
                 }
             }
