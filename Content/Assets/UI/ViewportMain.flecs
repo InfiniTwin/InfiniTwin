@@ -20,8 +20,8 @@ using [CORE].Actions
             MenuLanguage: IsMenu, PaddingNormal, AlignCenter {
                 ToggleMenuLanguage: ToggleIcon {
                     Container.Icon {Icon: {"e894"}}
-                    MenuOpen: ActionMenuOpen {(CheckBoxState, Checked)}
-                    MenuClose: ActionMenuClose {(CheckBoxState, Unchecked)}
+                    ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
+                    ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                 }
                 Container: MenuContainer, AlignCenterRight {
                     English: Radio {

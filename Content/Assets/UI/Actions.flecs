@@ -15,12 +15,12 @@ prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
 prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
 
-prefab [CORE].Actions.ActionMenuOpen: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetOpen: ActionAddComponents {
     Code: {" | (WidgetState, Opened)"}
     Target: {"<"}
 }
 
-prefab [CORE].Actions.ActionMenuClose: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
     Code: {" | (WidgetState, Closed)"}
     Target: {"<"}
 }

@@ -27,8 +27,8 @@ prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo, AlignCenter, PaddingIcon {
 
 prefab [UI].Widgets.IconButton: IsIcon {}
 
-prefab [UI].Widgets.IconRadioChecked: IsIcon {Icon: {"e837"}}
-prefab [UI].Widgets.IconRadioUnchecked: IsIcon {Icon: {"e836"}}
+prefab [UI].Widgets.IconRadioChecked {Icon: {"e837"}}
+prefab [UI].Widgets.IconRadioUnchecked {Icon: {"e836"}}
 
 prefab [UI].Widgets.IsButton {Button}
 

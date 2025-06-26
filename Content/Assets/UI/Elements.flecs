@@ -1,3 +1,4 @@
+using [CORE]
 using [CORE].Actions
 using [UI].Colors
 using [UI].Texts
@@ -21,8 +22,13 @@ prefab [UI].Elements.ToggleIconText: ToggleIcon {
 
 prefab [UI].Elements.Radio: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     Container: IsHBox {
-        Icon: IconRadioUnchecked {}
+        Icon: IsIcon {}
         Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
+    }
+    ActionIconChecked: ActionSwitchPairs {
+        (CheckBoxState, Checked)
+        Code: {"[IsA], [UI].Widgets.IconRadioChecked"}
+        Target: {"Container.Icon"}
     }
 }
 
