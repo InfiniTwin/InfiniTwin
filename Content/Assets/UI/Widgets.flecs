@@ -11,7 +11,10 @@ prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
 prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}
-prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
+prefab [UI].Widgets.IsTextBlock: IsWidget {
+    TextBlock
+    Text
+}
 prefab [UI].Widgets.IsMenu: IsWidget {
     Menu
     MenuPlacement: {2}
@@ -29,5 +32,5 @@ prefab [UI].Widgets.IsToggle {
 }
 
 prefab [UI].Widgets.ButtonIcon: IsIcon, AlignCenter, PaddingIcon {}
-prefab [UI].Widgets.ButtonText: IsTextBlock, IsLocalized, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.ButtonText: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
 prefab [UI].Widgets.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}

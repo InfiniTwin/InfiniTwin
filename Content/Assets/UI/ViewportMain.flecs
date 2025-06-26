@@ -11,7 +11,7 @@ using [CORE].Actions
         Container: IsHBox, PaddingNone, AlignTopLeft {
             ToggleWindow: ToggleIconText {
                 Container.Icon {Icon: {"e6fa"}}
-                Container.Text {LocalizedText: {"IT::Window"}}
+                Container.Label {Text: {"IT::Window"}}
             }
         }
     }
@@ -25,15 +25,15 @@ using [CORE].Actions
                 }
                 Container: MenuContainer, AlignCenterRight {
                     English: ButtonText, PaddingNormal, AlignCenterLeft {
-                        LocalizedText: {"IT::English"}
+                        Text: {"English"}
                     }
                     German: ButtonText, PaddingNormal, AlignCenterLeft {
                         Order: {1}
-                        LocalizedText: {"IT::German"}
+                        Text: {"Deutsch"}
                     }
                     Italian: ButtonText, PaddingNormal, AlignCenterLeft {
                         Order: {2}
-                        LocalizedText: {"IT::Italian"}
+                        Text: {"Italiano"}
                     }
                 }
             }

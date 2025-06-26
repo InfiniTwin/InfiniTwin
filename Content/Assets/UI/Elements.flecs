@@ -13,7 +13,10 @@ prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, A
 
 prefab [UI].Elements.ToggleIconText: ToggleIcon {
     Container.Icon: PaddingCenterButtonContent {}
-    Container.Text: ButtonText, PaddingRightOnlyButtonContent {Order: {1}}
+    Container.Label: ButtonText, PaddingRightOnlyButtonContent {
+        Localized
+        Order: {1}
+    }
 }
 
 prefab [UI].Elements.MenuContainer: IsVBox, AlignCenter, PaddingNormal {MenuContent}
