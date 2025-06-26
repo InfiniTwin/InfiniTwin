@@ -17,32 +17,21 @@ using [CORE].Actions
     }
     ToolbarTopRight: IsConstraintCanvas {
         Container: IsHBox, PaddingNone, AlignTopRight {
-            MenuOptions: IsMenu, PaddingButton, AlignCenter {
-                SelectLanguage: ToggleIcon {
+            MenuLanguage: IsMenu, PaddingNormal, AlignCenter {
+                ToggleMenuLanguage: ToggleIcon {
                     Container.Icon {Icon: {"e894"}}
-                    ActionMenuOpen: ActionAdd {
-                        Components
-                        (CheckBoxState, Checked)
-                        Code: {" | (WidgetState, Opened)"}
-                        Target: {"<"}
-                    }
-                    ActionMenuClose: ActionAdd {
-                        Components
-                        (CheckBoxState, Unchecked)
-                        Code: {" | (WidgetState, Closed)"}
-                        Target: {"<"}
-                    }
+                    MenuOpen: ActionMenuOpen {(CheckBoxState, Checked)}
+                    MenuClose: ActionMenuClose {(CheckBoxState, Unchecked)}
                 }
-                Container: IsVBox, AlignTopRight, PaddingNone {
-                    MenuContent
-                    English: ButtonText, PaddingNone, AlignCenterLeft {
+                Container: MenuContainer, AlignCenterRight {
+                    English: ButtonText, PaddingNormal, AlignCenterLeft {
                         LocalizedText: {"IT::English"}
                     }
-                    German: ButtonText, PaddingNone, AlignCenterLeft {
+                    German: ButtonText, PaddingNormal, AlignCenterLeft {
                         Order: {1}
                         LocalizedText: {"IT::German"}
                     }
-                    Italian: ButtonText, PaddingNone, AlignCenterLeft {
+                    Italian: ButtonText, PaddingNormal, AlignCenterLeft {
                         Order: {2}
                         LocalizedText: {"IT::Italian"}
                     }

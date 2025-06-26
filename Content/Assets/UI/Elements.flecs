@@ -5,7 +5,7 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingButton, AlignCenter {
+prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
     Container: IsHBox {
         Icon: ButtonIcon {}
     }
@@ -15,3 +15,5 @@ prefab [UI].Elements.ToggleIconText: ToggleIcon {
     Container.Icon: PaddingCenterButtonContent {}
     Container.Text: ButtonText, PaddingRightOnlyButtonContent {Order: {1}}
 }
+
+prefab [UI].Elements.MenuContainer: IsVBox, AlignCenter, PaddingNormal {MenuContent}

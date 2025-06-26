@@ -11,7 +11,19 @@ prefab [CORE].Actions.ActionSwitch: ActionAdd {Invert}
 
 prefab [CORE].Actions.ActionSetSingletons: ActionAdd {Singletons}
 prefab [CORE].Actions.ActionSwitchComponents: ActionSwitch {Components}
+prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
+prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
+
+prefab [CORE].Actions.ActionMenuOpen: ActionAddComponents {
+    Code: {" | (WidgetState, Opened)"}
+    Target: {"<"}
+}
+
+prefab [CORE].Actions.ActionMenuClose: ActionAddComponents {
+    Code: {" | (WidgetState, Closed)"}
+    Target: {"<"}
+}
 
 prefab [CORE].Actions.ActionNormalBoxRoundOutlined: ActionSwitchPairs {
     (ButtonState, Normal)

@@ -13,7 +13,7 @@ prefab [UI].Layout.AlignCenterRight: VAlignCenter, HAlignRight {}
 prefab [UI].Layout.AlignTopLeft: VAlignTop, HAlignLeft {}
 prefab [UI].Layout.AlignTopRight: VAlignTop, HAlignRight {}
 prefab [UI].Layout.PaddingNone {Padding: {0, 0, 0, 0}}
-prefab [UI].Layout.PaddingButton {Padding: {2, 2, 2, 2}}
+prefab [UI].Layout.PaddingNormal {Padding: {2, 2, 2, 2}}
 prefab [UI].Layout.PaddingIcon {Padding:  {2, 0, 2, 0}}
 prefab [UI].Layout.PaddingCenterButtonContent {Padding:  {4, 0, 4, 0}}
 prefab [UI].Layout.PaddingRightOnlyButtonContent {Padding:  {0, 0, 4, 0}}
