@@ -11,6 +11,7 @@ prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
 prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}
+
 prefab [UI].Widgets.IsTextBlock: IsWidget {
     TextBlock
     Text
@@ -25,12 +26,24 @@ prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo {
     FontSize: {14}
     Icon: {"f89a"}
 }
+
+prefab [UI].Widgets.IconRadioUnchecked: IsIcon {
+    FontFace: {"100"}
+    FontSize: {30}
+    Icon: {"e836"}
+}
+
+prefab [UI].Widgets.IconRadioChecked: IsIcon {
+    FontFace: {"100"}
+    FontSize: {30}
+    Icon: {"e837"}
+}
+
 prefab [UI].Widgets.IsButton {Button}
 prefab [UI].Widgets.IsToggle {
     CheckBox
     Toggle
 }
 
-prefab [UI].Widgets.ButtonIcon: IsIcon, AlignCenter, PaddingIcon {}
-prefab [UI].Widgets.ButtonText: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
-prefab [UI].Widgets.ButtonTextPaddingRightOnly: ButtonText, PaddingRightOnlyButtonContent {}
+prefab [UI].Widgets.IconButton: IsIcon, AlignCenter, PaddingIcon {}
+prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}

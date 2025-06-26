@@ -7,13 +7,13 @@ using [UI].Styles
 
 prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
     Container: IsHBox {
-        Icon: ButtonIcon {}
+        Icon: IconButton {}
     }
 }
 
 prefab [UI].Elements.ToggleIconText: ToggleIcon {
     Container.Icon: PaddingCenterButtonContent {}
-    Container.Label: ButtonText, PaddingRightOnlyButtonContent {
+    Container.Label: TextButton, PaddingRightOnlyButtonContent {
         Localized
         Order: {1}
     }
