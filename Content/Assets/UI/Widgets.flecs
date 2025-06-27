@@ -32,7 +32,4 @@ prefab [UI].Widgets.IsToggle {
     Toggle
 }
 
-prefab [UI].Widgets.IsMenu: IsWidget {
-    Menu
-    MenuPlacement: {2}
-}
+prefab [UI].Widgets.IsMenu: IsWidget {Menu}

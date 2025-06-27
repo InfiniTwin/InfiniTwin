@@ -42,4 +42,10 @@ prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
     }
 }
 
-prefab [UI].Elements.MenuContainer: IsVBox, AlignCenter, PaddingNormal {MenuContent}
+prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
+prefab [UI].Elements.MenuBelowRight: IsMenu {MenuPlacement: {2}}
+prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNone {
+    MenuContent
+    //Brush: BrushSurfaceContainerLow {}
+    Container: IsVBox, AlignCenter, PaddingNormal {}
+}

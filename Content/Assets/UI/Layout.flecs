@@ -1,17 +1,25 @@
+prefab [UI].Layout.FillHeightOne {FillHeight: {1}}
+prefab [UI].Layout.FillWidthOne {FillWidth: {1}}
+
 prefab [UI].Layout.VAlignFill {VAlign: {0}}
 prefab [UI].Layout.VAlignTop {VAlign: {1}}
 prefab [UI].Layout.VAlignCenter {VAlign: {2}}
 prefab [UI].Layout.VAlignBottom {VAlign: {3}}
+
 prefab [UI].Layout.HAlignFill {HAlign: {0}}
 prefab [UI].Layout.HAlignLeft {HAlign: {1}}
 prefab [UI].Layout.HAlignCenter {HAlign: {2}}
 prefab [UI].Layout.HAlignRight {HAlign: {3}}
+
 prefab [UI].Layout.AlignFill: VAlignFill, HAlignFill {}
 prefab [UI].Layout.AlignCenter: VAlignCenter, HAlignCenter {}
 prefab [UI].Layout.AlignCenterLeft: VAlignCenter, HAlignLeft {}
 prefab [UI].Layout.AlignCenterRight: VAlignCenter, HAlignRight {}
 prefab [UI].Layout.AlignTopLeft: VAlignTop, HAlignLeft {}
 prefab [UI].Layout.AlignTopRight: VAlignTop, HAlignRight {}
+prefab [UI].Layout.AlignBottomLeft: VAlignBottom, HAlignLeft {}
+prefab [UI].Layout.AlignBottomRight: VAlignBottom, HAlignRight {}
+
 prefab [UI].Layout.PaddingNone {Padding: {0, 0, 0, 0}}
 prefab [UI].Layout.PaddingNormal {Padding: {2, 2, 2, 2}}
 prefab [UI].Layout.PaddingIcon {Padding:  {2, 0, 2, 0}}

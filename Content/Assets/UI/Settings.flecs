@@ -2,8 +2,8 @@ using [UI]
 
 $ {
     UIScheme: {
-        DarkMode: false,
-        Contrast: 0,
+        DarkMode: true,
+        Contrast: 0.5,
         Variant: 1,
         Primary: "0xFF1B6EF3",
         Secondary: "0xFF8E909B",
