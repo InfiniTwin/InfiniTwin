@@ -1,60 +1,64 @@
 using [UI]
 using [UI].Layout
 using [UI].Widgets
+using [UI].Styles
 using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTop: IsConstraintCanvas {
-        Left: IsHBox, PaddingNone, AlignTopLeft {
-            MenuWindows: IsMenu, PaddingNormal, AlignCenter {
-                ToggleWindow: ToggleButtonIconText {
-                    Container.Icon {Icon: {"e6fa"}}
-                    Container.Label {Text: {"IT::Window"}}
-                    ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
-                    ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
-                }
-                Container: MenuContainer, AlignCenterLeft {
-                    Layers: CheckBoxButton {
-                        Container.Label {Text: {"IT::Layers"}}
+    Border: IsBorder {
+        Brush: Surface {}
+        ToolbarTop: IsConstraintCanvas {
+            Left: IsHBox, PaddingNone, AlignTopLeft {
+                MenuWindows: IsMenu, PaddingNormal, AlignCenter {
+                    ToggleWindow: ToggleButtonIconText {
+                        Container.Icon {Icon: {"e6fa"}}
+                        Container.Label {Text: {"IT::Window"}}
+                        ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
+                        ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                     }
-                    Hierarchy: CheckBoxButton {
-                        Container.Label {Text: {"IT::Hierarchy"}}
+                    Container: MenuContainer, AlignCenterLeft {
+                        Layers: CheckBoxButton {
+                            Container.Label {Text: {"IT::Layers"}}
+                        }
+                        Hierarchy: CheckBoxButton {
+                            Container.Label {Text: {"IT::Hierarchy"}}
+                        }
+                        Attributes: CheckBoxButton {
+                            Container.Label {Text: {"IT::Attributes"}}
+                        }
+                        Layers {(CheckBoxState, Unchecked)}
+                        Hierarchy {(CheckBoxState, Unchecked)}
+                        Attributes {(CheckBoxState, Unchecked)}
                     }
-                    Attributes: CheckBoxButton {
-                        Container.Label {Text: {"IT::Attributes"}}
-                    }
-                    Layers {(CheckBoxState, Unchecked)}
-                    Hierarchy {(CheckBoxState, Unchecked)}
-                    Attributes {(CheckBoxState, Unchecked)}
                 }
             }
-        }
-        Right: IsHBox, PaddingNone, AlignTopRight {
-            MenuLanguages: IsMenu, PaddingNormal, AlignCenter {
-                ToggleMenuLanguage: ToggleButtonIcon {
-                    Container.Icon {Icon: {"e894"}}
-                    ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
-                    ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
-                }
-                Container: MenuContainer, AlignCenterRight {
-                    English: RadioButton {
-                        Container.Label {Text: {"English"}}
-                        ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
+            Right: IsHBox, PaddingNone, AlignTopRight {
+                MenuLanguages: IsMenu, PaddingNormal, AlignCenter {
+                    ToggleMenuLanguage: ToggleButtonIcon {
+                        Container.Icon {Icon: {"e894"}}
+                        ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
+                        ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                     }
-                    German: RadioButton {
-                        Container.Label {Text: {"Deutsch"}}
-                        ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
+                    Container: MenuContainer, AlignCenterRight {
+                        English: RadioButton {
+                            Container.Label {Text: {"English"}}
+                            ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
+                        }
+                        German: RadioButton {
+                            Container.Label {Text: {"Deutsch"}}
+                            ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
+                        }
+                        Italian: RadioButton {
+                            Container.Label {Text: {"Italiano"}}
+                            ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
+                        }
+                        English {(CheckBoxState, Checked)}
+                        German {(CheckBoxState, Unchecked)}
+                        Italian {(CheckBoxState, Unchecked)}
                     }
-                    Italian: RadioButton {
-                        Container.Label {Text: {"Italiano"}}
-                        ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
-                    }
-                    English {(CheckBoxState, Checked)}
-                    German {(CheckBoxState, Unchecked)}
-                    Italian {(CheckBoxState, Unchecked)}
                 }
             }
         }

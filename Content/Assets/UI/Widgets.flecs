@@ -6,6 +6,7 @@ prefab [UI].Widgets.IsWidget {
     Widget
     Order
 }
+prefab [UI].Widgets.IsBorder: IsWidget {Border}
 prefab [UI].Widgets.IsConstraintCanvas: IsWidget {ConstraintCanvas}
 prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
 prefab [UI].Widgets.IsBox: IsWidget {Box}

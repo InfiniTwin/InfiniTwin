@@ -44,3 +44,5 @@ prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     ForegroundNormal: ColorForegroundNormal {}
     ForegroundHovered: ColorForegroundHovered {}
 }
+
+prefab [UI].Styles.Surface : ColorBrushNormal, BrushRoundOutlined {}
