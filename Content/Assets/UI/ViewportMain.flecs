@@ -9,7 +9,7 @@ using [CORE].Actions
 [UI].ViewportMain {
     Viewport
     Border: IsBorder {
-        Brush: Surface {}
+        Brush: BrushSurface {}
         ToolbarTop: IsConstraintCanvas {
             Left: IsHBox, PaddingNone, AlignTopLeft {
                 MenuWindows: IsMenu, PaddingNormal, AlignCenter {

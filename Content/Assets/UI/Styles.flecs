@@ -2,16 +2,15 @@ using [UI].Colors
 using [UI].Layout
 using [UI].Widgets
 
-prefab [UI].Styles.IsBrush {Brush}
-prefab [UI].Styles.BrushBox: IsBrush {BrushType: {1}}
-prefab [UI].Styles.BrushBorder: IsBrush {BrushType: {2}}
-prefab [UI].Styles.BrushImage: IsBrush {BrushType: {3}}
-prefab [UI].Styles.BrushRound: IsBrush {BrushType: {4}}
+prefab [UI].Styles.BrushBox {BrushType: {1}}
+prefab [UI].Styles.BrushBorder {BrushType: {2}}
+prefab [UI].Styles.BrushImage {BrushType: {3}}
+prefab [UI].Styles.BrushRound {BrushType: {4}}
+
+prefab [UI].Styles.OutlineWidthOne {Width: {1}}
 
 prefab [UI].Styles.BrushRoundOutlined: BrushRound {
-    Outline: ColorOutlineVariant {
-        Width: {1}
-    }
+    Outline: ColorOutlineVariant, OutlineWidthOne {}
 }
 
 prefab [UI].Styles.ColorBrushNormal: ColorOnPrimaryFixed {}
@@ -45,4 +44,4 @@ prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     ForegroundHovered: ColorForegroundHovered {}
 }
 
-prefab [UI].Styles.Surface : ColorBrushNormal, BrushRoundOutlined {}
+prefab [UI].Styles.BrushSurface: ColorBrushNormal, BrushRoundOutlined {Brush}
