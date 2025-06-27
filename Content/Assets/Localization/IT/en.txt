@@ -1,5 +1,4 @@
-English=English
-German=German
-Italian=Italian
 Window=Window
+Layers=Layers
 Hierarchy=Hierarchy
+Attributes=Attributes

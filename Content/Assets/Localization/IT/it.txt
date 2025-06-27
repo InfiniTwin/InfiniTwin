@@ -1,5 +1,4 @@
-English=Inglese
-German=Tedesco
-Italian=Italiano
 Window=Finestra
+Layers=Strati
 Hierarchy=Gerarchia
+Attributes=Attributi

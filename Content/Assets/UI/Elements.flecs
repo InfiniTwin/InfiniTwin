@@ -6,35 +6,39 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.ToggleIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
+prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     Container: IsHBox {
-        Icon: IconButton {}
+        Icon: IsIcon {}
+        Label: TextButton, PaddingRightOnlyButtonContent {
+            Localized
+            Order: {1}
+        }
     }
+    ActionCheckBoxCheckedIcon: ActionCheckedIcon {}
+    ActionCheckBoxUncheckedIcon: ActionUncheckedIcon {}
 }
 
-prefab [UI].Elements.ToggleIconText: ToggleIcon {
-    Container.Icon: PaddingCenterButtonContent {}
-    Container.Label: TextButton, PaddingRightOnlyButtonContent {
-        Localized
-        Order: {1}
-    }
-}
-
-prefab [UI].Elements.Radio: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
+prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     [UI].Radio
     Container: IsHBox {
         Icon: IsIcon {}
         Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
     }
-    ActionCheckedIcon: ActionAddComponents {
-        (CheckBoxState, Checked)
-        Code: {" | [UI].Icon: <\"e837\">"}
-        Target: {"Container.Icon"}
+    ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e837\">"}}
+    ActionRadioUncheckedIcon: ActionUncheckedIcon {}
+}
+
+prefab [UI].Elements.ToggleButtonIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
+    Container: IsHBox {
+        Icon: IconButton {}
     }
-    ActionUncheckedIcon: ActionAddComponents {
-        (CheckBoxState, Unchecked)
-        Code: {" | [UI].Icon: <\"e836\">"}
-        Target: {"Container.Icon"}
+}
+
+prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
+    Container.Icon: PaddingCenterButtonContent {}
+    Container.Label: TextButton, PaddingRightOnlyButtonContent {
+        Localized
+        Order: {1}
     }
 }
 

@@ -1,5 +1,4 @@
-English=Englisch
-German=Deutsch
-Italian=Italienisch
 Window=Fenster
+Layers=Schichten
 Hierarchy=Hierarchie
+Attributes=Eigenschaften

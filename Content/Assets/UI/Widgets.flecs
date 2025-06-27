@@ -12,12 +12,9 @@ prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}
 
-prefab [UI].Widgets.IsTextBlock: IsWidget {
-    TextBlock
-    Text
-}
+prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
 
-prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {}
+prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {Text}
 
 prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo, AlignCenter, PaddingIcon {
     FontFace: {"100"}

@@ -7,32 +7,48 @@ using [CORE].Actions
 
 [UI].ViewportMain {
     Viewport
-    ToolbarTopLeft: IsConstraintCanvas {
-        Container: IsHBox, PaddingNone, AlignTopLeft {
-            ToggleWindow: ToggleIconText {
-                Container.Icon {Icon: {"e6fa"}}
-                Container.Label {Text: {"IT::Window"}}
+    ToolbarTop: IsConstraintCanvas {
+        Left: IsHBox, PaddingNone, AlignTopLeft {
+            MenuWindows: IsMenu, PaddingNormal, AlignCenter {
+                ToggleWindow: ToggleButtonIconText {
+                    Container.Icon {Icon: {"e6fa"}}
+                    Container.Label {Text: {"IT::Window"}}
+                    ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
+                    ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
+                }
+                Container: MenuContainer, AlignCenterLeft {
+                    Layers: CheckBoxButton {
+                        Container.Label {Text: {"IT::Layers"}}
+                    }
+                    Hierarchy: CheckBoxButton {
+                        Container.Label {Text: {"IT::Hierarchy"}}
+                    }
+                    Attributes: CheckBoxButton {
+                        Container.Label {Text: {"IT::Attributes"}}
+                    }
+                    Layers {(CheckBoxState, Unchecked)}
+                    Hierarchy {(CheckBoxState, Unchecked)}
+                    Attributes {(CheckBoxState, Unchecked)}
+                }
             }
         }
-    }
-    ToolbarTopRight: IsConstraintCanvas {
-        Container: IsHBox, PaddingNone, AlignTopRight {
-            MenuLanguage: IsMenu, PaddingNormal, AlignCenter {
-                ToggleMenuLanguage: ToggleIcon {
+        Right: IsHBox, PaddingNone, AlignTopRight {
+            MenuLanguages: IsMenu, PaddingNormal, AlignCenter {
+                ToggleMenuLanguage: ToggleButtonIcon {
                     Container.Icon {Icon: {"e894"}}
                     ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
                     ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                 }
                 Container: MenuContainer, AlignCenterRight {
-                    English: Radio {
+                    English: RadioButton {
                         Container.Label {Text: {"English"}}
                         ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
                     }
-                    German: Radio {
+                    German: RadioButton {
                         Container.Label {Text: {"Deutsch"}}
                         ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
                     }
-                    Italian: Radio {
+                    Italian: RadioButton {
                         Container.Label {Text: {"Italiano"}}
                         ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
                     }
