@@ -21,7 +21,6 @@ using [CORE].Actions
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
-                            Brush: BrushSurfaceContainerLowest {}
                             Container {
                                 Layers: CheckBoxButton {
                                     Container.Label {Text: {"IT::Layers"}}
@@ -47,7 +46,6 @@ using [CORE].Actions
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
-                            Brush: BrushSurfaceContainerLowest {}
                             Container {
                                 English: RadioButton {
                                     Container.Label {Text: {"English"}}

@@ -46,6 +46,6 @@ prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
 prefab [UI].Elements.MenuBelowRight: IsMenu {MenuPlacement: {2}}
 prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNone {
     MenuContent
-    //Brush: BrushSurfaceContainerLow {}
+    Brush: BrushSurfaceContainerLowest {}
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }
