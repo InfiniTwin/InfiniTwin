@@ -8,8 +8,8 @@ using [UI].Styles
 
 prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     Container: IsHBox {
-        Icon: IsIcon {}
-        Label: TextButton, PaddingRightOnlyButtonContent {
+        Icon: IconSmall, PaddingIconUniform {}
+        Label: TextButton, PaddingButtonContentRightLeft {
             Localized
             Order: {1}
         }
@@ -21,8 +21,8 @@ prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNorma
 prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     [UI].Radio
     Container: IsHBox {
-        Icon: IsIcon {}
-        Label: TextButton, PaddingRightOnlyButtonContent {Order: {1}}
+        Icon: IconSmall, PaddingIconUniform {}
+        Label: TextButton, PaddingButtonContentRightLeft {Order: {1}}
     }
     ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e837\">"}}
     ActionRadioUncheckedIcon: ActionUncheckedIcon {}
@@ -30,13 +30,13 @@ prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, 
 
 prefab [UI].Elements.ToggleButtonIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
     Container: IsHBox {
-        Icon: IconButton {}
+        Icon: IconMedium {}
     }
 }
 
 prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
-    Container.Icon: PaddingCenterButtonContent {}
-    Container.Label: TextButton, PaddingRightOnlyButtonContent {
+    Container.Icon: PaddingButtonContentCenter {}
+    Container.Label: TextButton, PaddingButtonContentRight {
         Localized
         Order: {1}
     }

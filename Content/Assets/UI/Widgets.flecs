@@ -15,15 +15,14 @@ prefab [UI].Widgets.IsVBox: IsWidget {VBox}
 
 prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
 
-prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingCenterButtonContent {Text}
+prefab [UI].Widgets.TextButton: IsTextBlock, TextBodyMedium, AlignCenter, PaddingButtonContentCenter {Text}
 
 prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo, AlignCenter, PaddingIcon {
     FontFace: {"100"}
-    FontSize: {14}
     Icon: {"f89a"}
 }
-
-prefab [UI].Widgets.IconButton: IsIcon {}
+prefab [UI].Widgets.IconMedium: IsIcon {FontSize: {14}}
+prefab [UI].Widgets.IconSmall: IsIcon {FontSize: {10}}
 
 prefab [UI].Widgets.IsButton {Button}
 
