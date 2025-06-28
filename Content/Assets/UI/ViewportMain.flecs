@@ -10,7 +10,7 @@ using [CORE].Actions
     Viewport
     ToolbarTop: IsConstraintCanvas {
         Border: IsBorder, VAlignTop, HAlignFill, PaddingNone {
-            Brush: BrushSurfaceContainerLowest {}
+            Brush: BrushSurface {}
             Top: IsHBox, AlignFill, PaddingNone {
                 Left: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
                     MenuWindows: MenuBelow, AlignCenterLeft, PaddingNone {

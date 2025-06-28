@@ -8,7 +8,7 @@ using [UI].Styles
 
 prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     Container: IsHBox {
-        Icon: IconSmall, PaddingIconUniform {}
+        Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {
             Localized
             Order: {1}
@@ -21,7 +21,7 @@ prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNorma
 prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
     [UI].Radio
     Container: IsHBox {
-        Icon: IconSmall, PaddingIconUniform {}
+        Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {Order: {1}}
     }
     ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e837\">"}}
@@ -46,6 +46,6 @@ prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
 prefab [UI].Elements.MenuBelowRight: IsMenu {MenuPlacement: {2}}
 prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNone {
     MenuContent
-    Brush: BrushSurfaceContainerLowest {}
+    Brush: BrushSurface {}
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }

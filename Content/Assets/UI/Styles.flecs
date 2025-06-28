@@ -7,42 +7,22 @@ prefab [UI].Styles.BrushBorder {BrushType: {2}}
 prefab [UI].Styles.BrushImage {BrushType: {3}}
 prefab [UI].Styles.BrushRound {BrushType: {4}}
 
-prefab [UI].Styles.OutlineWidthOne {Width: {1}}
-
-prefab [UI].Styles.BrushRoundOutlined: BrushRound {
-    Outline: ColorOutlineVariant, OutlineWidthOne {}
-}
-
-prefab [UI].Styles.ColorBrushNormal: ColorOnPrimaryFixed {}
-prefab [UI].Styles.ColorBrushNormalON: ColorOnPrimaryFixedVariant {}
-
-prefab [UI].Styles.ColorBrushHovered: ColorOnPrimaryFixed {}
-prefab [UI].Styles.ColorBrushHoveredON: ColorOnPrimaryFixedVariant {}
-
-prefab [UI].Styles.ColorBrushPressed: ColorOnPrimaryFixedVariant {}
-prefab [UI].Styles.ColorBrushPressedON: ColorOnPrimaryFixed {}
-
-prefab [UI].Styles.ColorForegroundNormal: ColorPrimaryFixed {}
-prefab [UI].Styles.ColorForegroundHovered: ColorPrimaryFixedDim {}
-
-prefab [UI].Styles.ButtonRoundOutlined : IsButton {
-    ButtonStyle
-    BrushNormal: ColorBrushNormal, BrushRoundOutlined, PaddingNone {}
-    BrushHovered: ColorBrushHovered, BrushRoundOutlined {}
-    BrushPressed: ColorBrushPressed, BrushRoundOutlined, PaddingNone {}
+prefab [UI].Styles.BrushRoundNormalNoOutline: BrushRound {
+    Outline: ColorTransparent {
+        Radii: {4, 4, 4, 4}
+    }
 }
 
 prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     CheckBoxStyle
-    BrushNormalOFF: ColorBrushNormal, BrushRoundOutlined {}
-    BrushNormalON: ColorBrushNormalON, BrushRoundOutlined {}
-    BrushHoveredOFF: ColorBrushHovered, BrushRoundOutlined {}
-    BrushHoveredON: ColorBrushHoveredON, BrushRoundOutlined {}    
-    BrushPressedOFF: ColorBrushPressed, BrushRoundOutlined {}
-    BrushPressedON: ColorBrushPressedON, BrushRoundOutlined {}
-    ForegroundNormal: ColorForegroundNormal {}
-    ForegroundHovered: ColorForegroundHovered {}
+    BrushNormalOFF: ColorTransparent, BrushRoundNormalNoOutline {}
+    BrushNormalON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    BrushHoveredOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    BrushHoveredON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}    
+    BrushPressedOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    BrushPressedON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    ForegroundNormal: ColorOnSurface {}
+    ForegroundHovered: ColorOnSurface {}
 }
 
-prefab [UI].Styles.BrushSurfaceContainerLowest: ColorSurfaceContainerLowest, BrushBox {Brush}
-prefab [UI].Styles.BrushSurfaceContainerLow: ColorSurfaceContainerLow, BrushBox {Brush}
+prefab [UI].Styles.BrushSurface: ColorSurfaceContainerLowest, BrushBox {Brush}
