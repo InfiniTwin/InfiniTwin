@@ -16,7 +16,7 @@ prefab [UI].Styles.BrushRoundNormalNoOutline: BrushRound {
 prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     CheckBoxStyle
     BrushNormalOFF: ColorTransparent, BrushRoundNormalNoOutline {}
-    BrushNormalON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    BrushNormalON: ColorPrimaryContainer, BrushRoundNormalNoOutline {}
     BrushHoveredOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
     BrushHoveredON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}    
     BrushPressedOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}

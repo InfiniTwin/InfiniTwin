@@ -49,7 +49,7 @@ using [CORE].Actions
                             Container {
                                 English: RadioButton {
                                     Container.Label {Text: {"English"}}
-                                    ActionLanguageEN: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}}
+                                    ActionLanguageEN: ActionSetLanguage {}
                                 }
                                 German: RadioButton {
                                     Container.Label {Text: {"Deutsch"}}

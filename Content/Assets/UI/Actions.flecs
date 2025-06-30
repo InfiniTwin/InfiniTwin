@@ -41,24 +41,3 @@ prefab [CORE].Actions.ActionSetLanguage: ActionSetSingletons {
     (CheckBoxState, Checked)
     Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}
 }
-
-prefab [CORE].Actions.ActionNormalBoxRoundOutlined: ActionSwitchPairs {
-    (ButtonState, Normal)
-    Code: {"[IsA],[UI].Colors.ColorPrimary"}
-    //Singletons
-    //Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\"> | UIScale: <2>"}
-}
-
-prefab [CORE].Actions.ActionHoveredBoxRoundOutlined: ActionSwitchPairs {
-    (ButtonState, Hovered)
-    Code: {"[IsA],[UI].Colors.ColorError"}
-    //Singletons
-    //Code: {"using [UI]\\n\\n\$Locale,\"it\";UIScale,1.5"}
-}
-
-prefab [CORE].Actions.ActionPressedBoxRoundOutlined: ActionSwitchPairs {
-    (ButtonState, Pressed)
-    Code: {"[IsA],[UI].Colors.ColorSecondary"}
-    //Singletons
-    //Code: {"using [UI]\\n\\n\$Locale,\"de\";UIScale,2"}
-}
