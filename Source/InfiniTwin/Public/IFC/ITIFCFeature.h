@@ -4,9 +4,8 @@
 
 #include <flecs.h>
 
-namespace UI{
-	struct ITUI {
-	public:
-		ITUI(flecs::world& world);
+namespace IFC {
+	struct ITIFCFeature {
+		static void Initialize(flecs::world& world);
 	};
 }

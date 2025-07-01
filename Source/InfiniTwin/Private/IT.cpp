@@ -5,6 +5,7 @@
 #include "ECSCore.h"
 #include "flecs.h"
 #include "UI/ITUI.h"
+#include "IFC/ITIFC.h"
 #include "Tickable.h"
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
@@ -12,6 +13,7 @@ void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 		UECSSubsystem* ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
 		ecs->World->import<ECS::Core>();
 		ecs->World->import<UI::ITUI>();
+		ecs->World->import<IFC::ITIFC>();
 		});
 
 	Super::Initialize(Collection);

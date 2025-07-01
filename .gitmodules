@@ -7,3 +7,6 @@
 [submodule "Plugins/UIElements"]
 	path = Plugins/UIElements
 	url = https://github.com/InfiniTwin/UIElements.git
+[submodule "Plugins/IFC"]
+	path = Plugins/IFC
+	url = https://github.com/InfiniTwin/IFC.git
