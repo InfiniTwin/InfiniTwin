@@ -18,9 +18,9 @@ prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     BrushNormalOFF: ColorTransparent, BrushRoundNormalNoOutline {}
     BrushNormalON: ColorPrimaryContainer, BrushRoundNormalNoOutline {}
     BrushHoveredOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
-    BrushHoveredON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}    
+    BrushHoveredON: ColorPrimaryContainer, BrushRoundNormalNoOutline {}    
     BrushPressedOFF: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
-    BrushPressedON: ColorSurfaceContainerLow, BrushRoundNormalNoOutline {}
+    BrushPressedON: ColorPrimaryContainer, BrushRoundNormalNoOutline {}
     ForegroundNormal: ColorOnSurface {}
     ForegroundHovered: ColorOnSurface {}
 }
