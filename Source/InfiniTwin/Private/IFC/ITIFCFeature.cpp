@@ -12,8 +12,5 @@
 namespace IFC {
 	void ITIFCFeature::Initialize(flecs::world& world) {
 		ECS::Tokens.Add(TEXT("[IFC]"), IFC::Scope() = "IFC.ITIFC");
-
-		using namespace ECS;
-		RunScript(world, "IFC/HelloWall");
 	}
 }

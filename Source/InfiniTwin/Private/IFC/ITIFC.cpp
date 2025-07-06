@@ -12,5 +12,7 @@ namespace IFC{
 		IFC::Register(world);
 
 		ITIFCFeature::Initialize(world);
+	
+		LoadIFCFile(world, "A:/InfiniTwinOrg/IFC5-development/examples/Hello Wall/hello-wall.ifcx");
 	}
 }
