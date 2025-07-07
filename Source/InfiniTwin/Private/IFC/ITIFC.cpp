@@ -2,7 +2,7 @@
 
 
 #include "IFC/ITIFC.h"
-#include <IFC.h>
+#include "ECS.h"
 #include "IFC/ITIFCFeature.h"
 
 namespace IFC{

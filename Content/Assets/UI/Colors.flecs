@@ -47,4 +47,4 @@ prefab [UI].Colors.ColorTertiaryFixed {Color}
 prefab [UI].Colors.ColorTertiaryFixedDim {Color}
 prefab [UI].Colors.ColorOnTertiaryFixed {Color}
 prefab [UI].Colors.ColorOnTertiaryFixedVariant {Color}
-prefab [UI].Colors.ColorTransparent {Color: {"0x00000000"}}
+prefab [UI].Colors.ColorTransparent {Color: {{0,0,0,0}}}
