@@ -3,6 +3,7 @@
 
 #include "IFC/ITIFCFeature.h"
 #include "ECS.h"
+#include "IFC.h"
 
 #if PLATFORM_WINDOWS
 #include <Windows.h>

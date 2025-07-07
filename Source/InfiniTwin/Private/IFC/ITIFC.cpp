@@ -3,6 +3,7 @@
 
 #include "IFC/ITIFC.h"
 #include "ECS.h"
+#include "IFC.h"
 #include "IFC/ITIFCFeature.h"
 
 namespace IFC{
