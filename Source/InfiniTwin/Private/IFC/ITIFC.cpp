@@ -6,14 +6,22 @@
 #include "IFC.h"
 #include "IFC/ITIFCFeature.h"
 
-namespace IFC{
+namespace IFC {
 	ITIFC::ITIFC(flecs::world& world) {
 		world.module<ITIFC>();
 
 		IFC::Register(world);
 
 		ITIFCFeature::Initialize(world);
-	
-		LoadIFCFile(world, "A:/InfiniTwinOrg/IFC5-development/examples/Hello Wall/hello-wall.ifcx");
+
+		//ECS::RunScript(world, "IFC/HelloWall");
+
+		TArray<FString> ifcFilePaths = {
+			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/hello-wall.ifcx"),
+			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/hello-wall-add-fire-rating-30.ifcx"),
+			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/advanced/3rd-window.ifcx"),
+			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/advanced/add-2nd-storey.ifcx"),
+		};
+		LoadIFCFiles(world, ifcFilePaths);
 	}
 }

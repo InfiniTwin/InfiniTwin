@@ -24,6 +24,8 @@ using [CORE].Actions
                             Container {
                                 Layers: CheckBoxButton {
                                     Container.Label {Text: {"IT::Layers"}}
+                                    Window: IsWindow {}
+                                    ActionMenuOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Hierarchy: CheckBoxButton {
                                     Container.Label {Text: {"IT::Hierarchy"}}

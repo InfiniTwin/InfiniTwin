@@ -37,6 +37,11 @@ prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
     Target: {"<"}
 }
 
+prefab [CORE].Actions.ActionWindowOpen: ActionAddComponents {
+    Code: {" | (WidgetState, Opened)"}
+    Target: {"Window"}
+}
+
 prefab [CORE].Actions.ActionSetLanguage: ActionSetSingletons {
     (CheckBoxState, Checked)
     Code: {"using [UI]\\n\\n\$ < | Locale: <\"en\">"}
