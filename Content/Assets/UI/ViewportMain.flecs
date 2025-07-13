@@ -35,14 +35,18 @@ const italianLabel: "Italiano"
                             Container {
                                 Layers: CheckBoxButton {
                                     Container.Label {Text: {$layersLabel}}
-                                    Window: IsWindow {Text: {$layersLabel}}
+                                    Window: IFCWindow {Text: {$layersLabel}}
                                     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Hierarchy: CheckBoxButton {
                                     Container.Label {Text: {$hierarchyLabel}}
+                                    Window: IFCWindow {Text: {$hierarchyLabel}}
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Attributes: CheckBoxButton {
                                     Container.Label {Text: {$attributesLabel}}
+                                    Window: IFCWindow {Text: {$attributesLabel}}
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
                                 Hierarchy {(CheckBoxState, Unchecked)}

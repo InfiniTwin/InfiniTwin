@@ -34,7 +34,6 @@ prefab [UI].Widgets.IsToggle {
 prefab [UI].Widgets.IsMenu: IsWidget {Menu}
 
 prefab [UI].Widgets.IsWindow {
-    Widget
     Window
     WindowTitle
     Localized

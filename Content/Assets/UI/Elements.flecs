@@ -49,3 +49,5 @@ prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNon
     Brush: BrushSurface {}
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }
+
+prefab [UI].Elements.IFCWindow: IsWidget, WindowBox {}
