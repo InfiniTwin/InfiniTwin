@@ -6,6 +6,17 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
+const windowIcon: "e6fa" // Select Window
+const windowLabel: "IT::Window"
+const layersLabel: "IT::Layers"
+const hierarchyLabel: "IT::Hierarchy"
+const attributesLabel: "IT::Attributes"
+
+const languageIcon: "e894" // Language
+const englishLabel: "English"
+const germanLabel: "Deutsch"
+const italianLabel: "Italiano"
+
 [UI].ViewportMain {
     Viewport
     ToolbarTop: IsConstraintCanvas {
@@ -15,23 +26,23 @@ using [CORE].Actions
                 Left: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
                     MenuWindows: MenuBelow, AlignCenterLeft, PaddingNone {
                         ToggleWindow: ToggleButtonIconText {
-                            Container.Icon {Icon: {"e6fa"}}
-                            Container.Label {Text: {"IT::Window"}}
+                            Container.Icon {Icon: {$windowIcon}}
+                            Container.Label {Text: {$windowLabel}}
                             ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
                             Container {
                                 Layers: CheckBoxButton {
-                                    Container.Label {Text: {"IT::Layers"}}
-                                    Window: IsWindow {}
-                                    ActionMenuOpen: ActionWindowOpen {(CheckBoxState, Checked)}
+                                    Container.Label {Text: {$layersLabel}}
+                                    Window: IsWindow {Text: {$layersLabel}}
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Hierarchy: CheckBoxButton {
-                                    Container.Label {Text: {"IT::Hierarchy"}}
+                                    Container.Label {Text: {$hierarchyLabel}}
                                 }
                                 Attributes: CheckBoxButton {
-                                    Container.Label {Text: {"IT::Attributes"}}
+                                    Container.Label {Text: {$attributesLabel}}
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
                                 Hierarchy {(CheckBoxState, Unchecked)}
@@ -43,22 +54,22 @@ using [CORE].Actions
                 Right: IsHBox, FillWidthOne, AlignCenterRight, PaddingNone {
                     MenuLanguages: MenuBelowRight, AlignCenterRight, PaddingNone {
                         ToggleMenuLanguage: ToggleButtonIcon {
-                            Container.Icon {Icon: {"e894"}}
+                            Container.Icon {Icon: {$languageIcon}}
                             ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
                             Container {
                                 English: RadioButton {
-                                    Container.Label {Text: {"English"}}
+                                    Container.Label {Text: {$englishLabel}}
                                     ActionLanguageEN: ActionSetLanguage {}
                                 }
                                 German: RadioButton {
-                                    Container.Label {Text: {"Deutsch"}}
+                                    Container.Label {Text: {$germanLabel}}
                                     ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
                                 }
                                 Italian: RadioButton {
-                                    Container.Label {Text: {"Italiano"}}
+                                    Container.Label {Text: {$italianLabel}}
                                     ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
                                 }
                                 English {(CheckBoxState, Checked)}
