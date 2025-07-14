@@ -35,12 +35,27 @@ const italianLabel: "Italiano"
                             Container {
                                 Layers: CheckBoxButton {
                                     Container.Label {Text: {$layersLabel}}
+                                    Window: IsWindow {
+                                        Text: {$layersLabel}
+                                        ActionOpenContent {Script: {"UI/IT/WindowLayers"}}
+                                    }
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Hierarchy: CheckBoxButton {
                                     Container.Label {Text: {$hierarchyLabel}}
+                                    Window: IsWindow {Text: {
+                                        $hierarchyLabel}
+                                        ActionOpenContent {Script: {"UI/IT/WindowHierarchy"}}
+                                    }
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Attributes: CheckBoxButton {
                                     Container.Label {Text: {$attributesLabel}}
+                                    Window: IsWindow {Text: {
+                                        $attributesLabel}
+                                        ActionOpenContent {Script: {"UI/IT/WindowAttributes"}}
+                                    }
+                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
                                 Hierarchy {(CheckBoxState, Unchecked)}
@@ -80,19 +95,4 @@ const italianLabel: "Italiano"
             }
         }
     }
-}
-
-[UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Layers {
-    Window: IsWindow {Text: {$layersLabel}}
-    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
-}
-
-[UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Hierarchy {
-    Window: IsWindow {Text: {$hierarchyLabel}}
-    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
-}
-
-[UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Attributes {
-    Window: IsWindow {Text: {$attributesLabel}}
-    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
 }

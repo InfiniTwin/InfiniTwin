@@ -15,6 +15,12 @@ prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
 prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
 
+prefab [CORE].Actions.ActionRunScript {
+    Action
+    (Operation, Run)
+    Script
+}
+
 prefab [CORE].Actions.ActionCheckedIcon: ActionAddComponents {
     (CheckBoxState, Checked)
     Code: {" | [UI].Icon: <\"e86c\">"}

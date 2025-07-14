@@ -15,18 +15,13 @@ namespace UI {
 	void ITUIFeature::Initialize(flecs::world& world) {
 		SetupViewport();
 
-		ECS::Tokens.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
-
 		using namespace ECS;
-		RunScript(world, "UI/Colors");
-		RunScript(world, "UI/Texts");
-		RunScript(world, "UI/Layout");
-		RunScript(world, "UI/Widgets");
-		RunScript(world, "UI/Styles");
-		RunScript(world, "UI/Actions");
-		RunScript(world, "UI/Elements");
-		RunScript(world, "UI/Settings");
-		RunScript(world, "UI/ViewportMain");
+
+		Tokens.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
+
+		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "Settings" });
+
+		RunScript(world, "UI/IT/ViewportMain");
 	}
 
 	void ITUIFeature::SetupViewport() {
