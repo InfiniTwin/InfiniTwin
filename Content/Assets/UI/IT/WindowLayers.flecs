@@ -7,5 +7,5 @@ using [CORE]
 using [CORE].Actions
 
 [UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Layers.Window {
-    
+    Background: IsBorder {Brush: BrushSurface {}}
 }
