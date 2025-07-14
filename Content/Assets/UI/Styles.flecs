@@ -12,8 +12,8 @@ prefab [UI].Styles.BrushRoundNormalNoOutline: BrushRound {
         Radii: {4, 4, 4, 4}
     }
 }
-prefab [UI].Styles.BrushBackground: ColorSurfaceContainerLowest, BrushBox {}
-prefab [UI].Styles.BrushSurface: BrushBackground {Brush}
+
+prefab [UI].Styles.BrushSurface: ColorSurfaceContainerLowest, BrushBox {Brush}
 
 prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     CheckBoxStyle
@@ -25,9 +25,4 @@ prefab [UI].Styles.ToggleRoundOutlined : IsToggle, PaddingNone {
     BrushPressedON: ColorPrimaryContainer, BrushRoundNormalNoOutline {}
     ForegroundNormal: ColorOnSurface {}
     ForegroundHovered: ColorOnSurface {}
-}
-
-prefab [UI].Styles.WindowBox: IsWindow {
-    WindowStyle
-    BackgroundBrush: BrushBackground {}
 }

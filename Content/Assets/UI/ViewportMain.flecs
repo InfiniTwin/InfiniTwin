@@ -83,16 +83,16 @@ const italianLabel: "Italiano"
 }
 
 [UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Layers {
-    Window: IFCWindow {Text: {$layersLabel}}
+    Window: IsWindow {Text: {$layersLabel}}
     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
 }
 
 [UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Hierarchy {
-    Window: IFCWindow {Text: {$hierarchyLabel}}
+    Window: IsWindow {Text: {$hierarchyLabel}}
     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
 }
 
 [UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Attributes {
-    Window: IFCWindow {Text: {$attributesLabel}}
+    Window: IsWindow {Text: {$attributesLabel}}
     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
 }

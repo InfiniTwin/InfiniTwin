@@ -50,4 +50,9 @@ prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNon
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }
 
-prefab [UI].Elements.IFCWindow: IsWidget, WindowBox {}
+prefab [UI].Elements.IsWindow {
+    Widget
+    Window
+    WindowTitle
+    Localized
+}
