@@ -6,7 +6,7 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
+prefab [UI].Elements.CheckBoxButton: IsWidget, CheckBoxRound, PaddingNormal, AlignFill {
     Container: IsHBox {
         Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {
@@ -18,7 +18,7 @@ prefab [UI].Elements.CheckBoxButton: IsWidget, ToggleRoundOutlined, PaddingNorma
     ActionCheckBoxUncheckedIcon: ActionUncheckedIcon {}
 }
 
-prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignFill {
+prefab [UI].Elements.RadioButton: IsWidget, CheckBoxRound, PaddingNormal, AlignFill {
     [UI].Radio
     Container: IsHBox {
         Icon: IconSmall, PaddingIcon {}
@@ -28,7 +28,7 @@ prefab [UI].Elements.RadioButton: IsWidget, ToggleRoundOutlined, PaddingNormal, 
     ActionRadioUncheckedIcon: ActionUncheckedIcon {}
 }
 
-prefab [UI].Elements.ToggleButtonIcon: IsWidget, ToggleRoundOutlined, PaddingNormal, AlignCenter {
+prefab [UI].Elements.ToggleButtonIcon: IsWidget, CheckBoxRound, PaddingNormal, AlignCenter {
     Container: IsHBox {
         Icon: IconMedium {}
     }
@@ -44,13 +44,13 @@ prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
 
 prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
 prefab [UI].Elements.MenuBelowRight: IsMenu {MenuPlacement: {2}}
-prefab [UI].Elements.VMenuContent: IsBorder, VAlignTop, HAlignCenter, PaddingNone {
+prefab [UI].Elements.VMenuContent: BorderSurfaceLowest, VAlignTop, HAlignCenter, PaddingNone {
     MenuContent
-    Brush: BrushSurface {}
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }
 
 prefab [UI].Elements.IsWindow {
+    Size: {{600, 400}}
     Widget
     Window
     WindowTitle

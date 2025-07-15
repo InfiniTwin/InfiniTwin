@@ -6,6 +6,12 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-[UI].ViewportMain.ToolbarTop.Border.Top.Left.MenuWindows.Content.Container.Layers.Window {
-    Background: IsBorder {Brush: BrushSurface {}}
+[UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container.Layers.Window {
+    Content: BorderSurfaceLowest {
+        Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
+            TopBar: BorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}
+            Collection: IsVBox, FillHeightOne, AlignCenter, PaddingNone {}
+            BottomBar: BorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {}
+        }
+    }
 }
