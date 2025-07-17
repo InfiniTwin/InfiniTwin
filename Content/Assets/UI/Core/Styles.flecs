@@ -16,7 +16,14 @@ prefab [UI].Styles.BrushRoundNormal: BrushRound {
 prefab [UI].Styles.BrushSurfaceLowest: ColorSurfaceContainerLowest, BrushBox {Brush}
 prefab [UI].Styles.BrushSurfaceLow: ColorSurfaceContainerLow, BrushBox {Brush}
 
-prefab [UI].Styles.CheckBoxRound : IsToggle, PaddingNone {
+prefab [UI].Styles.StyleButtonRound : IsButton, PaddingNone {
+    ButtonStyle
+    BrushNormal: ColorTransparent, BrushRoundNormal, PaddingNone {}
+    BrushHovered: ColorPrimaryContainer, BrushRoundNormal {}    
+    BrushPressed: ColorSurfaceContainerLow, BrushRoundNormal, PaddingNone {}
+}
+
+prefab [UI].Styles.StyleCheckBoxRound : IsToggle, PaddingNone {
     CheckBoxStyle
     BrushNormalOFF: ColorTransparent, BrushRoundNormal {}
     BrushNormalON: ColorPrimaryContainer, BrushRoundNormal {}
@@ -28,5 +35,5 @@ prefab [UI].Styles.CheckBoxRound : IsToggle, PaddingNone {
     ForegroundHovered: ColorOnSurface {}
 }
 
-prefab [UI].Styles.BorderSurfaceLowest: IsBorder {Brush: BrushSurfaceLowest {}}
-prefab [UI].Styles.BorderSurfaceLow: IsBorder {Brush: BrushSurfaceLow {}}
+prefab [UI].Styles.StyleBorderSurfaceLowest: IsBorder {Brush: BrushSurfaceLowest {}}
+prefab [UI].Styles.StyleBorderSurfaceLow: IsBorder {Brush: BrushSurfaceLow {}}

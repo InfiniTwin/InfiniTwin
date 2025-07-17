@@ -6,7 +6,13 @@ using [UI].Layout
 using [UI].Widgets
 using [UI].Styles
 
-prefab [UI].Elements.CheckBoxButton: IsWidget, CheckBoxRound, PaddingNormal, AlignFill {
+prefab [UI].Elements.ElementButtonIcon: IsWidget, StyleButtonRound, PaddingNormal, AlignCenter {
+    Container: IsHBox {
+        Icon: IconMedium, PaddingNone {}
+    }
+}
+
+prefab [UI].Elements.ElementCheckBox: IsWidget, StyleCheckBoxRound, PaddingNormal, AlignFill {
     Container: IsHBox {
         Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {
@@ -18,8 +24,8 @@ prefab [UI].Elements.CheckBoxButton: IsWidget, CheckBoxRound, PaddingNormal, Ali
     ActionCheckBoxUncheckedIcon: ActionUncheckedIcon {}
 }
 
-prefab [UI].Elements.RadioButton: IsWidget, CheckBoxRound, PaddingNormal, AlignFill {
-    [UI].Radio
+prefab [UI].Elements.ElementRadio: IsWidget, StyleCheckBoxRound, PaddingNormal, AlignFill {
+    Radio
     Container: IsHBox {
         Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {Order: {1}}
@@ -28,13 +34,13 @@ prefab [UI].Elements.RadioButton: IsWidget, CheckBoxRound, PaddingNormal, AlignF
     ActionRadioUncheckedIcon: ActionUncheckedIcon {}
 }
 
-prefab [UI].Elements.ToggleButtonIcon: IsWidget, CheckBoxRound, PaddingNormal, AlignCenter {
+prefab [UI].Elements.ElementToggleIcon: IsWidget, StyleCheckBoxRound, PaddingNormal, AlignCenter {
     Container: IsHBox {
-        Icon: IconMedium {}
+        Icon: IconMedium, PaddingIcon {}
     }
 }
 
-prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
+prefab [UI].Elements.ElementToggleIconText: ElementToggleIcon {
     Container.Icon: PaddingButtonContentCenter {}
     Container.Label: TextButton, PaddingButtonContentRight {
         Localized
@@ -44,7 +50,7 @@ prefab [UI].Elements.ToggleButtonIconText: ToggleButtonIcon {
 
 prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
 prefab [UI].Elements.MenuBelowRight: IsMenu {MenuPlacement: {2}}
-prefab [UI].Elements.VMenuContent: BorderSurfaceLowest, VAlignTop, HAlignCenter, PaddingNone {
+prefab [UI].Elements.VMenuContent: StyleBorderSurfaceLowest, VAlignTop, HAlignCenter, PaddingNone {
     MenuContent
     Container: IsVBox, AlignCenter, PaddingNormal {}
 }
@@ -58,4 +64,8 @@ prefab [UI].Elements.IsWindow {
     ActionOpenContent: ActionRunScript {
         (WidgetState, Opened)
     }
+}
+
+prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
+    Container.Icon {[UI].Icon: {"f3dd"}} // Add 2
 }

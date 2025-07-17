@@ -7,11 +7,20 @@ using [CORE]
 using [CORE].Actions
 
 [UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container.Layers.Window {
-    Content: BorderSurfaceLowest {
+    Content: StyleBorderSurfaceLowest {
         Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
-            TopBar: BorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}
+            TopBar: StyleBorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}
             Collection: IsVBox, FillHeightOne, AlignCenter, PaddingNone {}
-            BottomBar: BorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {}
+            BottomBar: StyleBorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {
+                Container: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
+                    ButtonAddLayers: ButtonAdd {
+                        ActionAddLayers: ActionAdd {
+                            (ButtonState, Clicked)
+                            [IFC].Layer
+                        }
+                    }
+                }
+            }
         }
     }
 }

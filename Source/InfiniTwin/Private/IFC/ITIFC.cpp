@@ -15,13 +15,5 @@ namespace IFC {
 		ITIFCFeature::Initialize(world);
 
 		//ECS::RunScript(world, "IFC/HelloWall");
-
-		TArray<FString> ifcFilePaths = {
-			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/hello-wall.ifcx"),
-			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/hello-wall-add-fire-rating-30.ifcx"),
-			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/advanced/3rd-window.ifcx"),
-			TEXT("D:/Projects/Explore/IFC5-development/examples/Hello Wall/advanced/add-2nd-storey.ifcx"),
-		};
-		LoadIFCFiles(world, ifcFilePaths);
 	}
 }

@@ -6,52 +6,52 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-const windowIcon: "e6fa" // Select Window
-const windowLabel: "IT::Window"
-const layersLabel: "IT::Layers"
-const hierarchyLabel: "IT::Hierarchy"
-const attributesLabel: "IT::Attributes"
+const iconWindow: "e6fa" // Select Window
+const labelWindow: "IT::Window"
+const labelLayers: "IT::Layers"
+const labelHierarchy: "IT::Hierarchy"
+const labelAttributes: "IT::Attributes"
 
-const languageIcon: "e894" // Language
-const englishLabel: "English"
-const germanLabel: "Deutsch"
-const italianLabel: "Italiano"
+const iconLanguage: "e894" // Language
+const labelEnglish: "English"
+const labelGerman: "Deutsch"
+const labelItalian: "Italiano"
 
 [UI].ViewportMain {
     Viewport
     ToolbarTop: IsConstraintCanvas {
-        Content: BorderSurfaceLowest, VAlignTop, HAlignFill, PaddingNone {
+        Content: StyleBorderSurfaceLowest, VAlignTop, HAlignFill, PaddingNone {
             Top: IsHBox, AlignFill, PaddingNone {
                 Left: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
                     MenuWindows: MenuBelow, AlignCenterLeft, PaddingNone {
-                        ToggleWindow: ToggleButtonIconText {
-                            Container.Icon {Icon: {$windowIcon}}
-                            Container.Label {Text: {$windowLabel}}
+                        ToggleWindow: ElementToggleIconText {
+                            Container.Icon {Icon: {$iconWindow}}
+                            Container.Label {Text: {$labelWindow}}
                             ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
                             Container {
-                                Layers: CheckBoxButton {
-                                    Container.Label {Text: {$layersLabel}}
+                                Layers: ElementCheckBox {
+                                    Container.Label {Text: {$labelLayers}}
                                     Window: IsWindow {
-                                        Text: {$layersLabel}
+                                        Text: {$labelLayers}
                                         ActionOpenContent {Script: {"UI/IT/WindowLayers"}}
                                     }
                                     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
-                                Hierarchy: CheckBoxButton {
-                                    Container.Label {Text: {$hierarchyLabel}}
+                                Hierarchy: ElementCheckBox {
+                                    Container.Label {Text: {$labelHierarchy}}
                                     Window: IsWindow {Text: {
-                                        $hierarchyLabel}
+                                        $labelHierarchy}
                                         ActionOpenContent {Script: {"UI/IT/WindowHierarchy"}}
                                     }
                                     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
-                                Attributes: CheckBoxButton {
-                                    Container.Label {Text: {$attributesLabel}}
+                                Attributes: ElementCheckBox {
+                                    Container.Label {Text: {$labelAttributes}}
                                     Window: IsWindow {Text: {
-                                        $attributesLabel}
+                                        $labelAttributes}
                                         ActionOpenContent {Script: {"UI/IT/WindowAttributes"}}
                                     }
                                     ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
@@ -65,23 +65,23 @@ const italianLabel: "Italiano"
                 }
                 Right: IsHBox, FillWidthOne, AlignCenterRight, PaddingNone {
                     MenuLanguages: MenuBelowRight, AlignCenterRight, PaddingNone {
-                        ToggleMenuLanguage: ToggleButtonIcon {
-                            Container.Icon {Icon: {$languageIcon}}
+                        ToggleMenuLanguage: ElementToggleIcon {
+                            Container.Icon {Icon: {$iconLanguage}}
                             ActionMenuOpen: ActionWidgetOpen {(CheckBoxState, Checked)}
                             ActionMenuClose: ActionWidgetClose {(CheckBoxState, Unchecked)}
                         }
                         Content: VMenuContent {
                             Container {
-                                English: RadioButton {
-                                    Container.Label {Text: {$englishLabel}}
+                                English: ElementRadio {
+                                    Container.Label {Text: {$labelEnglish}}
                                     ActionLanguageEN: ActionSetLanguage {}
                                 }
-                                German: RadioButton {
-                                    Container.Label {Text: {$germanLabel}}
+                                German: ElementRadio {
+                                    Container.Label {Text: {$labelGerman}}
                                     ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
                                 }
-                                Italian: RadioButton {
-                                    Container.Label {Text: {$italianLabel}}
+                                Italian: ElementRadio {
+                                    Container.Label {Text: {$labelItalian}}
                                     ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
                                 }
                                 English {(CheckBoxState, Checked)}
