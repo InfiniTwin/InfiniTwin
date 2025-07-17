@@ -2,3 +2,4 @@ Window=Finestra
 Layers=Strati
 Hierarchy=Gerarchia
 Attributes=Attributi
+LoadIfcDialogTitle=Carica file IFC

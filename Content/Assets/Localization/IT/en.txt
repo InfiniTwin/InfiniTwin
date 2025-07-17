@@ -2,3 +2,4 @@ Window=Window
 Layers=Layers
 Hierarchy=Hierarchy
 Attributes=Attributes
+LoadIfcDialogTitle=Load IFC Files

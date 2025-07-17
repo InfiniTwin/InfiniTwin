@@ -2,3 +2,4 @@ Window=Fenster
 Layers=Schichten
 Hierarchy=Hierarchie
 Attributes=Eigenschaften
+LoadIfcDialogTitle=IFC-Dateien laden
