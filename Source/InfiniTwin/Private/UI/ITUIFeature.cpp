@@ -21,7 +21,7 @@ namespace UI {
 
 		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "Settings" });
 
-		RunScript(world, "UI/IT/ViewportMain");
+		RunScript(world, "UI/IT/", "ViewportMain");
 	}
 
 	void ITUIFeature::SetupViewport() {

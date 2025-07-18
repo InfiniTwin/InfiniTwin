@@ -15,8 +15,7 @@ prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
 prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
 
-prefab [CORE].Actions.ActionRunScript {
-    Action
+prefab [CORE].Actions.ActionRunScript: IsAction {
     (Operation, Run)
     Script
 }
@@ -41,11 +40,6 @@ prefab [CORE].Actions.ActionWidgetOpen: ActionAddComponents {
 prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
     Code: {" | (WidgetState, Closed)"}
     Target: {"<"}
-}
-
-prefab [CORE].Actions.ActionWindowOpen: ActionAddComponents {
-    Code: {" | (WidgetState, Opened)"}
-    Target: {"Window"}
 }
 
 prefab [CORE].Actions.ActionSetLanguage: ActionSetSingletons {

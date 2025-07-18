@@ -8,7 +8,7 @@ using [CORE].Actions
 
 const labelLayers: "IT::Layers"
 
-[UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container.Layers.Window: IsWindow {
+[TARGET].Window: IsWindow {
     Text: {$labelLayers}
     (WidgetState, Opened)
     Content: StyleBorderSurfaceLowest {
