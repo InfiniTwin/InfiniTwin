@@ -15,10 +15,42 @@ prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
 prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
 
+// SCRIPT
+
 prefab [CORE].Actions.ActionRunScript: IsAction {
     (Operation, Run)
     Script
 }
+
+// WIDGET
+
+prefab [CORE].Actions.ActionWidgetEnable: ActionAddComponents {
+    Code: {" | (Visibility, Visible)"}
+}
+
+prefab [CORE].Actions.ActionWidgetCollapse: ActionAddComponents {
+    Code: {" | (Visibility, Collapsed)"}
+}
+
+prefab [CORE].Actions.ActionWidgetDisable: ActionAddComponents {
+    Code: {" | (Visibility, HitTestInvisible)"}
+}
+
+prefab [CORE].Actions.ActionWidgetDisableSelf: ActionAddComponents {
+    Code: {" | (Visibility, SelfHitTestInvisible)"}
+}
+
+prefab [CORE].Actions.ActionWidgetOpen: ActionAddComponents {
+    Code: {" | (WidgetState, Opened)"}
+    Target: {"<"}
+}
+
+prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
+    Code: {" | (WidgetState, Closed)"}
+    Target: {"<"}
+}
+
+// CHECKBOX 
 
 prefab [CORE].Actions.ActionCheckedIcon: ActionAddComponents {
     (CheckBoxState, Checked)
@@ -32,15 +64,11 @@ prefab [CORE].Actions.ActionUncheckedIcon: ActionAddComponents {
     Target: {"Container.Icon"}
 }
 
-prefab [CORE].Actions.ActionWidgetOpen: ActionAddComponents {
-    Code: {" | (WidgetState, Opened)"}
-    Target: {"<"}
+prefab [CORE].Actions.ActionCheckBoxUncheck: ActionAddComponents {
+    Code: {" | (CheckBoxState, Unchecked)"}
 }
 
-prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
-    Code: {" | (WidgetState, Closed)"}
-    Target: {"<"}
-}
+// SETTINGS
 
 prefab [CORE].Actions.ActionSetLanguage: ActionSetSingletons {
     (CheckBoxState, Checked)

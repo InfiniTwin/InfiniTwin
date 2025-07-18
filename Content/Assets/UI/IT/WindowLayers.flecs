@@ -27,4 +27,12 @@ const labelLayers: "IT::Layers"
             }
         }
     }
+    ActionEnableCheckBox: ActionWidgetEnable {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+    ActionUncheckCheckBox: ActionCheckBoxUncheck {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
 }

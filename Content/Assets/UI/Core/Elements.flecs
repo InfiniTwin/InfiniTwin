@@ -24,6 +24,12 @@ prefab [UI].Elements.ElementCheckBox: IsWidget, StyleCheckBoxRound, PaddingNorma
     ActionCheckBoxUncheckedIcon: ActionUncheckedIcon {}
 }
 
+prefab [UI].Elements.ElementCheckBoxSelfDisable: ElementCheckBox {
+    ActionDisable: ActionWidgetDisable {
+        (CheckBoxState, Checked)
+    }
+}
+
 prefab [UI].Elements.ElementRadio: IsWidget, StyleCheckBoxRound, PaddingNormal, AlignFill {
     Radio
     Container: IsHBox {

@@ -32,17 +32,17 @@ const labelItalian: "Italiano"
                         }
                         Content: VMenuContent {
                             Container {
-                                Layers: ElementCheckBox {
+                                Layers: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelLayers}}
                                     ActionOpenWindow: ActionRunScript {
                                         (CheckBoxState, Checked)
                                         Script: {"UI/IT/WindowLayers"}
                                     }
                                 }
-                                Hierarchy: ElementCheckBox {
+                                Hierarchy: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelHierarchy}}
                                 }
-                                Attributes: ElementCheckBox {
+                                Attributes: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelAttributes}}
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
