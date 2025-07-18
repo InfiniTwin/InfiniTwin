@@ -34,27 +34,16 @@ const labelItalian: "Italiano"
                             Container {
                                 Layers: ElementCheckBox {
                                     Container.Label {Text: {$labelLayers}}
-                                    Window: IsWindow {
-                                        Text: {$labelLayers}
-                                        ActionOpenContent {Script: {"UI/IT/WindowLayers"}}
+                                    ActionOpenWindow: ActionRunScript {
+                                        (CheckBoxState, Checked)
+                                        Script: {"UI/IT/WindowLayers"}
                                     }
-                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Hierarchy: ElementCheckBox {
                                     Container.Label {Text: {$labelHierarchy}}
-                                    Window: IsWindow {Text: {
-                                        $labelHierarchy}
-                                        ActionOpenContent {Script: {"UI/IT/WindowHierarchy"}}
-                                    }
-                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Attributes: ElementCheckBox {
                                     Container.Label {Text: {$labelAttributes}}
-                                    Window: IsWindow {Text: {
-                                        $labelAttributes}
-                                        ActionOpenContent {Script: {"UI/IT/WindowAttributes"}}
-                                    }
-                                    ActionWindowOpen: ActionWindowOpen {(CheckBoxState, Checked)}
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
                                 Hierarchy {(CheckBoxState, Unchecked)}

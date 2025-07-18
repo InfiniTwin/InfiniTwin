@@ -6,7 +6,11 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-[UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container.Layers.Window {
+const labelLayers: "IT::Layers"
+
+[UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container.Layers.Window: IsWindow {
+    Text: {$labelLayers}
+    (WidgetState, Opened)
     Content: StyleBorderSurfaceLowest {
         Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
             TopBar: StyleBorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}

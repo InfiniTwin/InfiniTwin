@@ -61,9 +61,6 @@ prefab [UI].Elements.IsWindow {
     Window
     WindowTitle
     Localized
-    ActionOpenContent: ActionRunScript {
-        (WidgetState, Opened)
-    }
 }
 
 prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
