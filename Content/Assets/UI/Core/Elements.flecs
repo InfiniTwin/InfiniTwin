@@ -8,7 +8,7 @@ using [UI].Styles
 
 prefab [UI].Elements.ElementButtonIcon: IsWidget, StyleButtonRound, PaddingNormal, AlignCenter {
     Container: IsHBox {
-        Icon: IconMedium, PaddingNone {}
+        Icon: IconMedium, PaddingIcon {}
     }
 }
 
