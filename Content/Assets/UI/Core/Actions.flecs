@@ -10,17 +10,18 @@ prefab [CORE].Actions.ActionRemove: IsAction {(Operation, Remove)}
 prefab [CORE].Actions.ActionSwitch: ActionAdd {Invert}
 
 prefab [CORE].Actions.ActionSetSingletons: ActionAdd {Singletons}
+
 prefab [CORE].Actions.ActionSwitchComponents: ActionSwitch {Components}
 prefab [CORE].Actions.ActionAddComponents: ActionAdd {Components}
 prefab [CORE].Actions.ActionRemoveComponents: ActionRemove {Components}
+
 prefab [CORE].Actions.ActionSwitchPairs: ActionSwitch {Pairs}
+prefab [CORE].Actions.ActionAddPairs: ActionAdd {Pairs}
+prefab [CORE].Actions.ActionRemovePairs: ActionRemove {Pairs}
 
-// SCRIPT
-
-prefab [CORE].Actions.ActionRunScript: IsAction {
-    (Operation, Run)
-    Script
-}
+prefab [CORE].Actions.ActionSwitchScript: ActionSwitch {Script}
+prefab [CORE].Actions.ActionAddScript: ActionAdd {Script}
+prefab [CORE].Actions.ActionRemoveScript: ActionRemove {Script}
 
 // WIDGET
 

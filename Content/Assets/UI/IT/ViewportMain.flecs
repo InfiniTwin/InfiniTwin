@@ -34,7 +34,7 @@ const labelItalian: "Italiano"
                             Container {
                                 Layers: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelLayers}}
-                                    ActionOpenWindow: ActionRunScript {
+                                    ActionOpenWindow: ActionSwitchScript {
                                         (CheckBoxState, Checked)
                                         Script: {"UI/IT/WindowLayers"}
                                     }
