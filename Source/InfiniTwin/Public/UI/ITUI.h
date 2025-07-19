@@ -4,9 +4,10 @@
 
 #include <flecs.h>
 
-namespace UI{
+namespace UI {
 	struct ITUI {
-	public:
 		ITUI(flecs::world& world);
+
+		static void Initialize(flecs::world& world);
 	};
 }

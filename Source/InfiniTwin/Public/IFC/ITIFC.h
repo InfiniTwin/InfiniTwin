@@ -4,9 +4,10 @@
 
 #include <flecs.h>
 
-namespace IFC{
+namespace IFC {
 	struct ITIFC {
-	public:
 		ITIFC(flecs::world& world);
+
+		static void Initialize(flecs::world& world);
 	};
 }

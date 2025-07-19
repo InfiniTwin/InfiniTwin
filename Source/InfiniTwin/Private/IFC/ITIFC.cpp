@@ -4,7 +4,7 @@
 #include "IFC/ITIFC.h"
 #include "ECS.h"
 #include "IFC.h"
-#include "IFC/ITIFCFeature.h"
+#include "IFC/IFCLayerFeature.h"
 
 namespace IFC {
 	ITIFC::ITIFC(flecs::world& world) {
@@ -12,8 +12,14 @@ namespace IFC {
 
 		IFC::Register(world);
 
-		ITIFCFeature::Initialize(world);
+		IFCLayerFeature::RegisterComponents(world);
 
-		//ECS::RunScript(world, "IFC/HelloWall");
+		IFCLayerFeature::CreateSystems(world);
+
+		Initialize(world);
+	}
+
+	void ITIFC::Initialize(flecs::world& world) {
+		ECS::Tokens.Add(TEXT("[IFC]"), IFC::Scope() = "IFC.ITIFC");
 	}
 }
