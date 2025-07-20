@@ -14,8 +14,6 @@
 namespace IFC {
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {
 		using namespace ECS;
-
-		world.component<Layer>().member<FString>(VALUE).add(flecs::OnInstantiate, flecs::Inherit);
 	}
 
 	void IFCLayerFeature::CreateSystems(flecs::world& world) {

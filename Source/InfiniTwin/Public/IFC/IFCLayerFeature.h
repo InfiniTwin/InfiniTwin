@@ -11,6 +11,4 @@ namespace IFC {
 		static void RegisterComponents(flecs::world& world);
 		static void CreateSystems(flecs::world& world);
 	};
-
-	struct Layer { FString Value; };
 }
