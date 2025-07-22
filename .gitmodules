@@ -10,3 +10,6 @@
 [submodule "Plugins/IFC"]
 	path = Plugins/IFC
 	url = https://github.com/InfiniTwin/IFC.git
+[submodule "Plugins/EasyFileDialog"]
+	path = Plugins/EasyFileDialog
+	url = https://github.com/InfiniTwin/EasyFileDialog.git

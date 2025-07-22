@@ -16,12 +16,13 @@ public class InfiniTwin : ModuleRules
 			"ECSCore",
 			"FlecsLibrary",
 			"UIElements",
-			"IFC"
-		});
+			"IFC",
+            "EasyFileDialog"
+        });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
 			"Slate",
-			"SlateCore",
+			"SlateCore"
 		});
 	}
 }

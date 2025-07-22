@@ -6,6 +6,7 @@
 #include "ActionFeature.h"
 #include "Assets.h"
 #include "TypographyFeature.h"
+#include "EFDCore.h"
 
 #if PLATFORM_WINDOWS
 #include <Windows.h>
@@ -24,12 +25,15 @@ namespace IFC {
 			.each([&world](flecs::entity action) {
 			action.disable<Action>();
 
-			auto layers = Assets::SelectFiles(
-				UI::GetLocalizedText(world, SelectIfcDialogTitle),
-				FPaths::ProjectContentDir(),
-				SelectIfcDialogFileType);
+			const FString dialogTitle = UI::GetLocalizedText(world, SelectIfcDialogTitle);
+			const FString defaultPath = FPaths::ProjectContentDir();
+			const FString defaultFile = TEXT("");
+			const FString fileTypes = SelectIfcDialogFileType;
+			const uint32 flags = EEasyFileDialogFlags::Multiple;
 
-			LoadIFCFiles(world, layers);
+			TArray<FString> layers;
+			if (EFDCore::OpenFileDialogCore(dialogTitle, defaultPath, defaultFile, fileTypes, flags, layers))
+				LoadIFCFiles(world, layers);
 				});
 	}
 }
