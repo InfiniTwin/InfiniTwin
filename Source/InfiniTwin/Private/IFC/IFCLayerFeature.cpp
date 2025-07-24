@@ -4,13 +4,8 @@
 #include "IFC/IFCLayerFeature.h"
 #include "IFC.h"
 #include "ActionFeature.h"
-#include "Assets.h"
 #include "TypographyFeature.h"
 #include "EFDCore.h"
-
-#if PLATFORM_WINDOWS
-#include <Windows.h>
-#endif
 
 namespace IFC {
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {
