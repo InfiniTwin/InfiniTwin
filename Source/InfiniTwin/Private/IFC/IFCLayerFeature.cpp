@@ -4,12 +4,18 @@
 #include "IFC/IFCLayerFeature.h"
 #include "IFC.h"
 #include "ActionFeature.h"
+#include "WidgetFeature.h"
 #include "TypographyFeature.h"
 #include "EFDCore.h"
 
 namespace IFC {
-	void IFCLayerFeature::RegisterComponents(flecs::world& world) {
-		using namespace ECS;
+	using namespace ECS;
+
+	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
+
+	void IFCLayerFeature::CreateQueries(flecs::world& world) {
+	};
+	void IFCLayerFeature::CreateObservers(flecs::world& world) {
 	}
 
 	void IFCLayerFeature::CreateSystems(flecs::world& world) {
@@ -29,6 +35,6 @@ namespace IFC {
 			TArray<FString> layers;
 			if (EFDCore::OpenFileDialogCore(dialogTitle, defaultPath, defaultFile, fileTypes, flags, layers))
 				LoadIFCFiles(world, layers);
-				});
+		});
 	}
 }

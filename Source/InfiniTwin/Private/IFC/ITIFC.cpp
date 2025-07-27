@@ -14,6 +14,10 @@ namespace IFC {
 
 		IFCLayerFeature::RegisterComponents(world);
 
+		IFCLayerFeature::CreateQueries(world);
+
+		IFCLayerFeature::CreateObservers(world);
+		
 		IFCLayerFeature::CreateSystems(world);
 
 		Initialize(world);

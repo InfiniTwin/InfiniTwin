@@ -17,6 +17,11 @@ const labelEnglish: "English"
 const labelGerman: "Deutsch"
 const labelItalian: "Italiano"
 
+const windowLayersPath: "UI/IT/WindowLayers"
+
+const setLanguageITCode: "using [UI]\\n\\n\$ < | Locale: <\"it\">"
+const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
+
 [UI].ViewportMain {
     Viewport
     ToolbarTop: IsConstraintCanvas {
@@ -36,7 +41,7 @@ const labelItalian: "Italiano"
                                     Container.Label {Text: {$labelLayers}}
                                     ActionOpenWindow: ActionSwitchScript {
                                         (CheckBoxState, Checked)
-                                        Script: {"UI/IT/WindowLayers"}
+                                        Script: {$windowLayersPath}
                                     }
                                 }
                                 Hierarchy: ElementCheckBoxSelfDisable {
@@ -67,11 +72,11 @@ const labelItalian: "Italiano"
                                 }
                                 German: ElementRadio {
                                     Container.Label {Text: {$labelGerman}}
-                                    ActionLanguageDE: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"de\">"}}
+                                    ActionLanguageDE: ActionSetLanguage {Code: {$setLanguageDECode}}
                                 }
                                 Italian: ElementRadio {
                                     Container.Label {Text: {$labelItalian}}
-                                    ActionLanguageIT: ActionSetLanguage {Code: {"using [UI]\\n\\n\$ < | Locale: <\"it\">"}}
+                                    ActionLanguageIT: ActionSetLanguage {Code: {$setLanguageITCode}}
                                 }
                                 English {(CheckBoxState, Checked)}
                                 German {(CheckBoxState, Unchecked)}
