@@ -14,8 +14,25 @@ namespace IFC {
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
 
 	void IFCLayerFeature::CreateQueries(flecs::world& world) {
+		world.component<QueryCollectionLayer>();
+		world.set(QueryCollectionLayer{
+			world.query_builder<Layer>(COMPONENT(QueryCollectionLayer))
+			.with<List>()
+			.cached().build() });
 	};
+
 	void IFCLayerFeature::CreateObservers(flecs::world& world) {
+		world.observer<>("SetupLayerUIElement")
+			.with<Layer>()
+			.with<Id>()
+			.event(flecs::OnSet)
+			.yield_existing()
+			.each([&world](flecs::entity layer) {
+			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Layer) {
+				flecs::entity layerUI = world.entity(layer.name()).child_of(collection);
+				//layerUI
+			});
+		});
 	}
 
 	void IFCLayerFeature::CreateSystems(flecs::world& world) {

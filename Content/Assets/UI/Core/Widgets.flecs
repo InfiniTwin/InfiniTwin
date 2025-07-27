@@ -13,6 +13,8 @@ prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}
 
+prefab [UI].Widgets.IsList: IsWidget {List}
+
 prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
 
 prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingButtonContentCenter {Text}

@@ -10,4 +10,6 @@ namespace UI {
 
 		static void Initialize(flecs::world& world);
 	};
+
+	struct UIOf{};
 }

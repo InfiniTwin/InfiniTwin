@@ -13,9 +13,13 @@ const labelLayers: "IT::Layers"
     (WidgetState, Opened)
     Content: StyleBorderSurfaceLowest {
         Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
-            TopBar: StyleBorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}
-            Collection: IsVBox, FillHeightOne, AlignCenter, PaddingNone {}
+            //TopBar: StyleBorderSurfaceLow, VAlignTop, HAlignFill, PaddingNone {}
+            Collection: IsList {
+                [IFC].Layer
+                Order: {1}
+            }
             BottomBar: StyleBorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {
+                Order: {2}
                 Container: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
                     ButtonAddLayers: ButtonAdd {
                         ActionAddLayers: ActionAdd {
