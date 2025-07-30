@@ -1,0 +1,12 @@
+using [UI]
+using [UI].Texts
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+[TARGET]: IsTextBlock, TextBodySmall, AlignCenterLeft, PaddingNone {
+    Text: {"[TEXT]"}
+}

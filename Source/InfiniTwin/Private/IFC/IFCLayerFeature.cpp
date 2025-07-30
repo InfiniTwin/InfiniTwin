@@ -14,8 +14,28 @@ namespace IFC {
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
 
 	void IFCLayerFeature::CreateQueries(flecs::world& world) {
+		world.component<QueryCollectionLayer>();
+		world.set(QueryCollectionLayer{
+			world.query_builder<Layer>(COMPONENT(QueryCollectionLayer))
+			.with<Collection>()
+			.cached().build() });
 	};
+
 	void IFCLayerFeature::CreateObservers(flecs::world& world) {
+		world.observer<>("SetupLayerUIElement")
+			.with<Layer>()
+			.with<Id>()
+			.event(flecs::OnSet)
+			.yield_existing()
+			.each([&world](flecs::entity layer) {
+			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Layer) {
+				auto target = FString(collection.path()) + TEXT(".") + FString(layer.name());
+				RunScript(world, "UI/IFC", "LayerItem", Tokens({
+					TOKEN(TARGET, ECS::NormalizedPath(target)),
+					TOKEN(TEXT, "LAYER ITEM") }));
+				//flecs::entity layerUI = world.entity(layer.name()).child_of(collection);
+				});
+				});
 	}
 
 	void IFCLayerFeature::CreateSystems(flecs::world& world) {
@@ -35,6 +55,6 @@ namespace IFC {
 			TArray<FString> layers;
 			if (EFDCore::OpenFileDialogCore(dialogTitle, defaultPath, defaultFile, fileTypes, flags, layers))
 				LoadIFCFiles(world, layers);
-		});
+				});
 	}
 }

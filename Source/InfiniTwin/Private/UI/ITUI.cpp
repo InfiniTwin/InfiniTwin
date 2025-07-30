@@ -54,7 +54,7 @@ namespace UI{
 
 		using namespace ECS;
 
-		Tokens.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
+		Scopes.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
 
 		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "Settings" });
 

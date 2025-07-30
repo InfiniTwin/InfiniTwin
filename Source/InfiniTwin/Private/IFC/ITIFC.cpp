@@ -24,6 +24,6 @@ namespace IFC {
 	}
 
 	void ITIFC::Initialize(flecs::world& world) {
-		ECS::Tokens.Add(TEXT("[IFC]"), IFC::Scope() = "IFC.ITIFC");
+		ECS::Scopes.Add(TEXT("[IFC]"), IFC::Scope() = "IFC.ITIFC");
 	}
 }

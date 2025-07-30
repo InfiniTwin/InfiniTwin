@@ -1,0 +1,41 @@
+using [UI]
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+const labelLayers: "IT::Layers"
+
+[TARGET].Window: IsWindow {
+    Text: {$labelLayers}
+    (WidgetState, Opened)
+    Content: StyleBorderSurfaceLowest {
+        Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
+            Collection: IsVBox, FillHeightOne, AlignCenter, PaddingNone {
+                Collection
+                [IFC].Layer
+            }
+            BottomBar: StyleBorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {
+                Order: {1}
+                Container: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNone {
+                    ButtonAddLayers: ButtonAdd {
+                        ActionAddLayers: ActionAdd {
+                            (ButtonState, Clicked)
+                            [IFC].Layer
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ActionEnableCheckBox: ActionWidgetEnable {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+    ActionUncheckCheckBox: ActionCheckBoxUncheck {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+}

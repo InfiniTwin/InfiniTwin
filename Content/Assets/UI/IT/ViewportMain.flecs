@@ -17,7 +17,7 @@ const labelEnglish: "English"
 const labelGerman: "Deutsch"
 const labelItalian: "Italiano"
 
-const windowLayersPath: "UI/IT/WindowLayers"
+const windowLayersPath: "UI/IFC/WindowLayers"
 
 const setLanguageITCode: "using [UI]\\n\\n\$ < | Locale: <\"it\">"
 const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
