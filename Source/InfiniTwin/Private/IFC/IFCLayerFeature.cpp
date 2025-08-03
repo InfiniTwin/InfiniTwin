@@ -11,6 +11,14 @@
 namespace IFC {
 	using namespace ECS;
 
+	FString ExtractSlug(const FString& Input) {
+		FRegexPattern pattern(TEXT("/([^/@\\s]+)@"));
+		FRegexMatcher matcher(pattern, Input);
+		if (matcher.FindNext())
+			return matcher.GetCaptureGroup(1);
+		return FString();
+	}
+
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
 
 	void IFCLayerFeature::CreateQueries(flecs::world& world) {
@@ -25,15 +33,15 @@ namespace IFC {
 		world.observer<>("SetupLayerUIElement")
 			.with<Layer>()
 			.with<Id>()
-			.event(flecs::OnSet)
+			.event(flecs::OnAdd)
 			.yield_existing()
 			.each([&world](flecs::entity layer) {
 			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Layer) {
-				auto target = FString(collection.path()) + TEXT(".") + FString(layer.name());
+				auto path = FString(collection.path()) + TEXT(".") + FString(layer.name());
 				RunScript(world, "UI/IFC", "LayerItem", Tokens({
-					TOKEN(TARGET, ECS::NormalizedPath(target)),
-					TOKEN(TEXT, "LAYER ITEM") }));
-				//flecs::entity layerUI = world.entity(layer.name()).child_of(collection);
+					TOKEN(ECS::PATH, ECS::NormalizedPath(path)),
+					TOKEN(ECS::TARGET, ECS::NormalizedPath(layer.path().c_str())),
+					TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
 				});
 				});
 	}

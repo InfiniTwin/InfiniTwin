@@ -8,12 +8,12 @@ using [CORE].Actions
 
 const labelLayers: "IT::Layers"
 
-[TARGET].Window: IsWindow {
+[PATH].Window: IsWindow {
     Text: {$labelLayers}
     (WidgetState, Opened)
     Content: StyleBorderSurfaceLowest {
         Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
-            Collection: IsVBox, FillHeightOne, AlignCenter, PaddingNone {
+            Collection: IsVBox, FillHeightOne, AlignTopLeft, PaddingNone {
                 Collection
                 [IFC].Layer
             }

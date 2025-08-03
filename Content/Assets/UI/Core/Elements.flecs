@@ -46,12 +46,24 @@ prefab [UI].Elements.ElementToggleIcon: IsWidget, StyleCheckBoxRound, PaddingNor
     }
 }
 
+prefab [UI].Elements.ElementToggleIconNoColor: IsWidget, StyleCheckBoxRoundNoColor, PaddingNormal, AlignCenter {
+    Container: IsHBox {
+        Icon: IconMedium, PaddingIcon {}
+    }
+}
+
 prefab [UI].Elements.ElementToggleIconText: ElementToggleIcon {
     Container.Icon: PaddingButtonContentCenter {}
     Container.Label: TextButton, PaddingButtonContentRight {
         Localized
         Order: {1}
     }
+}
+
+prefab [UI].Elements.ElementToggleVisibility: ElementToggleIconNoColor {
+    Container.Icon {[UI].Icon: {"e8f4"}} // Visibility
+    ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e8f5\">"}} // Visiblity Off
+    ActionRadioUncheckedIcon: ActionUncheckedIcon {Code: {" | [UI].Icon: <\"e8f4\">"}} // Visibility
 }
 
 prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
@@ -72,3 +84,5 @@ prefab [UI].Elements.IsWindow {
 prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
     Container.Icon {[UI].Icon: {"f3dd"}} // Add 2
 }
+
+prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, AlignCenterLeft, PaddingItem {Text}
