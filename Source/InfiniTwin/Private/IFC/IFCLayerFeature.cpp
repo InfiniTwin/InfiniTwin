@@ -19,9 +19,22 @@ namespace IFC {
 		return FString();
 	}
 
+	void AddLayerUI(flecs::world& world, flecs::entity collection, flecs::entity layer) {
+		auto path = FString(collection.path()) + TEXT(".") + FString(layer.name());
+		RunScript(world, "UI/IFC", "LayerItem", Tokens({
+			TOKEN(ECS::PATH, ECS::NormalizedPath(path)),
+			TOKEN(ECS::TARGET, ECS::NormalizedPath(layer.path().c_str())),
+			TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
+	}
+
 	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
 
 	void IFCLayerFeature::CreateQueries(flecs::world& world) {
+		world.component<QueryLayer>();
+		world.set(QueryLayer{
+			world.query_builder<Layer, Id>(COMPONENT(QueryLayer))
+			.cached().build() });
+
 		world.component<QueryCollectionLayer>();
 		world.set(QueryCollectionLayer{
 			world.query_builder<Layer>(COMPONENT(QueryCollectionLayer))
@@ -30,6 +43,16 @@ namespace IFC {
 	};
 
 	void IFCLayerFeature::CreateObservers(flecs::world& world) {
+		world.observer<>("SetupCollectionLayerUIElement")
+			.with<Layer>()
+			.with<Collection>()
+			.event(flecs::OnAdd)
+			.yield_existing()
+			.each([&world](flecs::entity collection) {
+			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
+				AddLayerUI(world, collection, layer); });
+				});
+
 		world.observer<>("SetupLayerUIElement")
 			.with<Layer>()
 			.with<Id>()
@@ -37,12 +60,7 @@ namespace IFC {
 			.yield_existing()
 			.each([&world](flecs::entity layer) {
 			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Layer) {
-				auto path = FString(collection.path()) + TEXT(".") + FString(layer.name());
-				RunScript(world, "UI/IFC", "LayerItem", Tokens({
-					TOKEN(ECS::PATH, ECS::NormalizedPath(path)),
-					TOKEN(ECS::TARGET, ECS::NormalizedPath(layer.path().c_str())),
-					TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
-				});
+				AddLayerUI(world, collection, layer); });
 				});
 	}
 

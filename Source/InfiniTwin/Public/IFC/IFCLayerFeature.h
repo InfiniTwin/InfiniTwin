@@ -17,5 +17,6 @@ namespace IFC {
 	inline constexpr TCHAR SelectIfcDialogFileType[] = TEXT("IFC 5 (*.ifcx)|*.ifcx");
 	
 	using namespace UI;
+	struct QueryLayer { flecs::query<Layer, Id> Value; };
 	struct QueryCollectionLayer { flecs::query<Layer> Value; };
 }
