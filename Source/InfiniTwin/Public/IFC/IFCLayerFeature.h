@@ -4,6 +4,8 @@
 
 #include <flecs.h>
 #include "IFC.h"
+#include "IFCLayer.h"
+#include "WidgetFeature.h"
 
 namespace IFC {
 	struct IFCLayerFeature {
@@ -15,8 +17,14 @@ namespace IFC {
 
 	inline constexpr TCHAR SelectIfcDialogTitle[] = TEXT("IT::LoadIfcDialogTitle");
 	inline constexpr TCHAR SelectIfcDialogFileType[] = TEXT("IFC 5 (*.ifcx)|*.ifcx");
-	
+
+	enum LayerState {
+		Enabled,
+		Disabled
+	};
+
 	using namespace UI;
 	struct QueryLayer { flecs::query<Layer, Id> Value; };
-	struct QueryCollectionLayer { flecs::query<Layer> Value; };
+	struct QueryLayerEnabled { flecs::query<Layer, Id> Value; };
+	struct QueryCollectionLayer { flecs::query<Collection, Layer> Value; };
 }

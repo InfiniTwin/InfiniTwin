@@ -11,6 +11,15 @@
 namespace IFC {
 	using namespace ECS;
 
+	void RefreshIFCData(flecs::world& world) {
+		// DO>>> Clear IFC data
+		TArray<flecs::entity> layers;
+		world.try_get<QueryLayerEnabled>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
+			layers.Add(layer);
+			});
+		LoadIFCData(world, layers);
+	}
+
 	FString ExtractSlug(const FString& Input) {
 		FRegexPattern pattern(TEXT("/([^/@\\s]+)@"));
 		FRegexMatcher matcher(pattern, Input);
@@ -27,7 +36,9 @@ namespace IFC {
 			TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
 	}
 
-	void IFCLayerFeature::RegisterComponents(flecs::world& world) {}
+	void IFCLayerFeature::RegisterComponents(flecs::world& world) {
+		world.component<LayerState>().add(flecs::Exclusive);
+	}
 
 	void IFCLayerFeature::CreateQueries(flecs::world& world) {
 		world.component<QueryLayer>();
@@ -35,15 +46,20 @@ namespace IFC {
 			world.query_builder<Layer, Id>(COMPONENT(QueryLayer))
 			.cached().build() });
 
+		world.component<QueryLayerEnabled>();
+		world.set(QueryLayerEnabled{
+			world.query_builder<Layer, Id>(COMPONENT(QueryLayerEnabled))
+			.with(Enabled)
+			.cached().build() });
+
 		world.component<QueryCollectionLayer>();
 		world.set(QueryCollectionLayer{
-			world.query_builder<Layer>(COMPONENT(QueryCollectionLayer))
-			.with<Collection>()
+			world.query_builder<Collection, Layer>(COMPONENT(QueryCollectionLayer))
 			.cached().build() });
 	};
 
 	void IFCLayerFeature::CreateObservers(flecs::world& world) {
-		world.observer<>("SetupCollectionLayerUIElement")
+		world.observer<>("AddCollectionLayerUIElement")
 			.with<Layer>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
@@ -53,13 +69,32 @@ namespace IFC {
 				AddLayerUI(world, collection, layer); });
 				});
 
-		world.observer<>("SetupLayerUIElement")
+		world.observer<>("RefreshIFCDataOnLayerStateChange")
+			.with<Layer>()
+			.with<Id>()
+			.with<LayerState>()
+			.event(flecs::OnSet)
+			.yield_existing()
+			.run([&world](flecs::iter& it) {
+			RefreshIFCData(world);
+				});
+
+		world.observer<>("RefreshIFCDataOnLayerCreation")
+			.with<Layer>()
+			.with<Id>()
+			.event(flecs::OnAdd)
+			.yield_existing()
+			.run([&world](flecs::iter& it) {
+			RefreshIFCData(world);
+				});
+
+		world.observer<>("AddLayerUIElement")
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.yield_existing()
 			.each([&world](flecs::entity layer) {
-			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Layer) {
+			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
 				AddLayerUI(world, collection, layer); });
 				});
 	}
@@ -72,15 +107,20 @@ namespace IFC {
 			.each([&world](flecs::entity action) {
 			action.disable<Action>();
 
-			const FString dialogTitle = UI::GetLocalizedText(world, SelectIfcDialogTitle);
-			const FString defaultPath = FPaths::ProjectContentDir();
-			const FString defaultFile = TEXT("");
-			const FString fileTypes = SelectIfcDialogFileType;
-			const uint32 flags = EEasyFileDialogFlags::Multiple;
-
-			TArray<FString> layers;
-			if (EFDCore::OpenFileDialogCore(dialogTitle, defaultPath, defaultFile, fileTypes, flags, layers))
-				LoadIFCFiles(world, layers);
+			TArray<FString> paths;
+			if (EFDCore::OpenFileDialogCore(
+				UI::GetLocalizedText(world, SelectIfcDialogTitle),
+				FPaths::ProjectContentDir(),
+				TEXT(""),
+				SelectIfcDialogFileType,
+				EEasyFileDialogFlags::Multiple,
+				paths)) {
+				TArray<FString> components = {
+					UTF8_TO_TCHAR(COMPONENT(Layer)),
+					FString::Printf(TEXT("(%s, %s)"), UTF8_TO_TCHAR(COMPONENT(LayerState)), UTF8_TO_TCHAR(COMPONENT(Enabled)))
+				};
+				AddLayers(world, paths, components);
+			}
 				});
 	}
 }
