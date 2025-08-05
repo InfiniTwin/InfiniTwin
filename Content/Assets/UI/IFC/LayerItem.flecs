@@ -9,6 +9,6 @@ using [CORE].Actions
 
 [PATH]: IsHBox, AlignFill, PaddingNormal {
     (UIOf, [TARGET])
-    ToggleVisibility: ElementToggleVisibility {}
+    ToggleState: ElementToggleVisibility {}
     Label: ElementItemLabel {Text: {"[TEXT]"}}
 }

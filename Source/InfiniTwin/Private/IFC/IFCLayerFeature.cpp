@@ -7,6 +7,7 @@
 #include "WidgetFeature.h"
 #include "TypographyFeature.h"
 #include "EFDCore.h"
+#include "ButtonFeature.h"
 
 namespace IFC {
 	using namespace ECS;
@@ -63,18 +64,45 @@ namespace IFC {
 			.with<Layer>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
-			.yield_existing()
 			.each([&world](flecs::entity collection) {
 			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
 				AddLayerUI(world, collection, layer); });
 				});
 
-		world.observer<>("RefreshIFCDataOnLayerStateChange")
+		world.observer<>("AddLayerUIElement")
 			.with<Layer>()
 			.with<Id>()
-			.with<LayerState>()
+			.event(flecs::OnAdd)
+			.each([&world](flecs::entity layer) {
+			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
+				AddLayerUI(world, collection, layer); });
+				});
+
+		world.observer<>("SetLayerState")
+			.with<CheckBoxState>().second(flecs::Wildcard)
 			.event(flecs::OnSet)
-			.yield_existing()
+			.each([](flecs::iter& it, size_t i) {
+			auto checkBox = it.entity(i);
+			checkBox.parent().each<UIOf>([&checkBox](flecs::entity layer) {
+				layer.add(checkBox.has(Unchecked) ? Enabled : Disabled);
+				});
+				});
+
+		world.observer<>("SetLayerUIState")
+			.with<CheckBox>()
+			.event(flecs::OnAdd)
+			.each([](flecs::iter& it, size_t i) {
+			auto checkBox = it.entity(i);
+			auto parent = checkBox.parent();
+			if (!parent.has<UIOf>(flecs::Wildcard)) return;
+			auto target = parent.target<UIOf>();
+			if (target.has<Layer>())
+				checkBox.add(target.has(Enabled) ? Unchecked : Checked);
+				});
+
+		world.observer<>("RefreshIFCDataOnLayerStateChange")
+			.with<LayerState>().second(flecs::Wildcard)
+			.event(flecs::OnSet)
 			.run([&world](flecs::iter& it) {
 			RefreshIFCData(world);
 				});
@@ -83,19 +111,8 @@ namespace IFC {
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)
-			.yield_existing()
 			.run([&world](flecs::iter& it) {
 			RefreshIFCData(world);
-				});
-
-		world.observer<>("AddLayerUIElement")
-			.with<Layer>()
-			.with<Id>()
-			.event(flecs::OnAdd)
-			.yield_existing()
-			.each([&world](flecs::entity layer) {
-			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
-				AddLayerUI(world, collection, layer); });
 				});
 	}
 
