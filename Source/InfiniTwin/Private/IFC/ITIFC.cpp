@@ -4,7 +4,7 @@
 #include "IFC/ITIFC.h"
 #include "ECS.h"
 #include "IFC.h"
-#include "IFC/IFCLayerFeature.h"
+#include "IFC/ITIFCLayerFeature.h"
 
 namespace IFC {
 	ITIFC::ITIFC(flecs::world& world) {
@@ -12,13 +12,13 @@ namespace IFC {
 
 		IFC::Register(world);
 
-		IFCLayerFeature::RegisterComponents(world);
+		ITIFCLayerFeature::RegisterComponents(world);
 
-		IFCLayerFeature::CreateQueries(world);
+		ITIFCLayerFeature::CreateQueries(world);
 
-		IFCLayerFeature::CreateObservers(world);
+		ITIFCLayerFeature::CreateObservers(world);
 		
-		IFCLayerFeature::CreateSystems(world);
+		ITIFCLayerFeature::CreateSystems(world);
 
 		Initialize(world);
 	}

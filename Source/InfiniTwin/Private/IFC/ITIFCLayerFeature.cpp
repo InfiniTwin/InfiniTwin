@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "IFC/IFCLayerFeature.h"
+#include "IFC/ITIFCLayerFeature.h"
 #include "IFC.h"
 #include "ActionFeature.h"
 #include "WidgetFeature.h"
@@ -37,11 +37,11 @@ namespace IFC {
 			TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
 	}
 
-	void IFCLayerFeature::RegisterComponents(flecs::world& world) {
+	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
 		world.component<LayerState>().add(flecs::Exclusive);
 	}
 
-	void IFCLayerFeature::CreateQueries(flecs::world& world) {
+	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
 		world.component<QueryLayer>();
 		world.set(QueryLayer{
 			world.query_builder<Layer, Id>(COMPONENT(QueryLayer))
@@ -59,7 +59,7 @@ namespace IFC {
 			.cached().build() });
 	};
 
-	void IFCLayerFeature::CreateObservers(flecs::world& world) {
+	void ITIFCLayerFeature::CreateObservers(flecs::world& world) {
 		world.observer<>("AddCollectionLayerUIElement")
 			.with<Layer>()
 			.with<Collection>()
@@ -116,7 +116,7 @@ namespace IFC {
 				});
 	}
 
-	void IFCLayerFeature::CreateSystems(flecs::world& world) {
+	void ITIFCLayerFeature::CreateSystems(flecs::world& world) {
 		world.system<>("TriggerActionAddLayers")
 			.with(Operation::Add)
 			.with<Layer>()

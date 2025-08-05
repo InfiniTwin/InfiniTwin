@@ -4,11 +4,11 @@
 
 #include <flecs.h>
 #include "IFC.h"
-#include "IFCLayer.h"
+#include "LayerFeature.h"
 #include "WidgetFeature.h"
 
 namespace IFC {
-	struct IFCLayerFeature {
+	struct ITIFCLayerFeature {
 		static void RegisterComponents(flecs::world& world);
 		static void CreateQueries(flecs::world& world);
 		static void CreateObservers(flecs::world& world);
