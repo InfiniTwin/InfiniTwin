@@ -12,13 +12,13 @@
 namespace IFC {
 	using namespace ECS;
 
-	void RefreshIFCData(flecs::world& world) {
-		// DO>>> Clear IFC data
-		TArray<flecs::entity> layers;
-		world.try_get<QueryLayerEnabled>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
-			layers.Add(layer);
-			});
-		LoadIFCData(world, layers);
+	void DestroyIFCData(flecs::world& world) {
+		world.try_get_mut<TimerLoadIFCData>()->Value.start();
+
+		world.try_get<QueryIFCData>()->Value
+			.each([](flecs::entity entity, IFCData) {
+			entity.destruct();
+				});
 	}
 
 	FString ExtractSlug(const FString& Input) {
@@ -38,7 +38,12 @@ namespace IFC {
 	}
 
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
+		using namespace ECS;
 		world.component<LayerState>().add(flecs::Exclusive);
+
+		world.component<TimerLoadIFCData>().member<float>(VALUE);
+		world.set<TimerLoadIFCData>({ world.timer(COMPONENT(TimerLoadIFCData)).interval(0.01) });
+		world.try_get_mut<TimerLoadIFCData>()->Value.stop();
 	}
 
 	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
@@ -60,21 +65,21 @@ namespace IFC {
 	};
 
 	void ITIFCLayerFeature::CreateObservers(flecs::world& world) {
-		world.observer<>("AddCollectionLayerUIElement")
-			.with<Layer>()
-			.with<Collection>()
-			.event(flecs::OnAdd)
-			.each([&world](flecs::entity collection) {
-			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
-				AddLayerUI(world, collection, layer); });
-				});
-
 		world.observer<>("AddLayerUIElement")
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
 			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
+				AddLayerUI(world, collection, layer); });
+				});
+
+		world.observer<>("AddCollectionLayerUIElement")
+			.with<Layer>()
+			.with<Collection>()
+			.event(flecs::OnAdd)
+			.each([&world](flecs::entity collection) {
+			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
 				AddLayerUI(world, collection, layer); });
 				});
 
@@ -104,7 +109,7 @@ namespace IFC {
 			.with<LayerState>().second(flecs::Wildcard)
 			.event(flecs::OnSet)
 			.run([&world](flecs::iter& it) {
-			RefreshIFCData(world);
+			DestroyIFCData(world);
 				});
 
 		world.observer<>("RefreshIFCDataOnLayerCreation")
@@ -112,12 +117,26 @@ namespace IFC {
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.run([&world](flecs::iter& it) {
-			RefreshIFCData(world);
+			DestroyIFCData(world);
+				});
+
+		world.system<>("LoadIFCData")
+			.tick_source(world.try_get<TimerLoadIFCData>()->Value)
+			.each([&world]() {
+			if (world.try_get<QueryIFCData>()->Value.count() > 0) return;
+
+			world.try_get_mut<TimerLoadIFCData>()->Value.stop();
+
+			TArray<flecs::entity> layers;
+			world.try_get<QueryLayerEnabled>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
+				layers.Add(layer);
+				});
+			LoadIFCData(world, layers);
 				});
 	}
 
 	void ITIFCLayerFeature::CreateSystems(flecs::world& world) {
-		world.system<>("TriggerActionAddLayers")
+		world.system<>("AddLayers")
 			.with(Operation::Add)
 			.with<Layer>()
 			.with<Action>().id_flags(flecs::TOGGLE).with<Action>()
