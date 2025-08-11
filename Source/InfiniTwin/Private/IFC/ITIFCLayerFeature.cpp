@@ -13,7 +13,7 @@ namespace IFC {
 	using namespace ECS;
 
 	void DestroyIFCData(flecs::world& world) {
-		world.try_get_mut<TimerLoadIFCData>()->Value.start();
+		world.try_get_mut<TimerLoadIFCData>()->Value.start(); // Enable LoadIFCData system
 
 		world.try_get<QueryIFCData>()->Value
 			.each([](flecs::entity entity, IFCData) {
@@ -29,16 +29,15 @@ namespace IFC {
 		return FString();
 	}
 
-	void AddLayerUI(flecs::world& world, flecs::entity collection, flecs::entity layer) {
+	void AddLayerUIItem(flecs::world& world, flecs::entity collection, flecs::entity layer) {
 		auto path = FString(collection.path()) + TEXT(".") + FString(layer.name());
-		RunScript(world, "UI/IFC", "LayerItem", Tokens({
-			TOKEN(ECS::PATH, ECS::NormalizedPath(path)),
-			TOKEN(ECS::TARGET, ECS::NormalizedPath(layer.path().c_str())),
-			TOKEN(TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
+		RunScript(world, "UI/IFC", "ItemLayer", Tokens({
+			TOKEN(TOKEN_PATH, NormalizedPath(path)),
+			TOKEN(TOKEN_TARGET, NormalizedPath(layer.path().c_str())),
+			TOKEN(TOKEN_TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
 	}
 
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
-		using namespace ECS;
 		world.component<LayerState>().add(flecs::Exclusive);
 
 		world.component<TimerLoadIFCData>().member<float>(VALUE);
@@ -65,22 +64,22 @@ namespace IFC {
 	};
 
 	void ITIFCLayerFeature::CreateObservers(flecs::world& world) {
-		world.observer<>("AddLayerUIElement")
+		world.observer<>("AddLayerUIItemOnCreate")
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
 			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
-				AddLayerUI(world, collection, layer); });
+				AddLayerUIItem(world, collection, layer); });
 				});
 
-		world.observer<>("AddCollectionLayerUIElement")
+		world.observer<>("AddLayerUIItemOnCollectionCreate")
 			.with<Layer>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity collection) {
 			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
-				AddLayerUI(world, collection, layer); });
+				AddLayerUIItem(world, collection, layer); });
 				});
 
 		world.observer<>("SetLayerState")
@@ -105,14 +104,14 @@ namespace IFC {
 				checkBox.add(target.has(Enabled) ? Unchecked : Checked);
 				});
 
-		world.observer<>("RefreshIFCDataOnLayerStateChange")
+		world.observer<>("DestroyIFCDataOnLayerStateChange")
 			.with<LayerState>().second(flecs::Wildcard)
 			.event(flecs::OnSet)
 			.run([&world](flecs::iter& it) {
 			DestroyIFCData(world);
 				});
 
-		world.observer<>("RefreshIFCDataOnLayerCreation")
+		world.observer<>("DestroyIFCDataOnLayerCreate")
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)

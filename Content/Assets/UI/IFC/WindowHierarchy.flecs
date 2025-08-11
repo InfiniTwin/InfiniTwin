@@ -1,0 +1,28 @@
+using [UI]
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+const title: "IT::Hierarchy"
+
+[PATH].Window: IsWindow {
+    Text: {$title}
+    (WidgetState, Opened)
+    Content: StyleBorderSurfaceLowest {
+        Collection: IsTree {
+            Collection
+            [IFC].Hierarchy
+        }
+    }
+    ActionEnableCheckBox: ActionWidgetEnable {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+    ActionUncheckCheckBox: ActionCheckBoxUncheck {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+}

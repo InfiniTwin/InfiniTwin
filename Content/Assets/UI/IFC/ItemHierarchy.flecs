@@ -1,0 +1,15 @@
+using [UI]
+using [UI].Texts
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+[PATH]: IsHBox, AlignFill, PaddingNormal {
+    (UIOf, [TARGET])
+    [UI].TreeItem
+    [UI].TreeRowContent
+    Label: ElementItemLabel {Text: {"[TEXT]"}}
+}

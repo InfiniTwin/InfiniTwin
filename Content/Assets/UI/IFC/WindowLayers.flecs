@@ -6,12 +6,12 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-const labelLayers: "IT::Layers"
+const title: "IT::Layers"
 
 [PATH].Window: IsWindow {
-    Text: {$labelLayers}
+    Text: {$title}
     (WidgetState, Opened)
-    Content: StyleBorderSurfaceLowest {
+    Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
             Collection: IsVBox, FillHeightOne, AlignTopLeft, PaddingNone {
                 Collection

@@ -32,3 +32,8 @@ prefab [UI].Widgets.IsToggle {
 }
 
 prefab [UI].Widgets.IsMenu: IsWidget {Menu}
+
+prefab [UI].Widgets.IsTree: IsWidget {
+    TreeViewState
+    TreeRoot
+}

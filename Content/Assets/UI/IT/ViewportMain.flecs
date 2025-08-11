@@ -18,6 +18,7 @@ const labelGerman: "Deutsch"
 const labelItalian: "Italiano"
 
 const windowLayersPath: "UI/IFC/WindowLayers"
+const windowHierarchyPath: "UI/IFC/WindowHierarchy"
 
 const setLanguageITCode: "using [UI]\\n\\n\$ < | Locale: <\"it\">"
 const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
@@ -46,6 +47,10 @@ const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
                                 }
                                 Hierarchy: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelHierarchy}}
+                                    ActionOpenWindow: ActionSwitchScript {
+                                        (CheckBoxState, Checked)
+                                        Script: {$windowHierarchyPath}
+                                    }
                                 }
                                 Attributes: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelAttributes}}
