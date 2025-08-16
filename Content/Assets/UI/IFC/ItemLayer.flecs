@@ -7,7 +7,7 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-[PATH]: IsHBox, AlignFill, PaddingNormal {
+[PATH]: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNormal {
     (UIOf, [TARGET])
     ToggleState: ElementToggleVisibility {}
     Label: ElementItemLabel {Text: {"[TEXT]"}}

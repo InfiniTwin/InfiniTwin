@@ -12,10 +12,14 @@ const title: "IT::Layers"
     Text: {$title}
     (WidgetState, Opened)
     Content: StyleBorderSurfaceTransparent {
-        Container: IsVBox, FillHeight, AlignCenter, PaddingNone {
-            Collection: IsVBox, FillHeightOne, AlignTopLeft, PaddingNone {
-                Collection
-                [IFC].Layer
+        Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+            VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+                HSB: HScrollBox, FillWidthOne, FillWidthOne, AlignFill, PaddingNone {
+                    Collection: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+                        Collection
+                        [IFC].Layer
+                    }
+                }
             }
             BottomBar: StyleBorderSurfaceLow, VAlignBottom, HAlignFill, PaddingNone {
                 Order: {1}

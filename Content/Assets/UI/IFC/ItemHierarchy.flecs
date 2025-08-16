@@ -7,9 +7,10 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-[PATH]: IsHBox, AlignFill, PaddingNormal {
+[PATH]: IsVBox, AlignFill, PaddingNone {
     (UIOf, [TARGET])
-    [UI].TreeItem
-    [UI].TreeRowContent
-    Label: ElementItemLabel {Text: {"[TEXT]"}}
+    Item: IsHBox, AlignFill, PaddingNone {
+        Label: ElementItemLabel {Text: {"[TEXT]"}}
+    }
+    Container: IsVBox, AlignFill, PaddingItem {}
 }

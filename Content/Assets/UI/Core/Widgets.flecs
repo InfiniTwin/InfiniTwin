@@ -13,6 +13,16 @@ prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}
 
+prefab [UI].Widgets.HScrollBox: IsWidget {
+    ScrollBox
+    Orientation: {0}
+}
+
+prefab [UI].Widgets.VScrollBox: IsWidget {
+    ScrollBox
+    Orientation: {1}
+}
+
 prefab [UI].Widgets.IsTextBlock: IsWidget {TextBlock}
 
 prefab [UI].Widgets.TextButton: IsTextBlock, TextBodySmall, AlignCenter, PaddingButtonContentCenter {Text}
@@ -32,8 +42,3 @@ prefab [UI].Widgets.IsToggle {
 }
 
 prefab [UI].Widgets.IsMenu: IsWidget {Menu}
-
-prefab [UI].Widgets.IsTree: IsWidget {
-    TreeViewState
-    TreeRoot
-}

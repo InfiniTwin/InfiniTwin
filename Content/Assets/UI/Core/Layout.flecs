@@ -26,4 +26,4 @@ prefab [UI].Layout.PaddingIcon {Padding: {{2, 0, 2, 0}}}
 prefab [UI].Layout.PaddingButtonContentCenter {Padding: {{4, 0, 4, 0}}}
 prefab [UI].Layout.PaddingButtonContentRight {Padding: {{0, 0, 4, 0}}}
 prefab [UI].Layout.PaddingButtonContentRightLeft {Padding: {{4, 0, 6, 0}}}
-prefab [UI].Layout.PaddingItem {Padding: {{10, 0, 0, 0}}}
+prefab [UI].Layout.PaddingItem {Padding: {{20, 4, 4, 0}}}
