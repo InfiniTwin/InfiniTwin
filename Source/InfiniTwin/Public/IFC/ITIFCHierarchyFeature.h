@@ -12,7 +12,7 @@ namespace IFC {
 		static void CreateObservers(flecs::world& world);
 	};
 
-	constexpr const char* ITEM_CONTAINER = ".Container";
+	constexpr const char* ITEM_CONTAINER = "::Container";
 
 	using namespace UI;
 	struct QueryHierarchy { flecs::query<Hierarchy> Value; };

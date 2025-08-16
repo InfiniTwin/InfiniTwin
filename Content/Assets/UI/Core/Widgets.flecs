@@ -8,7 +8,6 @@ prefab [UI].Widgets.IsWidget {
 }
 prefab [UI].Widgets.IsBorder: IsWidget {Border}
 prefab [UI].Widgets.IsConstraintCanvas: IsWidget {ConstraintCanvas}
-prefab [UI].Widgets.IsCompoundWidget: IsWidget {CompoundWidget}
 prefab [UI].Widgets.IsBox: IsWidget {Box}
 prefab [UI].Widgets.IsHBox: IsWidget {HBox}
 prefab [UI].Widgets.IsVBox: IsWidget {VBox}

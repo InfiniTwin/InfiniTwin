@@ -33,7 +33,7 @@ namespace IFC {
 		auto path = FString(collection.path()) + TEXT(".") + FString(layer.name());
 		RunScript(world, "UI/IFC", "ItemLayer", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
-			TOKEN(TOKEN_TARGET, NormalizedPath(layer.path().c_str())),
+			TOKEN(TOKEN_TARGET, IdString(layer.id())),
 			TOKEN(TOKEN_TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
 	}
 

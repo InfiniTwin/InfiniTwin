@@ -11,16 +11,16 @@
 namespace IFC {
 	using namespace ECS;
 
-	void AddItem(flecs::world& world, const FString& path, const FString& sourcePath, const FString& name) {
+	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
-			TOKEN(TOKEN_TARGET, NormalizedPath(sourcePath)),
-			TOKEN(TOKEN_TEXT, name) }));
+			TOKEN(TOKEN_TARGET, IdString(item.id())),
+			TOKEN(TOKEN_TEXT,  item.try_get<Name>()->Value) }));
 	}
 
 	void AddHierarchy(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = ITEM_CONTAINER) {
 		auto path = parentPath + container + TEXT("::") + FString(item.name());
-		AddItem(world, path, item.path().c_str(), item.try_get<Name>()->Value);
+		AddItem(world, path, item);
 		item.children([&](flecs::entity child) {
 			AddHierarchy(world, path, child);
 			});
@@ -58,11 +58,9 @@ namespace IFC {
 					itemPath.RemoveFromStart(TEXT("::"));
 					if (!item.parent().has<Hierarchy>())
 						itemPath.ReplaceInline(TEXT("::"), *(UTF8_TO_TCHAR(ITEM_CONTAINER) + FString(TEXT("::"))));
-					const FString itemUIPath = NormalizedPath(collectionPath + TEXT(".") + itemPath);
+					const FString path = NormalizedPath(collectionPath + TEXT(".") + itemPath);
 
-					FString itemSourceId = "#" + LexToString(static_cast<uint64>(item.id()));
-
-					AddItem(world, itemUIPath, itemSourceId, name.Value);
+					AddItem(world, path, item);
 					});
 				});
 				});
@@ -76,6 +74,14 @@ namespace IFC {
 				root.children([&](flecs::entity child) {
 					AddHierarchy(world, FString(collection.path()), child, "");
 					}); });
+				});
+
+		world.observer<>("DestroyItemUIs")
+			.with<IFCData>().src().var("$item")
+			.event(flecs::OnRemove)
+			.with<UIOf>().second().var("$item")
+			.each([&world](flecs::entity itemUI) {
+			itemUI.destruct();
 				});
 	}
 }
