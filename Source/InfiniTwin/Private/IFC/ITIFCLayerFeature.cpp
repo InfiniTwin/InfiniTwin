@@ -21,9 +21,9 @@ namespace IFC {
 				});
 	}
 
-	FString ExtractSlug(const FString& Input) {
-		FRegexPattern pattern(TEXT("/([^/@\\s]+)@"));
-		FRegexMatcher matcher(pattern, Input);
+	FString ExtractSlug(const FString& id) {
+		FRegexPattern pattern(TEXT("/([^/]+)\\.ifcx$"));
+		FRegexMatcher matcher(pattern, id);
 		if (matcher.FindNext())
 			return matcher.GetCaptureGroup(1);
 		return FString();
