@@ -46,20 +46,20 @@ namespace IFC {
 	}
 
 	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
-		world.component<QueryLayer>();
-		world.set(QueryLayer{
-			world.query_builder<Layer, Id>(COMPONENT(QueryLayer))
+		world.component<QueryLayers>();
+		world.set(QueryLayers{
+			world.query_builder<Layer, Id>(COMPONENT(QueryLayers))
 			.cached().build() });
 
-		world.component<QueryLayerEnabled>();
-		world.set(QueryLayerEnabled{
-			world.query_builder<Layer, Id>(COMPONENT(QueryLayerEnabled))
+		world.component<QueryEnabledLayers>();
+		world.set(QueryEnabledLayers{
+			world.query_builder<Layer, Id>(COMPONENT(QueryEnabledLayers))
 			.with(Enabled)
 			.cached().build() });
 
-		world.component<QueryCollectionLayer>();
-		world.set(QueryCollectionLayer{
-			world.query_builder<Collection, Layer>(COMPONENT(QueryCollectionLayer))
+		world.component<QueryLayerCollections>();
+		world.set(QueryLayerCollections{
+			world.query_builder<Collection, Layer>(COMPONENT(QueryLayerCollections))
 			.cached().build() });
 	};
 
@@ -69,7 +69,7 @@ namespace IFC {
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
-			world.try_get<QueryCollectionLayer>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
+			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
 				AddLayerUIItem(world, collection, layer); });
 				});
 
@@ -78,7 +78,7 @@ namespace IFC {
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity collection) {
-			world.try_get<QueryLayer>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
+			world.try_get<QueryLayers>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
 				AddLayerUIItem(world, collection, layer); });
 				});
 
@@ -127,7 +127,7 @@ namespace IFC {
 			world.try_get_mut<TimerLoadIFCData>()->Value.stop();
 
 			TArray<flecs::entity> layers;
-			world.try_get<QueryLayerEnabled>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
+			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
 				layers.Add(layer);
 				});
 			LoadIFCData(world, layers);

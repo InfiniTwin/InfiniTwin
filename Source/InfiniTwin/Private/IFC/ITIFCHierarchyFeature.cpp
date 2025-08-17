@@ -31,15 +31,21 @@ namespace IFC {
 	}
 
 	void ITIFCHierarchyFeature::CreateQueries(flecs::world& world) {
-		world.component<QueryHierarchy>();
-		world.set(QueryHierarchy{
-			world.query_builder<Hierarchy>(COMPONENT(QueryHierarchy))
+		world.component<QueryHierarchies>();
+		world.set(QueryHierarchies{
+			world.query_builder<Hierarchy>(COMPONENT(QueryHierarchies))
 			.without<Collection>()
 			.cached().build() });
 
-		world.component<QueryCollectionHierarchy>();
-		world.set(QueryCollectionHierarchy{
-			world.query_builder<Collection, Hierarchy>(COMPONENT(QueryCollectionHierarchy))
+		world.component<QueryHierarchyCollections>();
+		world.set(QueryHierarchyCollections{
+			world.query_builder<Collection, Hierarchy>(COMPONENT(QueryHierarchyCollections))
+			.cached().build() });
+
+		world.component<QuerySelectedIFCData>();
+		world.set(QuerySelectedIFCData{
+			world.query_builder<IFCData>(COMPONENT(QuerySelectedIFCData))
+			.with(Selected)
 			.cached().build() });
 	};
 
@@ -47,13 +53,13 @@ namespace IFC {
 		world.observer<const Name>("AddHierarchyUIItemOnCreate")
 			.with<IFCData>()
 			.event(flecs::OnSet)
-			.each([&world](flecs::entity item, const Name& name) {
+			.each([&](flecs::entity item, const Name& name) {
 			if (name.Value.IsEmpty()) return;
 
-			world.try_get<QueryHierarchy>()->Value.each([&](flecs::entity root, Hierarchy) {
+			world.try_get<QueryHierarchies>()->Value.each([&](flecs::entity root, Hierarchy) {
 				if (!IsDescendant(item, root)) return;
 
-				world.try_get<QueryCollectionHierarchy>()->Value.each([&](flecs::entity collection, Collection, Hierarchy) {
+				world.try_get<QueryHierarchyCollections>()->Value.each([&](flecs::entity collection, Collection, Hierarchy) {
 					const FString rootPath = UTF8_TO_TCHAR(root.path().c_str());
 					const FString collectionPath = UTF8_TO_TCHAR(collection.path().c_str());
 
@@ -74,7 +80,7 @@ namespace IFC {
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity collection) {
-			world.try_get<QueryHierarchy>()->Value.each([&world, &collection](flecs::entity root, Hierarchy) {
+			world.try_get<QueryHierarchies>()->Value.each([&world, &collection](flecs::entity root, Hierarchy) {
 				root.children([&](flecs::entity child) {
 					AddHierarchy(world, FString(collection.path()), child, "");
 					}); });
@@ -84,8 +90,30 @@ namespace IFC {
 			.with<IFCData>().src().var("$item")
 			.event(flecs::OnRemove)
 			.with<UIOf>().second().var("$item")
-			.each([&world](flecs::entity itemUI) {
+			.each([](flecs::entity itemUI) {
 			itemUI.destruct();
+				});
+
+		world.observer<>("SwitchItemFromUI")
+			.with<CheckBoxState>(flecs::Wildcard)
+			.event(flecs::OnSet)
+			.each([](flecs::entity checkBox) {
+			for (flecs::entity itemUI = checkBox; itemUI.is_valid(); itemUI = itemUI.parent())
+				if (itemUI.has<UIOf>(flecs::Wildcard)) {
+					itemUI.target<UIOf>().add(checkBox.has(Checked) ? Selected : Deselected);
+					return;
+				}
+				});
+
+		world.observer<>("DeselectOtherItems")
+			.with<IFCData>()
+			.with(Selected)
+			.event(flecs::OnSet)
+			.each([&](flecs::entity item) {
+			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, IFCData) {
+				if (item.id() != otherItem.id())
+					otherItem.add(Deselected);
+				});
 				});
 	}
 }

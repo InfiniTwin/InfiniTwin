@@ -8,10 +8,12 @@ using [CORE]
 using [CORE].Actions
 
 [PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
+    (UIOf, [TARGET])
     Container: IsVBox, AlignFill, PaddingNone {
-        (UIOf, [TARGET])
         Item: IsHBox, AlignFill, PaddingNone {
-                Label: ElementItemLabel {Text: {"[TEXT]"}}
+                Checkbox: ElementItemCheckBox {
+                    Label: ElementItemLabel {Text: {"[TEXT]"}}
+                }
             }
         Children: IsVBox, AlignFill, PaddingItem {}
     }

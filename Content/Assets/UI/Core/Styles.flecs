@@ -48,6 +48,18 @@ prefab [UI].Styles.StyleCheckBoxRoundNoColor: IsToggle, PaddingNone {
     ForegroundHovered: ColorOnSurface {}
 }
 
+prefab [UI].Styles.StyleCheckBoxTransparent: IsToggle, PaddingNone {
+    CheckBoxStyle
+    BrushNormalOFF: ColorTransparent, BrushBox {}
+    BrushNormalON: ColorTransparent, BrushBox {}
+    BrushHoveredOFF: ColorTransparent, BrushBox {}
+    BrushHoveredON: ColorTransparent, BrushBox {}    
+    BrushPressedOFF: ColorTransparent, BrushBox {}
+    BrushPressedON: ColorTransparent, BrushBox {}
+    ForegroundNormal: ColorTransparent {}
+    ForegroundHovered: ColorTransparent {}
+}
+
 prefab [UI].Styles.StyleBorderSurfaceTransparent: IsBorder {Brush: BrushSurfaceTransparent {}}
 prefab [UI].Styles.StyleBorderSurfaceLowest: IsBorder {Brush: BrushSurfaceLowest {}}
 prefab [UI].Styles.StyleBorderSurfaceLow: IsBorder {Brush: BrushSurfaceLow {}}

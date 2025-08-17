@@ -21,6 +21,7 @@ namespace IFC {
 	};
 
 	using namespace UI;
-	struct QueryHierarchy { flecs::query<Hierarchy> Value; };
-	struct QueryCollectionHierarchy { flecs::query<Collection, Hierarchy> Value; };
+	struct QueryHierarchies { flecs::query<Hierarchy> Value; };
+	struct QueryHierarchyCollections { flecs::query<Collection, Hierarchy> Value; };
+	struct QuerySelectedIFCData { flecs::query<IFCData> Value; };
 }
