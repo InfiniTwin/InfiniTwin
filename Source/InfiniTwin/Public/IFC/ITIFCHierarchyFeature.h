@@ -8,11 +8,17 @@
 
 namespace IFC {
 	struct ITIFCHierarchyFeature {
+		static void RegisterComponents(flecs::world& world);
 		static void CreateQueries(flecs::world& world);
 		static void CreateObservers(flecs::world& world);
 	};
 
-	constexpr const char* ITEM_CONTAINER = "::Container";
+	constexpr const char* ITEM_CONTAINER = "::Container::Children";
+
+	enum ItemState {
+		Selected,
+		Deselected
+	};
 
 	using namespace UI;
 	struct QueryHierarchy { flecs::query<Hierarchy> Value; };

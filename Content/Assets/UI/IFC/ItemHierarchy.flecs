@@ -7,10 +7,12 @@ using [UI].Elements
 using [CORE]
 using [CORE].Actions
 
-[PATH]: IsVBox, AlignFill, PaddingNone {
-    (UIOf, [TARGET])
-    Item: IsHBox, AlignFill, PaddingNone {
-        Label: ElementItemLabel {Text: {"[TEXT]"}}
+[PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
+    Container: IsVBox, AlignFill, PaddingNone {
+        (UIOf, [TARGET])
+        Item: IsHBox, AlignFill, PaddingNone {
+                Label: ElementItemLabel {Text: {"[TEXT]"}}
+            }
+        Children: IsVBox, AlignFill, PaddingItem {}
     }
-    Container: IsVBox, AlignFill, PaddingItem {}
 }

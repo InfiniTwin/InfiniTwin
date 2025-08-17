@@ -26,6 +26,10 @@ namespace IFC {
 			});
 	}
 
+	void ITIFCHierarchyFeature::RegisterComponents(flecs::world& world) {
+		world.component<ItemState>().add(flecs::Exclusive);
+	}
+
 	void ITIFCHierarchyFeature::CreateQueries(flecs::world& world) {
 		world.component<QueryHierarchy>();
 		world.set(QueryHierarchy{
