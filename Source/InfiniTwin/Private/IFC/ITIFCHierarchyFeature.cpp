@@ -27,7 +27,7 @@ namespace IFC {
 	}
 
 	void ITIFCHierarchyFeature::RegisterComponents(flecs::world& world) {
-		world.component<ItemState>().add(flecs::Exclusive);
+		world.component<Selected>();
 	}
 
 	void ITIFCHierarchyFeature::CreateQueries(flecs::world& world) {
@@ -44,8 +44,7 @@ namespace IFC {
 
 		world.component<QuerySelectedIFCData>();
 		world.set(QuerySelectedIFCData{
-			world.query_builder<IFCData>(COMPONENT(QuerySelectedIFCData))
-			.with(Selected)
+			world.query_builder<IFCData, Selected>(COMPONENT(QuerySelectedIFCData))
 			.cached().build() });
 	};
 
@@ -79,17 +78,16 @@ namespace IFC {
 			.with<Hierarchy>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
-			.each([&world](flecs::entity collection) {
-			world.try_get<QueryHierarchies>()->Value.each([&world, &collection](flecs::entity root, Hierarchy) {
+			.each([&](flecs::entity collection) {
+			world.try_get<QueryHierarchies>()->Value.each([&](flecs::entity root, Hierarchy) {
 				root.children([&](flecs::entity child) {
 					AddHierarchy(world, FString(collection.path()), child, "");
 					}); });
 				});
 
 		world.observer<>("DestroyItemUIs")
-			.with<IFCData>().src().var("$item")
+			.with<UIOf>(flecs::Wildcard)
 			.event(flecs::OnRemove)
-			.with<UIOf>().second().var("$item")
 			.each([](flecs::entity itemUI) {
 			itemUI.destruct();
 				});
@@ -100,19 +98,30 @@ namespace IFC {
 			.each([](flecs::entity checkBox) {
 			for (flecs::entity itemUI = checkBox; itemUI.is_valid(); itemUI = itemUI.parent())
 				if (itemUI.has<UIOf>(flecs::Wildcard)) {
-					itemUI.target<UIOf>().add(checkBox.has(Checked) ? Selected : Deselected);
+					if (checkBox.has(Checked)) itemUI.target<UIOf>().add<Selected>();
+					else itemUI.target<UIOf>().remove<Selected>();
 					return;
 				}
 				});
 
 		world.observer<>("DeselectOtherItems")
 			.with<IFCData>()
-			.with(Selected)
+			.with<Selected>()
 			.event(flecs::OnSet)
 			.each([&](flecs::entity item) {
-			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, IFCData) {
+			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, IFCData, Selected) {
 				if (item.id() != otherItem.id())
-					otherItem.add(Deselected);
+					otherItem.remove<Selected>();
+				});
+				});
+
+		world.observer<>("UncheckCheckBoxFromItem")
+			.with<Selected>()
+			.event(flecs::OnRemove).event(flecs::OnRemove)
+			.each([&](flecs::entity item) {
+			world.try_get<QueryUIOf>()->Value.iter().set_var("source", item).each([](flecs::entity itemUI) {
+				for (flecs::entity checkbox : FindDescendants<CheckBox, Selected>(itemUI, 3))
+					checkbox.add(Unchecked);
 				});
 				});
 	}

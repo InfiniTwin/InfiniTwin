@@ -6,15 +6,17 @@ using [UI].Styles
 using [UI].Elements
 using [CORE]
 using [CORE].Actions
+using [IFC]
 
 [PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
     (UIOf, [TARGET])
     Container: IsVBox, AlignFill, PaddingNone {
         Item: IsHBox, AlignFill, PaddingNone {
-                Checkbox: ElementItemCheckBox {
-                    Label: ElementItemLabel {Text: {"[TEXT]"}}
-                }
+            Checkbox: ElementItemCheckBox {
+                Selected
+                Label: ElementItemLabel {Text: {"[TEXT]"}}
             }
-        Children: IsVBox, AlignFill, PaddingItem {}
+        }
+    Children: IsVBox, AlignFill, PaddingItem {}
     }
 }

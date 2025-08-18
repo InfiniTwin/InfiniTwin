@@ -15,13 +15,10 @@ namespace IFC {
 
 	constexpr const char* ITEM_CONTAINER = "::Container::Children";
 
-	enum ItemState {
-		Selected,
-		Deselected
-	};
+	struct Selected {};
 
 	using namespace UI;
 	struct QueryHierarchies { flecs::query<Hierarchy> Value; };
 	struct QueryHierarchyCollections { flecs::query<Collection, Hierarchy> Value; };
-	struct QuerySelectedIFCData { flecs::query<IFCData> Value; };
+	struct QuerySelectedIFCData { flecs::query<IFCData, Selected> Value; };
 }
