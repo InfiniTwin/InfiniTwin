@@ -38,7 +38,7 @@ namespace IFC {
 	}
 
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
-		world.component<LayerState>().add(flecs::Exclusive);
+		world.component<Enabled>();
 
 		world.component<TimerLoadIFCData>().member<float>(VALUE);
 		world.set<TimerLoadIFCData>({ world.timer(COMPONENT(TimerLoadIFCData)).interval(0.01) });
@@ -53,13 +53,12 @@ namespace IFC {
 
 		world.component<QueryEnabledLayers>();
 		world.set(QueryEnabledLayers{
-			world.query_builder<Layer, Id>(COMPONENT(QueryEnabledLayers))
-			.with(Enabled)
+			world.query_builder<Enabled, Layer>(COMPONENT(QueryEnabledLayers))
 			.cached().build() });
 
 		world.component<QueryLayerCollections>();
 		world.set(QueryLayerCollections{
-			world.query_builder<Collection, Layer>(COMPONENT(QueryLayerCollections))
+			world.query_builder<Layer, Collection>(COMPONENT(QueryLayerCollections))
 			.cached().build() });
 	};
 
@@ -69,7 +68,7 @@ namespace IFC {
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
-			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection, Collection, Layer) {
+			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection, Layer, Collection) {
 				AddLayerUIItem(world, collection, layer); });
 				});
 
@@ -85,36 +84,29 @@ namespace IFC {
 		world.observer<>("SetLayerState")
 			.with<CheckBoxState>().second(flecs::Wildcard)
 			.event(flecs::OnSet)
-			.each([](flecs::iter& it, size_t i) {
-			auto checkBox = it.entity(i);
+			.each([](flecs::entity checkBox) {
 			checkBox.parent().each<UIOf>([&checkBox](flecs::entity layer) {
-				layer.add(checkBox.has(Unchecked) ? Enabled : Disabled);
+				if (checkBox.has(Checked)) layer.remove<Enabled>();
+				else layer.add<Enabled>();
 				});
 				});
 
-		world.observer<>("SetLayerUIState")
+		world.observer<>("SetLayerUICheckBoxState")
 			.with<CheckBox>()
 			.event(flecs::OnAdd)
-			.each([](flecs::iter& it, size_t i) {
-			auto checkBox = it.entity(i);
+			.each([](flecs::entity checkBox) {
 			auto parent = checkBox.parent();
 			if (!parent.has<UIOf>(flecs::Wildcard)) return;
 			auto target = parent.target<UIOf>();
 			if (target.has<Layer>())
-				checkBox.add(target.has(Enabled) ? Unchecked : Checked);
+				checkBox.add(target.has<Enabled>() ? Unchecked : Checked);
 				});
 
-		world.observer<>("DestroyIFCDataOnLayerStateChange")
-			.with<LayerState>().second(flecs::Wildcard)
-			.event(flecs::OnSet)
-			.run([&world](flecs::iter& it) {
-			DestroyIFCData(world);
-				});
-
-		world.observer<>("DestroyIFCDataOnLayerCreate")
+		world.observer<>("DestroyIFCDataOnLayerSwitch")
 			.with<Layer>()
-			.with<Id>()
+			.with<Enabled>()
 			.event(flecs::OnAdd)
+			.event(flecs::OnRemove)
 			.run([&world](flecs::iter& it) {
 			DestroyIFCData(world);
 				});
@@ -127,7 +119,7 @@ namespace IFC {
 			world.try_get_mut<TimerLoadIFCData>()->Value.stop();
 
 			TArray<flecs::entity> layers;
-			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Layer, Id) {
+			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Enabled, Layer) {
 				layers.Add(layer);
 				});
 			LoadIFCData(world, layers);
@@ -152,7 +144,7 @@ namespace IFC {
 				paths)) {
 				TArray<FString> components = {
 					UTF8_TO_TCHAR(COMPONENT(Layer)),
-					FString::Printf(TEXT("(%s, %s)"), UTF8_TO_TCHAR(COMPONENT(LayerState)), UTF8_TO_TCHAR(COMPONENT(Enabled)))
+					UTF8_TO_TCHAR(COMPONENT(Enabled))
 				};
 				AddLayers(world, paths, components);
 			}

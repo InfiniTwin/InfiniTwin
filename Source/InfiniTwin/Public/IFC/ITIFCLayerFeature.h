@@ -18,15 +18,12 @@ namespace IFC {
 	inline constexpr TCHAR SelectIfcDialogTitle[] = TEXT("IT::LoadIfcDialogTitle");
 	inline constexpr TCHAR SelectIfcDialogFileType[] = TEXT("IFC 5 (*.ifcx)|*.ifcx");
 
-	enum LayerState {
-		Enabled,
-		Disabled
-	};
+	enum Enabled {};
 
 	using namespace UI;
 	struct QueryLayers { flecs::query<Layer, Id> Value; };
-	struct QueryEnabledLayers { flecs::query<Layer, Id> Value; };
-	struct QueryLayerCollections { flecs::query<Collection, Layer> Value; };
+	struct QueryEnabledLayers { flecs::query<Enabled, Layer> Value; };
+	struct QueryLayerCollections { flecs::query<Layer, Collection> Value; };
 
 	struct TimerLoadIFCData { flecs::timer Value; };
 }

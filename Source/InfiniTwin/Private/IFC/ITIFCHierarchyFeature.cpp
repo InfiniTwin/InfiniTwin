@@ -44,7 +44,7 @@ namespace IFC {
 
 		world.component<QuerySelectedIFCData>();
 		world.set(QuerySelectedIFCData{
-			world.query_builder<IFCData, Selected>(COMPONENT(QuerySelectedIFCData))
+			world.query_builder<Selected, IFCData>(COMPONENT(QuerySelectedIFCData))
 			.cached().build() });
 	};
 
@@ -109,7 +109,7 @@ namespace IFC {
 			.with<Selected>()
 			.event(flecs::OnSet)
 			.each([&](flecs::entity item) {
-			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, IFCData, Selected) {
+			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, Selected, IFCData) {
 				if (item.id() != otherItem.id())
 					otherItem.remove<Selected>();
 				});
@@ -120,7 +120,7 @@ namespace IFC {
 			.event(flecs::OnRemove).event(flecs::OnRemove)
 			.each([&](flecs::entity item) {
 			world.try_get<QueryUIOf>()->Value.iter().set_var("source", item).each([](flecs::entity itemUI) {
-				for (flecs::entity checkbox : FindDescendants<CheckBox, Selected>(itemUI, 3))
+				for (flecs::entity checkbox : FindDescendants<Selected, CheckBox>(itemUI, 3))
 					checkbox.add(Unchecked);
 				});
 				});
