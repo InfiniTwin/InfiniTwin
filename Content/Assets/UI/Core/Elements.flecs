@@ -86,4 +86,27 @@ prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
 }
 
 prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, FillHeightOne, FillWidthOne, AlignFill, PaddingItem {Text}
-prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {}
+//prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {}
+
+prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
+    ActionRemoveBrushDeselected: ActionRemoveScript {
+        (CheckBoxState, Checked)
+        Script: {"UI/IFC/BrushDeselected"}
+        Target: {"<<<"}
+    }
+    ActionAddBrushSelected: ActionAddScript {
+        (CheckBoxState, Checked)
+        Script: {"UI/IFC/BrushSelected"}
+        Target: {"<<<"}
+    }
+    ActionRemoveBrushSelected: ActionRemoveScript {
+        (CheckBoxState, Unchecked)
+        Script: {"UI/IFC/BrushSelected"}
+        Target: {"<<<"}
+    }
+    ActionAddBrushDeselected: ActionAddScript {
+        (CheckBoxState, Unchecked)
+        Script: {"UI/IFC/BrushDeselected"}
+        Target: {"<<<"}
+    }
+}

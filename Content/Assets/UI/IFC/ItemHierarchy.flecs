@@ -8,8 +8,9 @@ using [CORE]
 using [CORE].Actions
 using [IFC]
 
-[PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
+[PATH]: IsBorder, AlignFill, PaddingNone {
     (UIOf, [TARGET])
+    BrushDeselected: BrushSurfaceTransparent {}
     Container: IsVBox, AlignFill, PaddingNone {
         Item: IsHBox, AlignFill, PaddingNone {
             Checkbox: ElementItemCheckBox {
