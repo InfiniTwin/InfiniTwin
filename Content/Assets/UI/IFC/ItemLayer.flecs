@@ -6,9 +6,10 @@ using [UI].Styles
 using [UI].Elements
 using [CORE]
 using [CORE].Actions
+using [IFC]
 
 [PATH]: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNormal {
     (UIOf, [TARGET])
-    ToggleState: ElementToggleVisibility {}
+    ToggleState: ElementToggleVisibility {Enabled}
     Label: ElementItemLabel {Text: {"[TEXT]"}}
 }

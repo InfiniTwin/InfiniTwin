@@ -86,7 +86,6 @@ prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
 }
 
 prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, FillHeightOne, FillWidthOne, AlignFill, PaddingItem {Text}
-//prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {}
 
 prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
     ActionRemoveBrushDeselected: ActionRemoveScript {

@@ -18,7 +18,7 @@ namespace IFC {
 		world.try_get<QueryIFCData>()->Value
 			.each([](flecs::entity entity, IFCData) {
 			entity.destruct();
-				});
+		});
 	}
 
 	FString ExtractSlug(const FString& id) {
@@ -63,35 +63,37 @@ namespace IFC {
 	};
 
 	void ITIFCLayerFeature::CreateObservers(flecs::world& world) {
-		world.observer<>("AddLayerUIItemOnCreate")
+		world.observer<>("AddLayerUIOnItemCreate")
 			.with<Layer>()
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
 			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection, Layer, Collection) {
 				AddLayerUIItem(world, collection, layer); });
-				});
+		});
 
-		world.observer<>("AddLayerUIItemOnCollectionCreate")
+		world.observer<>("AddLayerUIOnCollectionCreate")
 			.with<Layer>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity collection) {
 			world.try_get<QueryLayers>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
 				AddLayerUIItem(world, collection, layer); });
-				});
+		});
 
-		world.observer<>("SetLayerState")
+		world.observer<>("SetLayerStateFromUI")
+			.with<Enabled>().filter()
 			.with<CheckBoxState>().second(flecs::Wildcard)
 			.event(flecs::OnSet)
 			.each([](flecs::entity checkBox) {
 			checkBox.parent().each<UIOf>([&checkBox](flecs::entity layer) {
 				if (checkBox.has(Checked)) layer.remove<Enabled>();
 				else layer.add<Enabled>();
-				});
-				});
+			});
+		});
 
 		world.observer<>("SetLayerUICheckBoxState")
+			.with<Enabled>().filter()
 			.with<CheckBox>()
 			.event(flecs::OnAdd)
 			.each([](flecs::entity checkBox) {
@@ -100,7 +102,7 @@ namespace IFC {
 			auto target = parent.target<UIOf>();
 			if (target.has<Layer>())
 				checkBox.add(target.has<Enabled>() ? Unchecked : Checked);
-				});
+		});
 
 		world.observer<>("DestroyIFCDataOnLayerSwitch")
 			.with<Layer>()
@@ -109,7 +111,7 @@ namespace IFC {
 			.event(flecs::OnRemove)
 			.run([&world](flecs::iter& it) {
 			DestroyIFCData(world);
-				});
+		});
 
 		world.system<>("LoadIFCData")
 			.tick_source(world.try_get<TimerLoadIFCData>()->Value)
@@ -121,9 +123,9 @@ namespace IFC {
 			TArray<flecs::entity> layers;
 			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Enabled, Layer) {
 				layers.Add(layer);
-				});
+			});
 			LoadIFCData(world, layers);
-				});
+		});
 	}
 
 	void ITIFCLayerFeature::CreateSystems(flecs::world& world) {
@@ -148,6 +150,6 @@ namespace IFC {
 				};
 				AddLayers(world, paths, components);
 			}
-				});
+		});
 	}
 }
