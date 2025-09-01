@@ -8,25 +8,30 @@ using [CORE]
 using [CORE].Actions
 using [IFC]
 
+const canToggleChildren: [CAN_TOGGLE_CHILDREN]
+
 [PATH]: IsBorder, AlignFill, PaddingNone {
     (UIOf, [TARGET])
     BrushDeselected: BrushSurfaceTransparent {}
     Container: IsVBox, AlignFill, PaddingNone {
         Item: IsHBox, AlignFill, PaddingNone {
-            ToggleChildren: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
-                Icon: IconMedium, PaddingNone {Icon: {"e313"}}
-                ActionCollapse: ActionWidgetCollapsed {
-                    (CheckBoxState, Checked)
-                    Target: {"<<Children"}
+            if $canToggleChildren {
+                ToggleChildren: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
+                    Icon: IconMedium, PaddingNone {Icon: {"e313"}}
+                    ActionCollapse: ActionWidgetCollapsed {
+                        (CheckBoxState, Checked)
+                        Target: {"<<Children"}
+                    }
+                    ActionExpand: ActionWidgetVisible {
+                        (CheckBoxState, Unchecked)
+                        Target: {"<<Children"}
+                    }
+                    ActionCollapseIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e315\">"}} // Arrow Drop Down
+                    ActionExpandIcon: ActionUncheckedIcon {Code: {" | [UI].Icon: <\"e313\">"}} // Arrow Right
                 }
-                ActionExpand: ActionWidgetVisible {
-                    (CheckBoxState, Unchecked)
-                    Target: {"<<Children"}
-                }
-                ActionCollapseIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e315\">"}} // Arrow Drop Down
-                ActionExpandIcon: ActionUncheckedIcon {Code: {" | [UI].Icon: <\"e313\">"}} // Arrow Right
             }
             ToggleSelected: ElementItemCheckBox {
+                if $canToggleChildren {} else { Padding: {{16, 0, 0, 0}} }
                 Selected
                 Label: ElementItemLabel {Text: {"[TEXT]"}}
             }

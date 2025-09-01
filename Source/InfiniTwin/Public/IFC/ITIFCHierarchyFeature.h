@@ -14,6 +14,7 @@ namespace IFC {
 	};
 
 	constexpr const char* ITEM_CONTAINER = "::Container::Children";
+	inline constexpr TCHAR TOKEN_TOGGLE_CHILDREN[] = TEXT("[CAN_TOGGLE_CHILDREN]");
 
 	struct Selected {};
 
