@@ -34,7 +34,7 @@ const title: "IT::Layers"
             }
         }
     }
-    ActionEnableCheckBox: ActionWidgetEnable {
+    ActionEnableCheckBox: ActionWidgetVisible {
         (WidgetState, Closed)
         Target: {"<"}
     }

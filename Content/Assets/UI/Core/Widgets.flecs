@@ -30,8 +30,8 @@ prefab [UI].Widgets.IsIcon: IsTextBlock, IsFontInfo, AlignCenter, PaddingIcon {
     FontFace: {"200Fill"}
     Icon: {"f89a"}
 }
-prefab [UI].Widgets.IconMedium: IsIcon {FontSize: {14}}
 prefab [UI].Widgets.IconSmall: IsIcon {FontSize: {10}}
+prefab [UI].Widgets.IconMedium: IsIcon {FontSize: {14}}
 
 prefab [UI].Widgets.IsButton {Button}
 

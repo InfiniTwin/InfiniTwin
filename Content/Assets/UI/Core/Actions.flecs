@@ -25,19 +25,23 @@ prefab [CORE].Actions.ActionRemoveScript: ActionRemove {Script}
 
 // WIDGET
 
-prefab [CORE].Actions.ActionWidgetEnable: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetVisible: ActionAddComponents {
     Code: {" | (Visibility, Visible)"}
 }
 
-prefab [CORE].Actions.ActionWidgetCollapse: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetCollapsed: ActionAddComponents {
     Code: {" | (Visibility, Collapsed)"}
 }
 
-prefab [CORE].Actions.ActionWidgetDisable: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetHidden: ActionAddComponents {
+    Code: {" | (Visibility, Hidden)"}
+}
+
+prefab [CORE].Actions.ActionWidgetInvisible: ActionAddComponents {
     Code: {" | (Visibility, HitTestInvisible)"}
 }
 
-prefab [CORE].Actions.ActionWidgetDisableSelf: ActionAddComponents {
+prefab [CORE].Actions.ActionWidgetInvisibleSelf: ActionAddComponents {
     Code: {" | (Visibility, SelfHitTestInvisible)"}
 }
 
@@ -56,10 +60,22 @@ prefab [CORE].Actions.ActionWidgetClose: ActionAddComponents {
 prefab [CORE].Actions.ActionCheckedIcon: ActionAddComponents {
     (CheckBoxState, Checked)
     Code: {" | [UI].Icon: <\"e86c\">"}
-    Target: {"Container.Icon"}
+    Target: {"Icon"}
 }
 
 prefab [CORE].Actions.ActionUncheckedIcon: ActionAddComponents {
+    (CheckBoxState, Unchecked)
+    Code: {" | [UI].Icon: <\"e836\">"}
+    Target: {"Icon"}
+}
+
+prefab [CORE].Actions.ActionCheckedIconWithContainer: ActionAddComponents {
+    (CheckBoxState, Checked)
+    Code: {" | [UI].Icon: <\"e86c\">"}
+    Target: {"Container.Icon"}
+}
+
+prefab [CORE].Actions.ActionUncheckedIconWithContainer: ActionAddComponents {
     (CheckBoxState, Unchecked)
     Code: {" | [UI].Icon: <\"e836\">"}
     Target: {"Container.Icon"}

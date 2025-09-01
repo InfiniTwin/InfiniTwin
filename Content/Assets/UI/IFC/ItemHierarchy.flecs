@@ -13,11 +13,24 @@ using [IFC]
     BrushDeselected: BrushSurfaceTransparent {}
     Container: IsVBox, AlignFill, PaddingNone {
         Item: IsHBox, AlignFill, PaddingNone {
-            Checkbox: ElementItemCheckBox {
+            ToggleChildren: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
+                Icon: IconMedium, PaddingNone {Icon: {"e313"}}
+                ActionCollapse: ActionWidgetCollapsed {
+                    (CheckBoxState, Checked)
+                    Target: {"<<Children"}
+                }
+                ActionExpand: ActionWidgetVisible {
+                    (CheckBoxState, Unchecked)
+                    Target: {"<<Children"}
+                }
+                ActionCollapseIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e315\">"}} // Arrow Drop Down
+                ActionExpandIcon: ActionUncheckedIcon {Code: {" | [UI].Icon: <\"e313\">"}} // Arrow Right
+            }
+            ToggleSelected: ElementItemCheckBox {
                 Selected
                 Label: ElementItemLabel {Text: {"[TEXT]"}}
             }
         }
-    Children: IsVBox, AlignFill, PaddingItem {}
+        Children: IsVBox, AlignFill, PaddingItem {}
     }
 }

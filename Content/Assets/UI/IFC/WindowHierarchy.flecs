@@ -23,7 +23,7 @@ const title: "IT::Hierarchy"
             }
         }
     }
-    ActionEnableCheckBox: ActionWidgetEnable {
+    ActionEnableCheckBox: ActionWidgetVisible {
         (WidgetState, Closed)
         Target: {"<"}
     }

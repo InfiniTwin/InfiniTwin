@@ -8,7 +8,7 @@ using [UI].Styles
 
 prefab [UI].Elements.ElementButtonIcon: IsWidget, StyleButtonRound, AlignCenter, PaddingNormal {
     Container: IsHBox {
-        Icon: IconMedium, PaddingIcon {}
+        Icon: IconMedium, PaddingNone {}
     }
 }
 
@@ -20,12 +20,12 @@ prefab [UI].Elements.ElementCheckBox: IsWidget, StyleCheckBoxRound, AlignFill, P
             Order: {1}
         }
     }
-    ActionCheckBoxCheckedIcon: ActionCheckedIcon {}
-    ActionCheckBoxUncheckedIcon: ActionUncheckedIcon {}
+    ActionCheckBoxCheckedIcon: ActionCheckedIconWithContainer {}
+    ActionCheckBoxUncheckedIcon: ActionUncheckedIconWithContainer {}
 }
 
 prefab [UI].Elements.ElementCheckBoxSelfDisable: ElementCheckBox {
-    ActionDisable: ActionWidgetDisable {
+    ActionDisable: ActionWidgetInvisible {
         (CheckBoxState, Checked)
     }
 }
@@ -36,8 +36,8 @@ prefab [UI].Elements.ElementRadio: IsWidget, StyleCheckBoxRound, AlignFill, Padd
         Icon: IconSmall, PaddingIcon {}
         Label: TextButton, PaddingButtonContentRightLeft {Order: {1}}
     }
-    ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e837\">"}}
-    ActionRadioUncheckedIcon: ActionUncheckedIcon {}
+    ActionRadioCheckedIcon: ActionCheckedIconWithContainer {Code: {" | [UI].Icon: <\"e837\">"}}
+    ActionRadioUncheckedIcon: ActionUncheckedIconWithContainer {}
 }
 
 prefab [UI].Elements.ElementToggleIcon: IsWidget, StyleCheckBoxRound, AlignCenter, PaddingNormal {
@@ -62,8 +62,8 @@ prefab [UI].Elements.ElementToggleIconText: ElementToggleIcon {
 
 prefab [UI].Elements.ElementToggleVisibility: ElementToggleIconNoColor, AlignCenter, PaddingNormal {
     Container.Icon {[UI].Icon: {"e8f4"}} // Visibility
-    ActionRadioCheckedIcon: ActionCheckedIcon {Code: {" | [UI].Icon: <\"e8f5\">"}} // Visiblity Off
-    ActionRadioUncheckedIcon: ActionUncheckedIcon {Code: {" | [UI].Icon: <\"e8f4\">"}} // Visibility
+    ActionRadioCheckedIcon: ActionCheckedIconWithContainer {Code: {" | [UI].Icon: <\"e8f5\">"}} // Visiblity Off
+    ActionRadioUncheckedIcon: ActionUncheckedIconWithContainer {Code: {" | [UI].Icon: <\"e8f4\">"}} // Visibility
 }
 
 prefab [UI].Elements.MenuBelow: IsMenu {MenuPlacement: {0}}
@@ -87,7 +87,7 @@ prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
 
 prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, FillHeightOne, FillWidthOne, AlignFill, PaddingItem {Text}
 
-prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
+prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignCenter, PaddingNormal {
     ActionRemoveBrushDeselected: ActionRemoveScript {
         (CheckBoxState, Checked)
         Script: {"UI/IFC/BrushDeselected"}
