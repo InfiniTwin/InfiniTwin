@@ -14,7 +14,7 @@ namespace IFC {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(item.id())),
-			TOKEN(TOKEN_TEXT,  item.try_get<Name>()->Value) }));
+			TOKEN(TOKEN_TEXT, item.try_get<Name>()->Value) }));
 	}
 
 	void AddHierarchy(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = ITEM_CONTAINER) {
