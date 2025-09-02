@@ -12,11 +12,11 @@
 namespace IFC {
 	using namespace ECS;
 
-	void DestroyIfcObjects(flecs::world& world) {
-		world.try_get_mut<TimerLoadIfcObjects>()->Value.start(); // Enable LoadIfcObjects system
+	void DestroyIfcData(flecs::world& world) {
+		world.try_get_mut<TimerLoadIfcData>()->Value.start(); // Enable LoadIfcData system
 
-		world.try_get<QueryIfcObjects>()->Value
-			.each([](flecs::entity entity, IfcObject) {
+		world.try_get<QueryIfcData>()->Value
+			.each([](flecs::entity entity) {
 			entity.destruct();
 		});
 	}
@@ -40,9 +40,9 @@ namespace IFC {
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
 		world.component<Enabled>();
 
-		world.component<TimerLoadIfcObjects>().member<float>(VALUE);
-		world.set<TimerLoadIfcObjects>({ world.timer(COMPONENT(TimerLoadIfcObjects)).interval(0.01) });
-		world.try_get_mut<TimerLoadIfcObjects>()->Value.stop();
+		world.component<TimerLoadIfcData>().member<float>(VALUE);
+		world.set<TimerLoadIfcData>({ world.timer(COMPONENT(TimerLoadIfcData)).interval(3) });
+		world.try_get_mut<TimerLoadIfcData>()->Value.stop();
 	}
 
 	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
@@ -104,28 +104,28 @@ namespace IFC {
 				checkBox.add(target.has<Enabled>() ? Unchecked : Checked);
 		});
 
-		world.observer<>("DestroyIfcObjectOnLayerSwitch")
+		world.observer<>("DestroyIfcDataOnLayerSwitch")
 			.with<Layer>()
 			.with<Enabled>()
 			.event(flecs::OnAdd)
 			.event(flecs::OnRemove)
 			.run([&world](flecs::iter& it) {
-			DestroyIfcObjects(world);
+			DestroyIfcData(world);
 		});
 
-		world.system<>("LoadIfcObjects")
-			.tick_source(world.try_get<TimerLoadIfcObjects>()->Value)
+		world.system<>("LoadIfcData")
+			.tick_source(world.try_get<TimerLoadIfcData>()->Value)
 			.each([&world]() {
-			if (world.try_get<QueryIfcObjects>()->Value.count() > 0)
+			if (world.try_get<QueryIfcData>()->Value.count() > 0)
 				return;
 
-			world.try_get_mut<TimerLoadIfcObjects>()->Value.stop();
+			world.try_get_mut<TimerLoadIfcData>()->Value.stop();
 
 			TArray<flecs::entity> layers;
 			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Enabled, Layer) {
 				layers.Add(layer);
 			});
-			LoadIfcObjects(world, layers);
+			LoadIfcData(world, layers);
 		});
 	}
 
