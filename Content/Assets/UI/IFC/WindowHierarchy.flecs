@@ -17,7 +17,7 @@ const title: "IT::Hierarchy"
                 HSB: HScrollBox, FillWidthOne, FillWidthOne, AlignFill, PaddingNone {
                     Collection: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
                         Collection
-                        [IFC].Hierarchy
+                        [IFC].Root
                     }
                 }
             }

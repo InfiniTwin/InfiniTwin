@@ -25,5 +25,5 @@ namespace IFC {
 	struct QueryEnabledLayers { flecs::query<Enabled, Layer> Value; };
 	struct QueryLayerCollections { flecs::query<Layer, Collection> Value; };
 
-	struct TimerLoadIfcData { flecs::timer Value; };
+	struct TimerLoadIFCData { flecs::timer Value; };
 }

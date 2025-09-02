@@ -15,6 +15,7 @@ const canToggleChildren: [CAN_TOGGLE_CHILDREN]
     BrushDeselected: BrushSurfaceTransparent {}
     Container: IsVBox, AlignFill, PaddingNone {
         Item: IsHBox, AlignFill, PaddingNone {
+            OrderedChildren
             if $canToggleChildren {
                 ToggleChildren: IsWidget, StyleCheckBoxTransparent, AlignFill, PaddingNormal {
                     Icon: IconMedium, PaddingNone {Icon: {"e313"}}

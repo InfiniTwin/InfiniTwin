@@ -12,7 +12,7 @@ namespace IFC {
 
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
-			TOKEN(TOKEN_TOGGLE_CHILDREN, HasChildren( item) ? TEXT("true") : TEXT("false")),
+			TOKEN(TOKEN_TOGGLE_CHILDREN, item.has<Branch>() ? TEXT("true") : TEXT("false")),
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(item.id())),
 			TOKEN(TOKEN_TEXT, item.try_get<Name>()->Value) }));
@@ -31,15 +31,15 @@ namespace IFC {
 	}
 
 	void ITIFCHierarchyFeature::CreateQueries(flecs::world& world) {
-		world.component<QueryHierarchies>();
-		world.set(QueryHierarchies{
-			world.query_builder<Hierarchy>(COMPONENT(QueryHierarchies))
+		world.component<QueryRoots>();
+		world.set(QueryRoots{
+			world.query_builder<Root>(COMPONENT(QueryRoots))
 			.without<Collection>()
 			.cached().build() });
 
-		world.component<QueryHierarchyCollections>();
-		world.set(QueryHierarchyCollections{
-			world.query_builder<Collection, Hierarchy>(COMPONENT(QueryHierarchyCollections))
+		world.component<QueryRootCollections>();
+		world.set(QueryRootCollections{
+			world.query_builder<Collection, Root>(COMPONENT(QueryRootCollections))
 			.cached().build() });
 
 		world.component<QuerySelectedIFCData>();
@@ -53,19 +53,21 @@ namespace IFC {
 			.with<IFCData>()
 			.event(flecs::OnSet)
 			.each([&](flecs::entity item, const Name& name) {
-			if (name.Value.IsEmpty()) return;
+			if (name.Value.IsEmpty())
+				return;
 
-			world.try_get<QueryHierarchies>()->Value.each([&](flecs::entity root, Hierarchy) {
-				if (!IsDescendant(item, root)) return;
+			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root, Root) {
+				if (!IsDescendant(item, root))
+					return;
 
-				world.try_get<QueryHierarchyCollections>()->Value.each([&](flecs::entity collection, Collection, Hierarchy) {
+				world.try_get<QueryRootCollections>()->Value.each([&](flecs::entity collection, Collection, Root) {
 					const FString rootPath = UTF8_TO_TCHAR(root.path().c_str());
 					const FString collectionPath = UTF8_TO_TCHAR(collection.path().c_str());
 
 					FString itemPath = UTF8_TO_TCHAR(item.path().c_str());
 					itemPath.RemoveFromStart(rootPath);
 					itemPath.RemoveFromStart(TEXT("::"));
-					if (!item.parent().has<Hierarchy>())
+					if (!item.parent().has<Root>())
 						itemPath.ReplaceInline(TEXT("::"), *(UTF8_TO_TCHAR(ITEM_CONTAINER) + FString(TEXT("::"))));
 					const FString path = NormalizedPath(collectionPath + TEXT(".") + itemPath);
 
@@ -75,11 +77,11 @@ namespace IFC {
 		});
 
 		world.observer<>("AddHierarchyUIItemOnCollectionCreate")
-			.with<Hierarchy>()
+			.with<Root>()
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
-			world.try_get<QueryHierarchies>()->Value.each([&](flecs::entity root, Hierarchy) {
+			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root, Root) {
 				root.children([&](flecs::entity child) {
 					AddHierarchy(world, FString(collection.path()), child, "");
 				}); });
