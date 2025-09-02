@@ -22,7 +22,8 @@ namespace IFC {
 		auto path = parentPath + container + TEXT("::") + FString(item.name());
 		AddItem(world, path, item);
 		item.children([&](flecs::entity child) {
-			AddHierarchy(world, path, child);
+			if (child.has<IfcObject>())
+				AddHierarchy(world, path, child);
 		});
 	}
 
@@ -42,15 +43,15 @@ namespace IFC {
 			world.query_builder<Collection, Hierarchy>(COMPONENT(QueryHierarchyCollections))
 			.cached().build() });
 
-		world.component<QuerySelectedIFCData>();
-		world.set(QuerySelectedIFCData{
-			world.query_builder<Selected, IFCData>(COMPONENT(QuerySelectedIFCData))
+		world.component<QuerySelectedIfcObjects>();
+		world.set(QuerySelectedIfcObjects{
+			world.query_builder<Selected, IfcObject>(COMPONENT(QuerySelectedIfcObjects))
 			.cached().build() });
 	};
 
 	void ITIFCHierarchyFeature::CreateObservers(flecs::world& world) {
 		world.observer<const Name>("AddHierarchyUIItemOnCreate")
-			.with<IFCData>()
+			.with<IfcObject>()
 			.event(flecs::OnSet)
 			.each([&](flecs::entity item, const Name& name) {
 			if (name.Value.IsEmpty()) return;
@@ -104,11 +105,11 @@ namespace IFC {
 		});
 
 		world.observer<>("DeselectOtherItems")
-			.with<IFCData>()
+			.with<IfcObject>()
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity item) {
-			world.try_get<QuerySelectedIFCData>()->Value.each([&item](flecs::entity otherItem, Selected, IFCData) {
+			world.try_get<QuerySelectedIfcObjects>()->Value.each([&item](flecs::entity otherItem, Selected, IfcObject) {
 				if (item.id() != otherItem.id())
 					otherItem.remove<Selected>();
 			});

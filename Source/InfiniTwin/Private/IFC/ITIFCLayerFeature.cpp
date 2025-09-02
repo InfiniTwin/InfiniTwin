@@ -12,16 +12,16 @@
 namespace IFC {
 	using namespace ECS;
 
-	void DestroyIFCData(flecs::world& world) {
-		world.try_get_mut<TimerLoadIFCData>()->Value.start(); // Enable LoadIFCData system
+	void DestroyIfcObjects(flecs::world& world) {
+		world.try_get_mut<TimerLoadIfcObjects>()->Value.start(); // Enable LoadIfcObjects system
 
-		world.try_get<QueryIFCData>()->Value
-			.each([](flecs::entity entity, IFCData) {
+		world.try_get<QueryIfcObjects>()->Value
+			.each([](flecs::entity entity, IfcObject) {
 			entity.destruct();
 		});
 	}
 
-	FString ExtractSlug(const FString& id) {
+	FString CleanName(const FString& id) {
 		FRegexPattern pattern(TEXT("/([^/]+)\\.ifcx$"));
 		FRegexMatcher matcher(pattern, id);
 		if (matcher.FindNext())
@@ -34,15 +34,15 @@ namespace IFC {
 		RunScript(world, "UI/IFC", "ItemLayer", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(layer.id())),
-			TOKEN(TOKEN_TEXT, ExtractSlug(layer.try_get<Id>()->Value)) }));
+			TOKEN(TOKEN_TEXT, CleanName(layer.try_get<Id>()->Value)) }));
 	}
 
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
 		world.component<Enabled>();
 
-		world.component<TimerLoadIFCData>().member<float>(VALUE);
-		world.set<TimerLoadIFCData>({ world.timer(COMPONENT(TimerLoadIFCData)).interval(0.01) });
-		world.try_get_mut<TimerLoadIFCData>()->Value.stop();
+		world.component<TimerLoadIfcObjects>().member<float>(VALUE);
+		world.set<TimerLoadIfcObjects>({ world.timer(COMPONENT(TimerLoadIfcObjects)).interval(0.01) });
+		world.try_get_mut<TimerLoadIfcObjects>()->Value.stop();
 	}
 
 	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
@@ -104,27 +104,27 @@ namespace IFC {
 				checkBox.add(target.has<Enabled>() ? Unchecked : Checked);
 		});
 
-		world.observer<>("DestroyIFCDataOnLayerSwitch")
+		world.observer<>("DestroyIfcObjectOnLayerSwitch")
 			.with<Layer>()
 			.with<Enabled>()
 			.event(flecs::OnAdd)
 			.event(flecs::OnRemove)
 			.run([&world](flecs::iter& it) {
-			DestroyIFCData(world);
+			DestroyIfcObjects(world);
 		});
 
-		world.system<>("LoadIFCData")
-			.tick_source(world.try_get<TimerLoadIFCData>()->Value)
+		world.system<>("LoadIfcObjects")
+			.tick_source(world.try_get<TimerLoadIfcObjects>()->Value)
 			.each([&world]() {
-			if (world.try_get<QueryIFCData>()->Value.count() > 0) return;
+			if (world.try_get<QueryIfcObjects>()->Value.count() > 0) return;
 
-			world.try_get_mut<TimerLoadIFCData>()->Value.stop();
+			world.try_get_mut<TimerLoadIfcObjects>()->Value.stop();
 
 			TArray<flecs::entity> layers;
 			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Enabled, Layer) {
 				layers.Add(layer);
 			});
-			LoadIFCData(world, layers);
+			LoadIfcObjects(world, layers);
 		});
 	}
 
