@@ -41,7 +41,7 @@ namespace IFC {
 		world.component<Enabled>();
 
 		world.component<TimerLoadIfcData>().member<float>(VALUE);
-		world.set<TimerLoadIfcData>({ world.timer(COMPONENT(TimerLoadIfcData)).interval(3) });
+		world.set<TimerLoadIfcData>({ world.timer(COMPONENT(TimerLoadIfcData)).interval(0.01) });
 		world.try_get_mut<TimerLoadIfcData>()->Value.stop();
 	}
 
