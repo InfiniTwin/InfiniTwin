@@ -116,7 +116,8 @@ namespace IFC {
 		world.system<>("LoadIfcObjects")
 			.tick_source(world.try_get<TimerLoadIfcObjects>()->Value)
 			.each([&world]() {
-			if (world.try_get<QueryIfcObjects>()->Value.count() > 0) return;
+			if (world.try_get<QueryIfcObjects>()->Value.count() > 0)
+				return;
 
 			world.try_get_mut<TimerLoadIfcObjects>()->Value.stop();
 
