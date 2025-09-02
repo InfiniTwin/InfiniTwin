@@ -19,7 +19,8 @@ namespace IFC {
 	struct Selected {};
 
 	using namespace UI;
-	struct QueryHierarchies { flecs::query<Hierarchy> Value; };
-	struct QueryHierarchyCollections { flecs::query<Collection, Hierarchy> Value; };
+
+	struct QueryRoots { flecs::query<Root> Value; };
+	struct QueryRootCollections { flecs::query<Collection, Root> Value; };
 	struct QuerySelectedIfcObjects { flecs::query<Selected, IfcObject> Value; };
 }
