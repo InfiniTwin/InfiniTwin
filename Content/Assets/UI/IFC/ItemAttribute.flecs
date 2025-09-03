@@ -13,15 +13,13 @@ const singleValue: [SINGLE_VALUE]
 [PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
     (UIOf, [TARGET])
     if $singleValue {
-        Item: IsHBox, AlignFill, PaddingNone {
+        Item: IsHBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             NameLabel: ElementItemLabel {Text: {"[NAME]"}}
             ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
         }     
     } else {
-        Container: IsVBox, AlignFill, PaddingNone {
-            Item: IsHBox, AlignFill, PaddingNone {
-                NameLabel: ElementItemLabel {Text: {"[NAME]"}}
-            }
+        Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+            NameLabel: ElementItemLabel {Text: {"[NAME]"}}
             Children: IsVBox, AlignFill, PaddingItem {}
         }
     }
