@@ -1,0 +1,30 @@
+using [UI]
+using [UI].Texts
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+using [IFC]
+
+const singleValue: [SINGLE_VALUE]
+
+[PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
+    (UIOf, [TARGET])
+    if $singleValue {
+        Item: IsHBox, AlignFill, PaddingNone {
+            OrderedChildren
+            NameLabel: ElementItemLabel {Text: {"[NAME]"}}
+            ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
+        }     
+    } else {
+        Container: IsVBox, AlignFill, PaddingNone {
+            Item: IsHBox, AlignFill, PaddingNone {
+                OrderedChildren
+                NameLabel: ElementItemLabel {Text: {"[NAME]"}}
+            }
+            Children: IsVBox, AlignFill, PaddingItem {}
+        }
+    }
+}

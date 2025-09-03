@@ -34,7 +34,7 @@ namespace IFC {
 		RunScript(world, "UI/IFC", "ItemLayer", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(layer.id())),
-			TOKEN(TOKEN_TEXT, CleanName(layer.try_get<Id>()->Value)) }));
+			TOKEN(TOKEN_NAME, CleanName(layer.try_get<Id>()->Value)) }));
 	}
 
 	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {

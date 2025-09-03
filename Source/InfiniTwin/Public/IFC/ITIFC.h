@@ -10,4 +10,6 @@ namespace IFC {
 
 		static void Initialize(flecs::world& world);
 	};
+
+	constexpr const char* ITEM_CONTAINER = "::Container::Children";
 }

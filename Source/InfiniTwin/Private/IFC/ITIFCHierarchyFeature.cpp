@@ -2,9 +2,8 @@
 
 
 #include "IFC/ITIFCHierarchyFeature.h"
-#include "IFC.h"
+#include "IFC/ITIFC.h"
 #include "WidgetFeature.h"
-#include "TypographyFeature.h"
 #include "ButtonFeature.h"
 
 namespace IFC {
@@ -12,18 +11,18 @@ namespace IFC {
 
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
-			TOKEN(TOKEN_TOGGLE_CHILDREN, item.has<Branch>() ? TEXT("true") : TEXT("false")),
+			TOKEN(TOKEN_CAN_TOGGLE_CHILDREN, item.has<Branch>() ? TEXT("true") : TEXT("false")),
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(item.id())),
-			TOKEN(TOKEN_TEXT, item.try_get<Name>()->Value) }));
+			TOKEN(TOKEN_NAME, item.try_get<Name>()->Value) }));
 	}
 
-	void AddHierarchy(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = ITEM_CONTAINER) {
-		auto path = parentPath + container + TEXT("::") + FString(item.name());
+	void AddHierarchy(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = "") {
+		FString path = parentPath + container + TEXT("::") + FString(item.name());
 		AddItem(world, path, item);
 		item.children([&](flecs::entity child) {
 			if (child.has<IfcObject>())
-				AddHierarchy(world, path, child);
+				AddHierarchy(world, path, child, ITEM_CONTAINER);
 		});
 	}
 
@@ -34,18 +33,23 @@ namespace IFC {
 	void ITIFCHierarchyFeature::CreateQueries(flecs::world& world) {
 		world.component<QueryRoots>();
 		world.set(QueryRoots{
-			world.query_builder<Root>(COMPONENT(QueryRoots))
+			world.query_builder<>(COMPONENT(QueryRoots))
+			.with<Root>()
 			.without<Collection>()
 			.cached().build() });
 
 		world.component<QueryRootCollections>();
 		world.set(QueryRootCollections{
-			world.query_builder<Collection, Root>(COMPONENT(QueryRootCollections))
+			world.query_builder<>(COMPONENT(QueryRootCollections))
+			.with<Root>()
+			.with<Collection>()
 			.cached().build() });
 
 		world.component<QuerySelectedIfcObjects>();
 		world.set(QuerySelectedIfcObjects{
-			world.query_builder<Selected, IfcObject>(COMPONENT(QuerySelectedIfcObjects))
+			world.query_builder<>(COMPONENT(QuerySelectedIfcObjects))
+			.with<Selected>()
+			.with<IfcObject>()
 			.cached().build() });
 	};
 
@@ -57,11 +61,11 @@ namespace IFC {
 			if (name.Value.IsEmpty())
 				return;
 
-			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root, Root) {
+			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root) {
 				if (!IsDescendant(item, root))
 					return;
 
-				world.try_get<QueryRootCollections>()->Value.each([&](flecs::entity collection, Collection, Root) {
+				world.try_get<QueryRootCollections>()->Value.each([&](flecs::entity collection) {
 					const FString rootPath = UTF8_TO_TCHAR(root.path().c_str());
 					const FString collectionPath = UTF8_TO_TCHAR(collection.path().c_str());
 
@@ -82,9 +86,9 @@ namespace IFC {
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
-			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root, Root) {
+			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root) {
 				root.children([&](flecs::entity child) {
-					AddHierarchy(world, FString(collection.path()), child, "");
+					AddHierarchy(world, FString(collection.path()), child);
 				}); });
 		});
 
@@ -111,15 +115,16 @@ namespace IFC {
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity item) {
-			world.try_get<QuerySelectedIfcObjects>()->Value.each([&item](flecs::entity otherItem, Selected, IfcObject) {
+			world.try_get<QuerySelectedIfcObjects>()->Value.each([&item](flecs::entity otherItem) {
 				if (item.id() != otherItem.id())
 					otherItem.remove<Selected>();
 			});
 		});
 
 		world.observer<>("UncheckCheckBoxFromItem")
+			.with<IfcObject>().filter()
 			.with<Selected>()
-			.event(flecs::OnRemove).event(flecs::OnRemove)
+			.event(flecs::OnRemove)
 			.each([&](flecs::entity item) {
 			world.try_get<QueryUIOf>()->Value.iter().set_var("source", item).each([](flecs::entity itemUI) {
 				for (flecs::entity checkbox : FindDescendants<Selected, CheckBox>(itemUI, 3))

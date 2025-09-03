@@ -6,6 +6,7 @@
 #include "IFC.h"
 #include "IFC/ITIFCLayerFeature.h"
 #include "IFC/ITIFCHierarchyFeature.h"
+#include "IFC/ITIFCAttributeFeature.h"
 
 namespace IFC {
 	ITIFC::ITIFC(flecs::world& world) {
@@ -18,10 +19,12 @@ namespace IFC {
 
 		ITIFCLayerFeature::CreateQueries(world);
 		ITIFCHierarchyFeature::CreateQueries(world);
+		ITIFCAttributeFeature::CreateQueries(world);
 
 		ITIFCLayerFeature::CreateObservers(world);
 		ITIFCHierarchyFeature::CreateObservers(world);
-		
+		ITIFCAttributeFeature::CreateObservers(world);
+
 		ITIFCLayerFeature::CreateSystems(world);
 
 		Initialize(world);

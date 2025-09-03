@@ -11,5 +11,5 @@ using [IFC]
 [PATH]: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNormal {
     (UIOf, [TARGET])
     ToggleState: ElementToggleVisibility {Enabled}
-    Label: ElementItemLabel {Text: {"[TEXT]"}}
+    Label: ElementItemLabel {Text: {"[NAME]"}}
 }

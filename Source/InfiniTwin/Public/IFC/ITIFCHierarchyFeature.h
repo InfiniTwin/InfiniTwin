@@ -4,7 +4,6 @@
 
 #include <flecs.h>
 #include "IFC.h"
-#include "WidgetFeature.h"
 
 namespace IFC {
 	struct ITIFCHierarchyFeature {
@@ -13,14 +12,13 @@ namespace IFC {
 		static void CreateObservers(flecs::world& world);
 	};
 
-	constexpr const char* ITEM_CONTAINER = "::Container::Children";
-	inline constexpr TCHAR TOKEN_TOGGLE_CHILDREN[] = TEXT("[CAN_TOGGLE_CHILDREN]");
+	inline constexpr TCHAR TOKEN_CAN_TOGGLE_CHILDREN[] = TEXT("[CAN_TOGGLE_CHILDREN]");
 
 	struct Selected {};
 
 	using namespace UI;
 
-	struct QueryRoots { flecs::query<Root> Value; };
-	struct QueryRootCollections { flecs::query<Collection, Root> Value; };
-	struct QuerySelectedIfcObjects { flecs::query<Selected, IfcObject> Value; };
+	struct QueryRoots { flecs::query<> Value; };
+	struct QueryRootCollections { flecs::query<> Value; };
+	struct QuerySelectedIfcObjects { flecs::query<> Value; };
 }

@@ -34,7 +34,7 @@ const canToggleChildren: [CAN_TOGGLE_CHILDREN]
             ToggleSelected: ElementItemCheckBox {
                 if $canToggleChildren {} else { Padding: {{16, 0, 0, 0}} }
                 Selected
-                Label: ElementItemLabel {Text: {"[TEXT]"}}
+                Label: ElementItemLabel {Text: {"[NAME]"}}
             }
         }
         Children: IsVBox, AlignFill, PaddingItem {}
