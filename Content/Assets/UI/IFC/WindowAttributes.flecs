@@ -1,0 +1,34 @@
+using [UI]
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+const title: "IT::Attributes"
+
+[PATH].Window: IsWindow {
+    Text: {$title}
+    (WidgetState, Opened)
+    Content: StyleBorderSurfaceTransparent {
+        Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+            VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+                HSB: HScrollBox, FillWidthOne, FillWidthOne, AlignFill, PaddingNone {
+                    Collection: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+                        Collection
+                        [IFC].Attribute
+                    }
+                }
+            }
+        }
+    }
+    ActionEnableCheckBox: ActionWidgetVisible {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+    ActionUncheckCheckBox: ActionCheckBoxUncheck {
+        (WidgetState, Closed)
+        Target: {"<"}
+    }
+}

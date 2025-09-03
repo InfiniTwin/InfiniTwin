@@ -17,8 +17,9 @@ const labelEnglish: "English"
 const labelGerman: "Deutsch"
 const labelItalian: "Italiano"
 
-const windowLayersPath: "UI/IFC/WindowLayers"
-const windowHierarchyPath: "UI/IFC/WindowHierarchy"
+const windowPathLayers: "UI/IFC/WindowLayers"
+const windowPathHierarchy: "UI/IFC/WindowHierarchy"
+const windowPathAttributes: "UI/IFC/WindowAttributes"
 
 const setLanguageITCode: "using [UI]\\n\\n\$ < | Locale: <\"it\">"
 const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
@@ -42,18 +43,22 @@ const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
                                     Container.Label {Text: {$labelLayers}}
                                     ActionOpenWindow: ActionSwitchScript {
                                         (CheckBoxState, Checked)
-                                        Script: {$windowLayersPath}
+                                        Script: {$windowPathLayers}
                                     }
                                 }
                                 Hierarchy: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelHierarchy}}
                                     ActionOpenWindow: ActionSwitchScript {
                                         (CheckBoxState, Checked)
-                                        Script: {$windowHierarchyPath}
+                                        Script: {$windowPathHierarchy}
                                     }
                                 }
                                 Attributes: ElementCheckBoxSelfDisable {
                                     Container.Label {Text: {$labelAttributes}}
+                                    ActionOpenWindow: ActionSwitchScript {
+                                        (CheckBoxState, Checked)
+                                        Script: {$windowPathAttributes}
+                                    }
                                 }
                                 Layers {(CheckBoxState, Unchecked)}
                                 Hierarchy {(CheckBoxState, Unchecked)}
