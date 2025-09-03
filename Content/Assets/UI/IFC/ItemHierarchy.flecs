@@ -37,6 +37,6 @@ const canToggleChildren: [CAN_TOGGLE_CHILDREN]
                 Label: ElementItemLabel {Text: {"[NAME]"}}
             }
         }
-        Children: IsVBox, AlignFill, PaddingItem {}
+        Children: IsVBox, AlignFill, PaddingItemLeft {}
     }
 }

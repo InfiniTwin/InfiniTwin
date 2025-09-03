@@ -10,20 +10,21 @@
 namespace IFC {
 	using namespace ECS;
 
-	void AddItem(flecs::world& world, const FString& parentPath, const FString& ifcObjectId, const flecs::entity item, const FString& container = "") {
+	void AddItem(flecs::world& world, const FString& collectionPath, const FString& ifcObjectId, const flecs::entity item, bool isNestedValue = false) {
 		FString id = IdString(item.id()).Replace(TEXT("#"), TEXT("ID"));
-		FString path = parentPath + container + TEXT("::") + id;
-		bool singleValueAttribute = item.has<Value>();
+
+		FString value = item.has<Value>() ? ECS::CleanCode(item.try_get<Value>()->Value) : "";
 
 		RunScript(world, "UI/IFC", "ItemAttribute", Tokens({
-			TOKEN(TOKEN_SINGLE_VALUE, singleValueAttribute ? TEXT("true") : TEXT("false")),
-			TOKEN(TOKEN_PATH, NormalizedPath(path)),
+			TOKEN(TOKEN_NESTED_VALUE, isNestedValue ? TEXT("true") : TEXT("false")),
+			TOKEN(TOKEN_PATH, NormalizedPath(collectionPath)),
+			TOKEN(TOKEN_ID, id),
 			TOKEN(TOKEN_TARGET, ifcObjectId),
 			TOKEN(TOKEN_NAME, item.try_get<Name>()->Value),
-			TOKEN(TOKEN_VALUE, singleValueAttribute ? ECS::CleanCode(item.try_get<Value>()->Value) : "") }));
+			TOKEN(TOKEN_VALUE, *value) }));
 
 		item.children([&](flecs::entity value) {
-			AddItem(world, path, ifcObjectId, value, ITEM_CONTAINER);
+			AddItem(world, collectionPath, ifcObjectId, value, true);
 			});
 	}
 
@@ -76,7 +77,7 @@ namespace IFC {
 			.event(flecs::OnRemove)
 			.each([&](flecs::entity ifcObject) {
 			world.try_get<QueryUIOf>()->Value.iter().set_var("source", ifcObject).each([](flecs::entity itemUI) {
-				if (itemUI.parent().has<Attribute>())
+				if (itemUI.parent().parent().has<Attribute>())
 					itemUI.destruct();
 				});
 				});

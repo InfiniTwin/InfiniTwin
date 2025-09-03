@@ -15,9 +15,11 @@ const title: "IT::Attributes"
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
                 HSB: HScrollBox, FillWidthOne, FillWidthOne, AlignFill, PaddingNone {
-                    Collection: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
+                    Collection: IsHBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
                         Collection
                         [IFC].Attribute
+                        NameCollection: IsVBox, AlignFill, PaddingNone {}
+                        ValueCollection: IsVBox, AlignFill, PaddingNone {}
                     }
                 }
             }

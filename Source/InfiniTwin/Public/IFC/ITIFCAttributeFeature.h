@@ -12,7 +12,7 @@ namespace IFC {
 		static void CreateObservers(flecs::world& world);
 	};
 
-	inline constexpr TCHAR TOKEN_SINGLE_VALUE[] = TEXT("[SINGLE_VALUE]");
+	inline constexpr TCHAR TOKEN_NESTED_VALUE[] = TEXT("[NESTED_VALUE]");
 
 	using namespace UI;
 

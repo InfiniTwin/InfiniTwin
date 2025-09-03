@@ -8,19 +8,22 @@ using [CORE]
 using [CORE].Actions
 using [IFC]
 
-const singleValue: [SINGLE_VALUE]
+const isNestedValue: [NESTED_VALUE]
 
-[PATH]: StyleBorderSurfaceTransparent, AlignFill, PaddingNone {
+[PATH].NameCollection.[ID]: IsHBox, AlignFill, PaddingNormal {
     (UIOf, [TARGET])
-    if $singleValue {
-        Item: IsHBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
-            NameLabel: ElementItemLabel {Text: {"[NAME]"}}
-            ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
-        }     
+    if ($isNestedValue) {
+        NameLabel: ElementItemLabel {Text: {"[NAME]"}}
     } else {
-        Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
-            NameLabel: ElementItemLabel {Text: {"[NAME]"}}
-            Children: IsVBox, AlignFill, PaddingItem {}
-        }
+        NameLabel: ElementItemLabel, PaddingItemTop {Text: {"[NAME]"}}
+    }
+}
+
+[PATH].ValueCollection.[ID]: IsHBox, AlignFill, PaddingNormal {
+    (UIOf, [TARGET])
+    if ($isNestedValue) {
+        ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
+    } else {
+        ValueLabel: ElementItemLabel, PaddingItemTop {Text: {"[VALUE]"}}
     }
 }

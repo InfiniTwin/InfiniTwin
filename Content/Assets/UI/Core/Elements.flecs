@@ -85,7 +85,7 @@ prefab [UI].Elements.ButtonAdd: ElementButtonIcon {
     Container.Icon {[UI].Icon: {"f3dd"}} // Add 2
 }
 
-prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, AlignFill, PaddingItem {Text}
+prefab [UI].Elements.ElementItemLabel: IsTextBlock, TextBodySmall, FillHeightOne, FillWidthOne, AlignFill, PaddingItemLeft {Text}
 
 prefab [UI].Elements.ElementItemCheckBox: IsWidget, StyleCheckBoxTransparent, AlignCenter, PaddingNormal {
     ActionRemoveBrushDeselected: ActionRemoveScript {
