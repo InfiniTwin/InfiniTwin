@@ -45,7 +45,7 @@ namespace IFC {
 
 	void ITIFCAttributeFeature::CreateObservers(flecs::world& world) {
 		world.observer<>("AddAttributeUIItemsOnIfcObjectSelected")
-			.with<IfcObject>()
+			.with<IfcObject>().filter()
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity ifcObject) {
@@ -67,19 +67,6 @@ namespace IFC {
 					if (attribute.has<Attribute>())
 						AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
 					});
-				});
-				});
-
-		world.observer<>("AddAttributeUIItemsOnIfcObjectSelected")
-			.with<IfcObject>()
-			.with<Selected>()
-			.event(flecs::OnAdd)
-			.each([&](flecs::entity ifcObject) {
-			ifcObject.children([&](flecs::entity attribute) {
-				if (attribute.has<Attribute>())
-					world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
-					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
-						});
 				});
 				});
 

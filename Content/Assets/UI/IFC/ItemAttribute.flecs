@@ -14,14 +14,12 @@ const singleValue: [SINGLE_VALUE]
     (UIOf, [TARGET])
     if $singleValue {
         Item: IsHBox, AlignFill, PaddingNone {
-            OrderedChildren
             NameLabel: ElementItemLabel {Text: {"[NAME]"}}
             ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
         }     
     } else {
         Container: IsVBox, AlignFill, PaddingNone {
             Item: IsHBox, AlignFill, PaddingNone {
-                OrderedChildren
                 NameLabel: ElementItemLabel {Text: {"[NAME]"}}
             }
             Children: IsVBox, AlignFill, PaddingItem {}
