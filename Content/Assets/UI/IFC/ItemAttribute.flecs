@@ -24,6 +24,6 @@ const isNestedValue: [NESTED_VALUE]
     if ($isNestedValue) {
         ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
     } else {
-        ValueLabel: ElementItemLabel, PaddingItemTop {Text: {"[VALUE]"}}
+        ValueLabel: ElementItemLabel, PaddingItemTopLeft {Text: {"[VALUE]"}}
     }
 }
