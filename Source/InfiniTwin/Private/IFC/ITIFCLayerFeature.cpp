@@ -22,11 +22,19 @@ namespace IFC {
 	}
 
 	FString CleanName(const FString& id) {
-		FRegexPattern pattern(TEXT("/([^/]+)\\.ifcx$"));
-		FRegexMatcher matcher(pattern, id);
-		if (matcher.FindNext())
-			return matcher.GetCaptureGroup(1);
-		return FString();
+		FString clean = id;
+
+		// Remove everything before the last "/"
+		int32 slashIndex;
+		if (clean.FindLastChar('/', slashIndex))
+			clean = clean.Mid(slashIndex + 1);
+
+		// Remove everything after the last "."
+		int32 dotIndex;
+		if (clean.FindLastChar('.', dotIndex))
+			clean = clean.Left(dotIndex);
+
+		return clean;
 	}
 
 	void AddLayerUIItem(flecs::world& world, flecs::entity collection, flecs::entity layer) {
