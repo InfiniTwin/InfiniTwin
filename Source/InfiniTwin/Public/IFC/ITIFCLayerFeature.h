@@ -9,7 +9,7 @@
 
 namespace IFC {
 	struct ITIFCLayerFeature {
-		static void RegisterComponents(flecs::world& world);
+		static void CreateComponents(flecs::world& world);
 		static void CreateQueries(flecs::world& world);
 		static void CreateObservers(flecs::world& world);
 		static void CreateSystems(flecs::world& world);
@@ -21,9 +21,8 @@ namespace IFC {
 	struct Enabled {};
 
 	using namespace UI;
-	struct QueryLayers { flecs::query<Layer, Id> Value; };
-	struct QueryEnabledLayers { flecs::query<Enabled, Layer> Value; };
-	struct QueryLayerCollections { flecs::query<Layer, Collection> Value; };
+	struct QueryEnabledLayers { flecs::query<> Value; };
+	struct QueryLayerCollections { flecs::query<> Value; };
 
 	struct TimerLoadIfcData { flecs::timer Value; };
 }

@@ -26,7 +26,7 @@ namespace IFC {
 		});
 	}
 
-	void ITIFCHierarchyFeature::RegisterComponents(flecs::world& world) {
+	void ITIFCHierarchyFeature::CreateComponents(flecs::world& world) {
 		world.component<Selected>();
 	}
 
@@ -111,7 +111,7 @@ namespace IFC {
 		});
 
 		world.observer<>("DeselectOtherItems")
-			.with<IfcObject>()
+			.with<IfcObject>().filter()
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity item) {

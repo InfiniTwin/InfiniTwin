@@ -37,7 +37,7 @@ namespace IFC {
 			TOKEN(TOKEN_NAME, CleanName(layer.try_get<Id>()->Value)) }));
 	}
 
-	void ITIFCLayerFeature::RegisterComponents(flecs::world& world) {
+	void ITIFCLayerFeature::CreateComponents(flecs::world& world) {
 		world.component<Enabled>();
 
 		world.component<TimerLoadIfcData>().member<float>(VALUE);
@@ -46,19 +46,18 @@ namespace IFC {
 	}
 
 	void ITIFCLayerFeature::CreateQueries(flecs::world& world) {
-		world.component<QueryLayers>();
-		world.set(QueryLayers{
-			world.query_builder<Layer, Id>(COMPONENT(QueryLayers))
-			.cached().build() });
-
 		world.component<QueryEnabledLayers>();
 		world.set(QueryEnabledLayers{
 			world.query_builder<Enabled, Layer>(COMPONENT(QueryEnabledLayers))
+			.with<Enabled>()
+			.with<Layer>()
 			.cached().build() });
 
 		world.component<QueryLayerCollections>();
 		world.set(QueryLayerCollections{
-			world.query_builder<Layer, Collection>(COMPONENT(QueryLayerCollections))
+			world.query_builder<>(COMPONENT(QueryLayerCollections))
+			.with<Layer>()
+			.with<Collection>()
 			.cached().build() });
 	};
 
@@ -68,8 +67,9 @@ namespace IFC {
 			.with<Id>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity layer) {
-			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection, Layer, Collection) {
-				AddLayerUIItem(world, collection, layer); });
+			world.try_get<QueryLayerCollections>()->Value.each([&world, &layer](flecs::entity collection) {
+				AddLayerUIItem(world, collection, layer); 
+			});
 		});
 
 		world.observer<>("AddLayerUIOnCollectionCreate")
@@ -77,8 +77,9 @@ namespace IFC {
 			.with<Collection>()
 			.event(flecs::OnAdd)
 			.each([&world](flecs::entity collection) {
-			world.try_get<QueryLayers>()->Value.each([&world, &collection](flecs::entity layer, Layer, Id) {
-				AddLayerUIItem(world, collection, layer); });
+			world.try_get<QueryLayers>()->Value.each([&world, &collection](flecs::entity layer) {
+				AddLayerUIItem(world, collection, layer); 
+			});
 		});
 
 		world.observer<>("SetLayerStateFromUI")
@@ -122,7 +123,7 @@ namespace IFC {
 			world.try_get_mut<TimerLoadIfcData>()->Value.stop();
 
 			TArray<flecs::entity> layers;
-			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer, Enabled, Layer) {
+			world.try_get<QueryEnabledLayers>()->Value.each([&layers](flecs::entity layer) {
 				layers.Add(layer);
 			});
 			LoadIfcData(world, layers);

@@ -14,8 +14,8 @@ namespace IFC {
 
 		IFC::Register(world);
 
-		ITIFCLayerFeature::RegisterComponents(world);
-		ITIFCHierarchyFeature::RegisterComponents(world);
+		ITIFCLayerFeature::CreateComponents(world);
+		ITIFCHierarchyFeature::CreateComponents(world);
 
 		ITIFCLayerFeature::CreateQueries(world);
 		ITIFCHierarchyFeature::CreateQueries(world);
