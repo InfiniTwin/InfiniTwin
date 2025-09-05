@@ -11,18 +11,18 @@ namespace IFC {
 
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
-			TOKEN(TOKEN_CAN_TOGGLE_CHILDREN, item.has<Branch>() ? TEXT("true") : TEXT("false")),
+			TOKEN(TOKEN_CAN_TOGGLE_CHILDREN, (item.has<Root>() || item.has<Branch>()) ? TEXT("true") : TEXT("false")),
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(item.id())),
 			TOKEN(TOKEN_NAME, item.try_get<Name>()->Value) }));
 	}
 
-	void AddHierarchy(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = "") {
+	void AddItems(flecs::world& world, const FString& parentPath, flecs::entity item, const FString& container = "") {
 		FString path = parentPath + container + TEXT("::") + FString(item.name());
 		AddItem(world, path, item);
 		item.children([&](flecs::entity child) {
 			if (child.has<IfcObject>())
-				AddHierarchy(world, path, child, ITEM_CONTAINER);
+				AddItems(world, path, child, ITEM_CONTAINER);
 		});
 	}
 
@@ -62,20 +62,18 @@ namespace IFC {
 				return;
 
 			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root) {
-				if (!IsDescendant(item, root))
+				if (!IsDescendant(item, root) && !item.has<Root>())
 					return;
 
 				world.try_get<QueryRootCollections>()->Value.each([&](flecs::entity collection) {
-					const FString rootPath = UTF8_TO_TCHAR(root.path().c_str());
+					const FString rootParentPath = UTF8_TO_TCHAR(root.parent().path().c_str());
 					const FString collectionPath = UTF8_TO_TCHAR(collection.path().c_str());
 
 					FString itemPath = UTF8_TO_TCHAR(item.path().c_str());
-					itemPath.RemoveFromStart(rootPath);
+					itemPath.RemoveFromStart(rootParentPath);
 					itemPath.RemoveFromStart(TEXT("::"));
-					if (!item.parent().has<Root>())
-						itemPath.ReplaceInline(TEXT("::"), *(UTF8_TO_TCHAR(ITEM_CONTAINER) + FString(TEXT("::"))));
+					itemPath.ReplaceInline(TEXT("::"), *(UTF8_TO_TCHAR(ITEM_CONTAINER) + FString(TEXT("::"))));
 					const FString path = NormalizedPath(collectionPath + TEXT(".") + itemPath);
-
 					AddItem(world, path, item);
 				});
 			});
@@ -87,9 +85,8 @@ namespace IFC {
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
 			world.try_get<QueryRoots>()->Value.each([&](flecs::entity root) {
-				root.children([&](flecs::entity child) {
-					AddHierarchy(world, FString(collection.path()), child);
-				}); });
+				AddItems(world, FString(collection.path()), root);
+			});
 		});
 
 		world.observer<>("DestroyItemUIs")
