@@ -47,14 +47,14 @@ namespace IFC {
 	void ITIFCAttributeFeature::CreateObservers(flecs::world& world) {
 		world.observer<>("AddAttributeUIItemsOnIfcObjectSelected")
 			.with<IfcObject>().filter()
+			.with<Attribute>(flecs::Wildcard)
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity ifcObject) {
-			ifcObject.children([&](flecs::entity attribute) {
-				if (attribute.has<Attribute>())
-					world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
+			ifcObject.target<Attribute>().children([&](flecs::entity attribute) {
+				world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
 					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
-						});
+					});
 				});
 				});
 
@@ -64,9 +64,8 @@ namespace IFC {
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
 			world.try_get<QuerySelectedIfcObjects>()->Value.each([&](flecs::entity ifcObject) {
-				ifcObject.children([&](flecs::entity attribute) {
-					if (attribute.has<Attribute>())
-						AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
+				ifcObject.target<Attribute>().children([&](flecs::entity attribute) {
+					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
 					});
 				});
 				});
