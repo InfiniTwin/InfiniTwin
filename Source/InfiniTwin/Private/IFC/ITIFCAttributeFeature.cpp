@@ -12,7 +12,6 @@ namespace IFC {
 
 	void AddItem(flecs::world& world, const FString& collectionPath, const FString& ifcObjectId, const flecs::entity item, bool isNestedValue = false) {
 		FString id = IdString(item.id()).Replace(TEXT("#"), TEXT("ID"));
-
 		FString value = item.has<Value>() ? ECS::CleanCode(item.try_get<Value>()->Value) : "";
 
 		RunScript(world, "UI/IFC", "ItemAttribute", Tokens({
@@ -47,15 +46,18 @@ namespace IFC {
 	void ITIFCAttributeFeature::CreateObservers(flecs::world& world) {
 		world.observer<>("AddAttributeUIItemsOnIfcObjectSelected")
 			.with<IfcObject>().filter()
-			.with<Attribute>(flecs::Wildcard)
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity ifcObject) {
-			ifcObject.target<Attribute>().children([&](flecs::entity attribute) {
-				world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
-					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
+			int32_t index = 0;
+			while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
+				attributes.children([&](flecs::entity attribute) {
+					if (attribute.has<Attribute>())
+						world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
+						AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
+							});
 					});
-				});
+			}
 				});
 
 		world.observer<>("AddAttributeUIItemsOnCollectionCreate")
@@ -64,9 +66,13 @@ namespace IFC {
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
 			world.try_get<QuerySelectedIfcObjects>()->Value.each([&](flecs::entity ifcObject) {
-				ifcObject.target<Attribute>().children([&](flecs::entity attribute) {
-					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
-					});
+				int32_t index = 0;
+				while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
+					attributes.children([&](flecs::entity attribute) {
+						if (attribute.has<Attribute>())
+							AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
+						});
+				}
 				});
 				});
 
