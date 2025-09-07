@@ -10,7 +10,12 @@
 
 void UIT::Initialize(FSubsystemCollectionBase& Collection) {
 	WaitForGameViewport([this] {
-		UECSSubsystem* ecs = GetWorld()->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+		UWorld* uWorld = GetWorld();
+		UECSSubsystem* ecs = uWorld->GetGameInstance()->GetSubsystem<UECSSubsystem>();
+
+		flecs::world& world = *ecs->World;
+		world.set_ctx(uWorld);
+
 		ecs->World->import<ECS::Core>();
 		ecs->World->import<UI::ITUI>();
 		ecs->World->import<IFC::ITIFC>();
@@ -25,13 +30,11 @@ void UIT::Deinitialize() {
 
 void UIT::WaitForGameViewport(TFunction<void()> Callback)
 {
-	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Callback](float) -> bool
-		{
-			if (GEngine && GEngine->GameViewport)
-			{
-				Callback();
-				return false;
-			}
-			return true;
+	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Callback](float) -> bool {
+		if (GEngine && GEngine->GameViewport) {
+			Callback();
+			return false;
+		}
+		return true;
 		}));
 }
