@@ -21,14 +21,12 @@ namespace IFC {
 		});
 	}
 
-	FString CleanName(const FString& id) {
+	FString CleanLayerName(const FString& id) {
 		FString clean = id;
-
 		// Remove everything before the last "/"
 		int32 slashIndex;
 		if (clean.FindLastChar('/', slashIndex))
 			clean = clean.Mid(slashIndex + 1);
-
 		// Remove everything after the last "."
 		int32 dotIndex;
 		if (clean.FindLastChar('.', dotIndex))
@@ -42,7 +40,7 @@ namespace IFC {
 		RunScript(world, "UI/IFC", "ItemLayer", Tokens({
 			TOKEN(TOKEN_PATH, NormalizedPath(path)),
 			TOKEN(TOKEN_TARGET, IdString(layer.id())),
-			TOKEN(TOKEN_NAME, CleanName(layer.try_get<Id>()->Value)) }));
+			TOKEN(TOKEN_NAME, CleanLayerName(layer.try_get<Id>()->Value)) }));
 	}
 
 	void ITIFCLayerFeature::CreateComponents(flecs::world& world) {
