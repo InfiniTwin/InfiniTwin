@@ -5,9 +5,21 @@
 #include "IFC/ITIFC.h"
 #include "WidgetFeature.h"
 #include "ButtonFeature.h"
+#include "ModelFeature.h"
+#include "ISMSubsystem.h"
 
 namespace IFC {
 	using namespace ECS;
+
+	void SetHighlight(UISMSubsystem* subsystem, flecs::entity entity, float value) {
+		if (const ISM* ism = entity.try_get<ISM>())
+			subsystem->SetISMCustomData(ism->Value, 0, value);
+
+		entity.children([&](flecs::entity child) {
+			if (child.has<IfcObject>())
+				SetHighlight(subsystem, child, value);
+			});
+	}
 
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
@@ -137,6 +149,20 @@ namespace IFC {
 			for (flecs::entity itemUI : FindAncestors<Border>(checkBox, 3))
 				if (itemUI.has<UIOf>(flecs::Wildcard) && itemUI.target<UIOf>().has<Selected>())
 					checkBox.add(Checked);
-		});
+				});
+
+		world.observer<>("SetHighlight")
+			.with<IfcObject>().filter()
+			.with<Selected>()
+			.event(flecs::OnAdd)
+			.event(flecs::OnRemove)
+			.each([&](flecs::iter& it, size_t i) {
+			flecs::entity entity = it.entity(i);
+			bool selected = it.event() == flecs::OnAdd;
+			bool ancestorSelected = HasAncestorWith<Selected>(entity);
+			float value = (selected || ancestorSelected) ? 1.0f : 0.0f;
+			UISMSubsystem* subsystem = static_cast<UWorld*>(world.get_ctx())->GetSubsystem<UISMSubsystem>();
+			SetHighlight(subsystem, entity, value);
+				});
 	}
 }
