@@ -10,20 +10,24 @@ using [IFC]
 
 const isNestedValue: [NESTED_VALUE]
 
-[PATH].NameCollection.[ID]: IsHBox, AlignFill, PaddingNormal {
-    (UIOf, [TARGET])
-    if ($isNestedValue) {
-        NameLabel: ElementItemLabel {Text: {"[NAME]"}}
-    } else {
-        NameLabel: ElementItemLabel, PaddingItemTop {Text: {"[NAME]"}}
+[PATH].NameCollection {
+    _ : IsHBox, AlignFill, PaddingNormal {
+        (UIOf, [TARGET])
+        if ($isNestedValue) {
+            NameLabel: ElementItemLabel {Text: {"[NAME]"}}
+        } else {
+            NameLabel: ElementItemLabel, PaddingItemTop {Text: {"[NAME]"}}
+        }
     }
 }
 
-[PATH].ValueCollection.[ID]: IsHBox, AlignFill, PaddingNormal {
-    (UIOf, [TARGET])
-    if ($isNestedValue) {
-        ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
-    } else {
-        ValueLabel: ElementItemLabel, PaddingItemTopLeft {Text: {"[VALUE]"}}
+[PATH].ValueCollection {
+    _ : IsHBox, AlignFill, PaddingNormal {
+        (UIOf, [TARGET])
+        if ($isNestedValue) {
+            ValueLabel: ElementItemLabel {Text: {"[VALUE]"}}
+        } else {
+            ValueLabel: ElementItemLabel, PaddingItemTopLeft {Text: {"[VALUE]"}}
+        }
     }
 }

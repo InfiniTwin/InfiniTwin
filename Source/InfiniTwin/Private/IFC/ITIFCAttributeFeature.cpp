@@ -2,6 +2,7 @@
 
 
 #include "IFC/ITIFCAttributeFeature.h"
+#include "LayerFeature.h"
 #include "IFC/ITIFCHierarchyFeature.h"
 #include "IFC/ITIFC.h"
 #include "WidgetFeature.h"
@@ -11,13 +12,11 @@ namespace IFC {
 	using namespace ECS;
 
 	void AddItem(flecs::world& world, const FString& collectionPath, const FString& ifcObjectId, const flecs::entity item, bool isNestedValue = false) {
-		FString id = IdString(item.id()).Replace(TEXT("#"), TEXT("ID"));
 		FString value = item.has<Value>() ? ECS::CleanCode(item.try_get<Value>()->Value) : "";
 
 		RunScript(world, "UI/IFC", "ItemAttribute", Tokens({
 			TOKEN(TOKEN_NESTED_VALUE, isNestedValue ? TEXT("true") : TEXT("false")),
 			TOKEN(TOKEN_PATH, NormalizedPath(collectionPath)),
-			TOKEN(TOKEN_ID, id),
 			TOKEN(TOKEN_TARGET, ifcObjectId),
 			TOKEN(TOKEN_NAME, item.try_get<Name>()->Value),
 			TOKEN(TOKEN_VALUE, *value) }));
@@ -25,6 +24,27 @@ namespace IFC {
 		item.children([&](flecs::entity value) {
 			AddItem(world, collectionPath, ifcObjectId, value, true);
 			});
+	}
+
+	TArray<flecs::entity> GetAttributes(flecs::world& world, flecs::entity ifcObject) {
+		TMap<FString, flecs::entity> uniqueAttributes;
+		int32_t index = 0;
+		while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
+			attributes.children([&](flecs::entity attribute) {
+				if (!attribute.has<Attribute>()) return;
+
+				FString key = FString::Printf(TEXT("%llu|%s|%s"),
+					(uint64)attribute.id(),
+					*attribute.try_get<Name>()->Value,
+					*attribute.try_get<Owner>()->Value);
+
+				uniqueAttributes.Add(key, attribute);
+				});
+		}
+
+		TArray<flecs::entity> result;
+		uniqueAttributes.GenerateValueArray(result);
+		return result;
 	}
 
 	void ITIFCAttributeFeature::CreateQueries(flecs::world& world) {
@@ -49,15 +69,11 @@ namespace IFC {
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity ifcObject) {
-			int32_t index = 0;
-			while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
-				attributes.children([&](flecs::entity attribute) {
-					if (attribute.has<Attribute>())
-						world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
-						AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
-							});
-					});
-			}
+			TArray<flecs::entity> attributes = GetAttributes(world, ifcObject);
+			world.try_get<QueryAttributeCollections>()->Value.each([&](flecs::entity collection) {
+				for (auto& attribute : attributes)
+					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
+				});
 				});
 
 		world.observer<>("AddAttributeUIItemsOnCollectionCreate")
@@ -66,13 +82,9 @@ namespace IFC {
 			.event(flecs::OnAdd)
 			.each([&](flecs::entity collection) {
 			world.try_get<QuerySelectedIfcObjects>()->Value.each([&](flecs::entity ifcObject) {
-				int32_t index = 0;
-				while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
-					attributes.children([&](flecs::entity attribute) {
-						if (attribute.has<Attribute>())
-							AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
-						});
-				}
+				TArray<flecs::entity> attributes = GetAttributes(world, ifcObject);
+				for (auto& attribute : attributes)
+					AddItem(world, UTF8_TO_TCHAR(collection.path().c_str()), IdString(ifcObject.id()), attribute);
 				});
 				});
 
