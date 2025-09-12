@@ -11,16 +11,6 @@
 namespace IFC {
 	using namespace ECS;
 
-	void SetHighlight(UISMSubsystem* subsystem, flecs::entity entity, float value) {
-		if (const ISM* ism = entity.try_get<ISM>())
-			subsystem->SetISMCustomData(ism->Value, 0, value);
-
-		entity.children([&](flecs::entity child) {
-			if (child.has<IfcObject>())
-				SetHighlight(subsystem, child, value);
-			});
-	}
-
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
 		RunScript(world, "UI/IFC", "ItemHierarchy", Tokens({
 			TOKEN(TOKEN_CAN_TOGGLE_CHILDREN, (item.has<Root>() || item.has<Branch>()) ? TEXT("true") : TEXT("false")),
@@ -153,16 +143,14 @@ namespace IFC {
 
 		world.observer<>("SetHighlight")
 			.with<IfcObject>().filter()
+			.with<ISM>().filter()
 			.with<Selected>()
 			.event(flecs::OnAdd)
 			.event(flecs::OnRemove)
 			.each([&](flecs::iter& it, size_t i) {
-			flecs::entity entity = it.entity(i);
-			bool selected = it.event() == flecs::OnAdd;
-			bool ancestorSelected = HasAncestorWith<Selected>(entity);
-			float value = (selected || ancestorSelected) ? 1.0f : 0.0f;
-			UISMSubsystem* subsystem = static_cast<UWorld*>(world.get_ctx())->GetSubsystem<UISMSubsystem>();
-			SetHighlight(subsystem, entity, value);
+			float value = it.event() == flecs::OnAdd ? 1.0f : 0.0f;
+			static_cast<UWorld*>(world.get_ctx())->GetSubsystem<UISMSubsystem>()
+				->SetISMCustomData(it.entity(i).try_get<ISM>()->Value, 0, value);
 				});
 	}
 }
