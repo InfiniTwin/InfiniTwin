@@ -1,0 +1,13 @@
+using [UI]
+using [UI].Layout
+using [UI].Widgets
+using [UI].Styles
+using [UI].Elements
+using [CORE]
+using [CORE].Actions
+
+[UI].ViewportMain.ToolbarTop.Content.Top.Left.MenuWindows.Content.Container {
+    Layers {(CheckBoxState, Checked)}
+    Hierarchy {(CheckBoxState, Checked)}
+    Attributes {(CheckBoxState, Checked)}
+}

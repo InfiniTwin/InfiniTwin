@@ -58,6 +58,6 @@ namespace UI{
 
 		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "Settings" });
 
-		RunScript(world, "UI/IT/", "ViewportMain");
+		RunScripts(world, "UI/IT/", { "ViewportMain", "Layout" });
 	}
 }
