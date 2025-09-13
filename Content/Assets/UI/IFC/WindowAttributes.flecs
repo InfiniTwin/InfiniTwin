@@ -11,6 +11,7 @@ const title: "IT::Attributes"
 [PATH].Window: IsWindow {
     Text: {$title}
     (WidgetState, Opened)
+    Size: {{1400, 280}}
     Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
