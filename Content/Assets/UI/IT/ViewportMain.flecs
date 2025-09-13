@@ -26,6 +26,8 @@ const setLanguageDECode: "using [UI]\\n\\n\$ < | Locale: <\"de\">"
 
 [UI].ViewportMain {
     Viewport
+    Position: {{0, 0}}
+    Size: {{1412, 900}}
     ToolbarTop: IsConstraintCanvas {
         Content: StyleBorderSurfaceLowest, VAlignTop, HAlignFill, PaddingNone {
             Top: IsHBox, AlignFill, PaddingNone {

@@ -11,8 +11,8 @@ const title: "IT::Layers"
 [PATH].Window: IsWindow {
     Text: {$title}
     (WidgetState, Opened)
-    Position: {{0, 0}}
-    Size: {{500, 200}}
+    Position: {{0, 760}}
+    Size: {{500, 280}}
     Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {

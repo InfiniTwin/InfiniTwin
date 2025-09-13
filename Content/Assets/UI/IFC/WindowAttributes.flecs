@@ -12,7 +12,7 @@ const title: "IT::Attributes"
     Text: {$title}
     (WidgetState, Opened)
     Position: {{504, 760}}
-    Size: {{1412, 280}}
+    Size: {{912, 280}}
     Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {

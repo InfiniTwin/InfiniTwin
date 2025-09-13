@@ -28,11 +28,10 @@ void UIT::Deinitialize() {
 	Super::Deinitialize();
 }
 
-void UIT::WaitForGameViewport(TFunction<void()> Callback)
-{
-	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([Callback](float) -> bool {
+void UIT::WaitForGameViewport(TFunction<void()> callback) {
+	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda([callback](float) -> bool {
 		if (GEngine && GEngine->GameViewport) {
-			Callback();
+			callback();
 			return false;
 		}
 		return true;

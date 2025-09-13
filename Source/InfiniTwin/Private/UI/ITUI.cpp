@@ -22,29 +22,26 @@ namespace UI{
 
 	void SetupViewport() {
 #if !WITH_EDITOR
-		// Setup main viewport window
-		if (UGameUserSettings* Settings = GEngine->GameUserSettings) {
-			// 1) Calculate window size minus title bar
+		if (UGameUserSettings* settings = GEngine->GameUserSettings) {
 #if PLATFORM_WINDOWS
-			const int32 CaptionHeight = ::GetSystemMetrics(SM_CYCAPTION);
-			const int32 FrameThickness = ::GetSystemMetrics(SM_CYSIZEFRAME);
-			const int32 TitleBarHeight = CaptionHeight + FrameThickness;
+			const int32 captionHeight = ::GetSystemMetrics(SM_CYCAPTION);
+			const int32 frameThickness = ::GetSystemMetrics(SM_CYSIZEFRAME);
+			const int32 titleBarHeight = captionHeight + frameThickness;
 #else
-			const int32 TitleBarHeight = 50;
+			const int32 titleBarHeight = 50;
 #endif
 
-			FIntPoint DesktopRes = Settings->GetDesktopResolution();
-			const int32 DesiredWidth = DesktopRes.X;
-			const int32 DesiredHeight = DesktopRes.Y - TitleBarHeight;
+			FIntPoint desktopRes = settings->GetDesktopResolution();
+			const int32 desiredWidth = desktopRes.X;
+			const int32 desiredHeight = desktopRes.Y - titleBarHeight;
 
-			Settings->SetFullscreenMode(EWindowMode::Windowed);
-			Settings->SetScreenResolution(FIntPoint(DesiredWidth, DesiredHeight));
-			Settings->ApplySettings(false);
+			settings->SetFullscreenMode(EWindowMode::Windowed);
+			settings->SetScreenResolution(FIntPoint(desiredWidth, desiredHeight));
+			settings->ApplySettings(false);
 
-			// 2) After the viewport is set, move the window via Slate
-			TSharedPtr<SWindow> MainWindow = FSlateApplication::Get().GetActiveTopLevelWindow();
-			if (MainWindow.IsValid())
-				MainWindow->MoveWindowTo(FVector2D(0, TitleBarHeight));
+			TSharedPtr<SWindow> mainWindow = FSlateApplication::Get().GetActiveTopLevelWindow();
+			if (mainWindow.IsValid())
+				mainWindow->MoveWindowTo(FVector2D(0, titleBarHeight));
 		}
 #endif
 	}
@@ -56,7 +53,7 @@ namespace UI{
 
 		Scopes.Add(TEXT("[UI]"), UI::Scope() = "UI.ITUI");
 
-		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "Settings" });
+		RunScripts(world, "UI/Core/", { "Colors", "Texts", "Layout", "Widgets", "Styles", "Actions", "Elements", "settings" });
 
 		RunScripts(world, "UI/IT/", { "ViewportMain", "Layout" });
 	}
