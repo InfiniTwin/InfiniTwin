@@ -11,7 +11,8 @@ const title: "IT::Hierarchy"
 [PATH].Window: IsWindow {
     Text: {$title}
     (WidgetState, Opened)
-    Size: {{520, 800}}
+    Position: {{0, 240}}
+    Size: {{500, 800}}
     Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
             VSB: VScrollBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {

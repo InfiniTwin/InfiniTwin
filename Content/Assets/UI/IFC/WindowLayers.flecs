@@ -11,6 +11,7 @@ const title: "IT::Layers"
 [PATH].Window: IsWindow {
     Text: {$title}
     (WidgetState, Opened)
+    Position: {{0, 0}}
     Size: {{500, 200}}
     Content: StyleBorderSurfaceTransparent {
         Container: IsVBox, FillHeightOne, FillWidthOne, AlignFill, PaddingNone {
