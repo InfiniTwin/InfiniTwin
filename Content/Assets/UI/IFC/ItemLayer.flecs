@@ -10,6 +10,10 @@ using [IFC]
 
 [PATH]: IsHBox, FillWidthOne, AlignCenterLeft, PaddingNormal {
     (UIOf, [TARGET])
+    OrderedChildren
     ToggleState: ElementToggleVisibility {Enabled}
-    Label: ElementItemLabel {Text: {"[NAME]"}}
+    Label: ElementItemLabel {
+        Order: {1}
+        Text: {"[NAME]"}
+    }
 }
