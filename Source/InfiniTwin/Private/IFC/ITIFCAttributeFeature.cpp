@@ -4,9 +4,7 @@
 #include "IFC/ITIFCAttributeFeature.h"
 #include "LayerFeature.h"
 #include "IFC/ITIFCHierarchyFeature.h"
-#include "IFC/ITIFC.h"
 #include "WidgetFeature.h"
-#include "TypographyFeature.h"
 
 namespace IFC {
 	using namespace ECS;
