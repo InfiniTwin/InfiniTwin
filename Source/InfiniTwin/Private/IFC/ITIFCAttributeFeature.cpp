@@ -16,7 +16,7 @@ namespace IFC {
 			TOKEN(TOKEN_NESTED_VALUE, isNestedValue ? TEXT("true") : TEXT("false")),
 			TOKEN(TOKEN_PATH, NormalizedPath(collectionPath)),
 			TOKEN(TOKEN_TARGET, ifcObjectId),
-			TOKEN(TOKEN_NAME, item.try_get<Name>()->Value),
+			TOKEN(TOKEN_NAME, CleanName(item.try_get<Name>()->Value)),
 			TOKEN(TOKEN_VALUE, *value) }));
 
 		item.children([&](flecs::entity value) {
