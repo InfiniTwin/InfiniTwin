@@ -9,6 +9,8 @@
 #include "ISMSubsystem.h"
 
 namespace IFC {
+	static FString selected = "";
+
 	using namespace ECS;
 
 	void AddItem(flecs::world& world, const FString& path, const flecs::entity item) {
@@ -131,13 +133,15 @@ namespace IFC {
 			});
 		});
 
-		world.observer<>("CheckCheckBoxOnItemUICreate")
+		world.observer<>("CheckSelectedObjectCheckBox")
 			.with<Selected>()
 			.with<CheckBox>()
 			.event(flecs::OnAdd)
 			.each([](flecs::entity checkBox) {
 			for (flecs::entity itemUI : FindAncestors<Border>(checkBox, 3))
-				if (itemUI.has<UIOf>(flecs::Wildcard) && itemUI.target<UIOf>().has<Selected>())
+				if (itemUI.has<UIOf>(flecs::Wildcard) && 
+					(itemUI.target<UIOf>().has<Selected>() ||
+					ECS::NormalizedPath(UTF8_TO_TCHAR(itemUI.target<UIOf>().path().c_str())) == selected))
 					checkBox.add(Checked);
 				});
 
@@ -151,6 +155,14 @@ namespace IFC {
 			float value = it.event() == flecs::OnAdd ? 1.0f : 0.0f;
 			static_cast<UWorld*>(world.get_ctx())->GetSubsystem<UISMSubsystem>()
 				->SetISMCustomData(it.entity(i).try_get<ISM>()->Value, 0, value);
+				});
+
+		world.observer<>("SaveSelected")
+			.with<IfcObject>().filter()
+			.with<Selected>()
+			.event(flecs::OnAdd)
+			.each([&](flecs::entity entity) {
+			selected = *ECS::NormalizedPath(UTF8_TO_TCHAR(entity.path().c_str()));
 				});
 	}
 }
