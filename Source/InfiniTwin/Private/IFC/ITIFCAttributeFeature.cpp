@@ -2,8 +2,9 @@
 
 
 #include "IFC/ITIFCAttributeFeature.h"
-#include "LayerFeature.h"
 #include "IFC/ITIFCHierarchyFeature.h"
+#include "IFC.h"
+#include "AttributeFeature.h"
 #include "WidgetFeature.h"
 
 namespace IFC {
@@ -22,27 +23,6 @@ namespace IFC {
 		item.children([&](flecs::entity value) {
 			AddItem(world, collectionPath, ifcObjectId, value, true);
 			});
-	}
-
-	TArray<flecs::entity> GetAttributes(flecs::world& world, flecs::entity ifcObject) {
-		TMap<FString, flecs::entity> uniqueAttributes;
-		int32_t index = 0;
-		while (flecs::entity attributes = ifcObject.target(world.try_get<AttributeRelationship>()->Value, index++)) {
-			attributes.children([&](flecs::entity attribute) {
-				if (!attribute.has<Attribute>()) return;
-
-				FString key = FString::Printf(TEXT("%llu|%s|%s"),
-					(uint64)attribute.id(),
-					*attribute.try_get<Name>()->Value,
-					*attribute.try_get<Owner>()->Value);
-
-				uniqueAttributes.Add(key, attribute);
-				});
-		}
-
-		TArray<flecs::entity> result;
-		uniqueAttributes.GenerateValueArray(result);
-		return result;
 	}
 
 	void ITIFCAttributeFeature::CreateQueries(flecs::world& world) {

@@ -3,8 +3,6 @@
 #pragma once
 
 #include <flecs.h>
-#include "IFC.h"
-#include "AttributeFeature.h"
 
 namespace IFC {
 	struct ITIFCAttributeFeature {
